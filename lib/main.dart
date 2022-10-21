@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mealis/popular_menu_page.dart';
+import 'package:mealis/quick_meal_page.dart';
 
 void main() {
   runApp(const MyApp());
@@ -11,105 +13,352 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Mealis',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
+        primarySwatch: Colors.orange,
       ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      home: const HomePage(title: 'Mealis'),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({Key? key, required this.title}) : super(key: key);
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
+class HomePage extends StatefulWidget {
+  const HomePage({Key? key, required this.title}) : super(key: key);
 
   final String title;
 
   @override
-  State<MyHomePage> createState() => _MyHomePageState();
+  State<HomePage> createState() => _HomePageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
+class _HomePageState extends State<HomePage> {
+  String _nickname = 'nickname';
+  Image? _profileImage;
 
-  void _incrementCounter() {
+  void _setNickname(String nickname) {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
-      _counter++;
+      _nickname = nickname;
     });
+  }
+
+  Text _printRestaurantName(String restaurantName) {
+    return Text(restaurantName, style: const TextStyle(fontSize: 24, fontWeight: FontWeight.bold, color: Colors.orange));
+  }
+
+  Text _printMenuName(String menuName) {
+    return Text(menuName, style: const TextStyle(fontSize: 18, fontWeight: FontWeight.bold, color: Color(0xFF2D2D2D), overflow: TextOverflow.ellipsis));
   }
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
-      appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title),
-      ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.start,
           children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(top: 90),
+                  child: Column(
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.only(right: 4, bottom: 16.5),
+                        child: Text(
+                          _nickname,
+                          style: const TextStyle(fontSize: 17.5, color: Color(0xFF888888)),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                Container(
+                  margin: const EdgeInsets.only(right: 20, bottom: 10),
+                  child: (_profileImage == null) ? const Icon(Icons.account_circle, size: 50, color: Colors.orangeAccent) : _profileImage!,
+                ),
+              ],
             ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(right: 30),
+                  child: const Text(
+                    'Welcome to Mealis!',
+                    style: TextStyle(fontSize: 30, fontWeight: FontWeight.bold, color: Color(
+                        0xFF2D2D2D)),
+                    textAlign: TextAlign.end,
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Flexible(
+                  flex: 1,
+                  child: Container(
+                    padding: const EdgeInsets.all(10),
+                    margin: const EdgeInsets.only(left: 30, right: 10, top: 30, bottom: 30),
+                    height: 175,
+                    decoration: BoxDecoration(
+                      gradient: const LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [Colors.orangeAccent, Colors.deepOrange],
+                      ),
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(20),
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.deepOrange.withOpacity(0.5),
+                          spreadRadius: 4,
+                          blurRadius: 10,
+                          offset: const Offset(0, 3),
+                        ),
+                      ],
+                    ),
+                    child: Center(
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const PopularMenuPage()),
+                          );
+                        },
+                        child: const Text(
+                          'Today\'s Popular Menu',
+                          style: TextStyle(fontSize: 27, color: Colors.white, fontWeight: FontWeight.bold, height: 1.3),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+                Flexible(
+                  flex: 1,
+                  child: Container(
+                    padding: const EdgeInsets.all(10),
+                    margin: const EdgeInsets.only(left: 10, right: 30, top: 30, bottom: 30),
+                    height: 175,
+                    decoration: BoxDecoration(
+                      gradient: const LinearGradient(
+                        begin: Alignment.topLeft,
+                        end: Alignment.bottomRight,
+                        colors: [Colors.amberAccent, Colors.orange],
+                      ),
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(20),
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.orange.withOpacity(0.5),
+                          spreadRadius: 4,
+                          blurRadius: 10,
+                          offset: const Offset(0, 3),
+                        ),
+                      ],
+                    ),
+                    child: Center(
+                      child: GestureDetector(
+                        onTap: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(builder: (context) => const QuickMealPage()),
+                          );
+                        },
+                        child: const Text(
+                          'Quick Meal',
+                          style: TextStyle(fontSize: 30, color: Colors.white, fontWeight: FontWeight.bold, height: 1.3),
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Container(
+                  margin: const EdgeInsets.only(left: 50, top: 20, bottom: 15),
+                  child: const Text(
+                    '<All Menu>',
+                    style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold, color: Color(
+                        0xFF2D2D2D)),
+                    textAlign: TextAlign.start,
+                  ),
+                ),
+              ],
+            ),
+            Flexible(
+              child: Container(
+                margin: const EdgeInsets.only(left: 30, right: 30, bottom: 30),
+                padding: const EdgeInsets.all(10),
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: const BorderRadius.all(
+                    Radius.circular(20),
+                  ),
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.deepOrangeAccent.withOpacity(0.5),
+                      spreadRadius: 4,
+                      blurRadius: 10,
+                      offset: const Offset(0, 3),
+                    ),
+                  ],
+                ),
+                child: SingleChildScrollView(
+                  child: Container(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(left: 20, top: 20, bottom: 10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              _printRestaurantName('Mix Rice'),
+                              _printMenuName('Pork Cutlet Kimchi Udon'),
+                              _printMenuName('Tendon'),
+                              _printMenuName('Backbone Spicy Soup'),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(left: 20, top: 20, bottom: 10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              _printRestaurantName('Handong Lounge'),
+                              _printMenuName('Korean Black Noodle'),
+                              _printMenuName('Nagasakki Jjampong'),
+                              _printMenuName('Pork Soup'),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(left: 20, top: 20, bottom: 10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              _printRestaurantName('Mom\'s Kitchen'),
+                              _printMenuName('Samqyetang'),
+                              _printMenuName('Bean Sprout Radish Beef Soup'),
+                              _printMenuName('Handmade Donkatsu'),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(left: 20, top: 20, bottom: 10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              _printRestaurantName('H.Plate'),
+                              _printMenuName('Sirloin Donkatsu'),
+                              _printMenuName('Spicy Donkatsu'),
+                              _printMenuName('Rose Pasta'),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(left: 20, top: 20, bottom: 10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              _printRestaurantName('Han\'s Deli'),
+                              _printMenuName('Braised Chicken'),
+                              _printMenuName('Braised Chicken with cheese'),
+                            ],
+                          ),
+                        ),
+                        Container(
+                          margin: const EdgeInsets.only(left: 20, top: 20, bottom: 10),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              _printRestaurantName('The Grace Table'),
+                              _printMenuName('Beef Curry'),
+                              _printMenuName('Thai Lemon Chicken with Garlic Rice'),
+                              _printMenuName('Cockle Shell Bibimbap'),
+                            ],
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
             ),
           ],
         ),
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ), // This trailing comma makes auto-formatting nicer for build methods.
+      bottomNavigationBar: BottomNavigationBar(
+        items: const <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+            icon: Icon(Icons.restaurant),
+            label: 'Restaurant',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.thumb_up),
+            label: 'Pop Menu',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.home),
+            label: 'Home',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.fastfood),
+            label: 'Quick Meal',
+          ),
+          BottomNavigationBarItem(
+            icon: Icon(Icons.groups),
+            label: 'Forum',
+          )
+        ],
+        currentIndex: 2,
+        selectedItemColor: Colors.orange,
+        unselectedItemColor: const Color(0xFF888888),
+        showSelectedLabels: true,
+        showUnselectedLabels: true,
+        selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
+        unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.normal),
+
+        onTap: (index) {
+          if (index == 0) {
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(builder: (context) => const AllRestaurentPage()),
+            // );
+          } else if (index == 1) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const PopularMenuPage()),
+            );
+          } else if (index == 2) {
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(builder: (context) => const HomePage(title: 'Mealis')),
+            // );
+          } else if (index == 3) {
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => const QuickMealPage()),
+            );
+          } else if (index == 4) {
+            // Navigator.push(
+            //   context,
+            //   MaterialPageRoute(builder: (context) => const ForumPage()),
+            // );
+          }
+        },
+      ),
     );
   }
 }
