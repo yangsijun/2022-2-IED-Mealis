@@ -215,83 +215,81 @@ class _HomePageState extends State<HomePage> {
                   ],
                 ),
                 child: SingleChildScrollView(
-                  child: Container(
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                          margin: const EdgeInsets.only(left: 20, top: 20, bottom: 10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              _printRestaurantName('Mix Rice'),
-                              _printMenuName('Pork Cutlet Kimchi Udon'),
-                              _printMenuName('Tendon'),
-                              _printMenuName('Backbone Spicy Soup'),
-                            ],
-                          ),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        margin: const EdgeInsets.only(left: 20, top: 20, bottom: 10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            _printRestaurantName('Mix Rice'),
+                            _printMenuName('Pork Cutlet Kimchi Udon'),
+                            _printMenuName('Tendon'),
+                            _printMenuName('Backbone Spicy Soup'),
+                          ],
                         ),
-                        Container(
-                          margin: const EdgeInsets.only(left: 20, top: 20, bottom: 10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              _printRestaurantName('Handong Lounge'),
-                              _printMenuName('Korean Black Noodle'),
-                              _printMenuName('Nagasakki Jjampong'),
-                              _printMenuName('Pork Soup'),
-                            ],
-                          ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(left: 20, top: 20, bottom: 10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            _printRestaurantName('Handong Lounge'),
+                            _printMenuName('Korean Black Noodle'),
+                            _printMenuName('Nagasakki Jjampong'),
+                            _printMenuName('Pork Soup'),
+                          ],
                         ),
-                        Container(
-                          margin: const EdgeInsets.only(left: 20, top: 20, bottom: 10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              _printRestaurantName('Mom\'s Kitchen'),
-                              _printMenuName('Samqyetang'),
-                              _printMenuName('Bean Sprout Radish Beef Soup'),
-                              _printMenuName('Handmade Donkatsu'),
-                            ],
-                          ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(left: 20, top: 20, bottom: 10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            _printRestaurantName('Mom\'s Kitchen'),
+                            _printMenuName('Samqyetang'),
+                            _printMenuName('Bean Sprout Radish Beef Soup'),
+                            _printMenuName('Handmade Donkatsu'),
+                          ],
                         ),
-                        Container(
-                          margin: const EdgeInsets.only(left: 20, top: 20, bottom: 10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              _printRestaurantName('H.Plate'),
-                              _printMenuName('Sirloin Donkatsu'),
-                              _printMenuName('Spicy Donkatsu'),
-                              _printMenuName('Rose Pasta'),
-                            ],
-                          ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(left: 20, top: 20, bottom: 10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            _printRestaurantName('H.Plate'),
+                            _printMenuName('Sirloin Donkatsu'),
+                            _printMenuName('Spicy Donkatsu'),
+                            _printMenuName('Rose Pasta'),
+                          ],
                         ),
-                        Container(
-                          margin: const EdgeInsets.only(left: 20, top: 20, bottom: 10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              _printRestaurantName('Han\'s Deli'),
-                              _printMenuName('Braised Chicken'),
-                              _printMenuName('Braised Chicken with cheese'),
-                            ],
-                          ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(left: 20, top: 20, bottom: 10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            _printRestaurantName('Han\'s Deli'),
+                            _printMenuName('Braised Chicken'),
+                            _printMenuName('Braised Chicken with cheese'),
+                          ],
                         ),
-                        Container(
-                          margin: const EdgeInsets.only(left: 20, top: 20, bottom: 10),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              _printRestaurantName('The Grace Table'),
-                              _printMenuName('Beef Curry'),
-                              _printMenuName('Thai Lemon Chicken with Garlic Rice'),
-                              _printMenuName('Cockle Shell Bibimbap'),
-                            ],
-                          ),
+                      ),
+                      Container(
+                        margin: const EdgeInsets.only(left: 20, top: 20, bottom: 10),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            _printRestaurantName('The Grace Table'),
+                            _printMenuName('Beef Curry'),
+                            _printMenuName('Thai Lemon Chicken with Garlic Rice'),
+                            _printMenuName('Cockle Shell Bibimbap'),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -299,65 +297,77 @@ class _HomePageState extends State<HomePage> {
           ],
         ),
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.restaurant),
-            label: 'Restaurant',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.thumb_up),
-            label: 'Pop Menu',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: 'Home',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.fastfood),
-            label: 'Quick Meal',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.groups),
-            label: 'Forum',
-          )
-        ],
-        currentIndex: 2,
-        selectedItemColor: Colors.orange,
-        unselectedItemColor: const Color(0xFF888888),
-        showSelectedLabels: true,
-        showUnselectedLabels: true,
-        selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
-        unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.normal),
+      bottomNavigationBar: Container(
+        decoration: const BoxDecoration(
+          color: Colors.white,
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black12,
+              blurRadius: 10,
+            ),
+          ],
+        ),
+        child: BottomNavigationBar(
+          items: const <BottomNavigationBarItem>[
+            BottomNavigationBarItem(
+              icon: Icon(Icons.restaurant),
+              label: 'Restaurant',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.thumb_up),
+              label: 'Pop Menu',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.home),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.fastfood),
+              label: 'Quick Meal',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(Icons.groups),
+              label: 'Forum',
+            )
+          ],
+          currentIndex: 2,
+          elevation: 10,
+          selectedItemColor: Colors.orange,
+          unselectedItemColor: const Color(0xFF888888),
+          showSelectedLabels: true,
+          showUnselectedLabels: true,
+          selectedLabelStyle: const TextStyle(fontWeight: FontWeight.bold),
+          unselectedLabelStyle: const TextStyle(fontWeight: FontWeight.normal),
 
-        onTap: (index) {
-          if (index == 0) {
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute(builder: (context) => const AllRestaurentPage()),
-            // );
-          } else if (index == 1) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const PopularMenuPage()),
-            );
-          } else if (index == 2) {
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute(builder: (context) => const HomePage(title: 'Mealis')),
-            // );
-          } else if (index == 3) {
-            Navigator.push(
-              context,
-              MaterialPageRoute(builder: (context) => const QuickMealPage()),
-            );
-          } else if (index == 4) {
-            // Navigator.push(
-            //   context,
-            //   MaterialPageRoute(builder: (context) => const ForumPage()),
-            // );
-          }
-        },
+          onTap: (index) {
+            if (index == 0) {
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => const AllRestaurentPage()),
+              // );
+            } else if (index == 1) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const PopularMenuPage()),
+              );
+            } else if (index == 2) {
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => const HomePage(title: 'Mealis')),
+              // );
+            } else if (index == 3) {
+              Navigator.push(
+                context,
+                MaterialPageRoute(builder: (context) => const QuickMealPage()),
+              );
+            } else if (index == 4) {
+              // Navigator.push(
+              //   context,
+              //   MaterialPageRoute(builder: (context) => const ForumPage()),
+              // );
+            }
+          },
+        ),
       ),
     );
   }
