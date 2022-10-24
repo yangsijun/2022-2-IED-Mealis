@@ -51,6 +51,46 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
     );
   }
 
+  Widget _buildRealTimeComments(String menuName, String comment) {
+    return InkWell(
+      onTap: () {
+
+      },
+      customBorder: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+      ),
+      child: Container(
+        margin: const EdgeInsets.only(left: 20),
+        width: double.infinity,
+        decoration: const BoxDecoration(
+          borderRadius: BorderRadius.all(Radius.circular(10)),
+        ),
+        child: Row(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            Flexible(
+              flex: 2,
+              child: Container(
+                padding: const EdgeInsets.all(5),
+                width: double.infinity,
+                decoration: BoxDecoration(
+                  borderRadius: const BorderRadius.all(Radius.circular(10)),
+                  color: Theme.of(context).colorScheme.secondaryContainer,
+                ),
+                child: Text(menuName, style: Theme.of(context).textTheme.labelLarge, overflow: TextOverflow.ellipsis, textAlign: TextAlign.center,),
+              ),
+            ),
+            const SizedBox(width: 20),
+            Flexible(
+              flex: 3,
+              child: Text(comment, style: Theme.of(context).textTheme.bodyMedium, overflow: TextOverflow.ellipsis),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -104,7 +144,6 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
                         ),
                       ),
                     ),
-
                     SizedBox(
                       width: double.infinity,
                       child: IntrinsicHeight(
@@ -138,7 +177,6 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
                         ),
                       ),
                     ),
-
                     SizedBox(
                       width: double.infinity,
                       child: IntrinsicHeight(
@@ -185,41 +223,17 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          InkWell(
-                            onTap: () {
-
-                            },
-                            customBorder: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10)),
-                            ),
-                            child: Container(
-                              margin: const EdgeInsets.only(left: 20, top: 10, bottom: 0),
-                              width: double.infinity,
-                              decoration: const BoxDecoration(
-                                borderRadius: BorderRadius.all(Radius.circular(10)),
-                              ),
-                              child: Row(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  Flexible(
-                                    flex: 2,
-                                    child: ActionChip(
-                                      onPressed: () {
-
-                                      },
-                                      label: Text('Pork Cutlet Kimchi Udon', overflow: TextOverflow.ellipsis)
-                                    ),
-                                  ),
-                                  const SizedBox(width: 20),
-                                  Flexible(
-                                    flex: 3,
-                                    child: Text('JMT', style: Theme.of(context).textTheme.bodyMedium),
-                                  ),
-                                ],
-                              ),
-                            ),
-                          ),
+                          const SizedBox(height: 10),
+                          _buildRealTimeComments('Pork Cutlet Kimchi Udon', 'JMT'),
                           const Divider(),
+                          _buildRealTimeComments('Samgyetang', 'This is really like my mom\'s cooking!'),
+                          const Divider(),
+                          _buildRealTimeComments('Nagasaki Jjampong', 'It was fine for me.'),
+                          const Divider(),
+                          _buildRealTimeComments('Pork Cutlet Kimchi Udon', 'Best food in Handong.'),
+                          const Divider(),
+                          _buildRealTimeComments('Backbone Spicy Soup', 'It was so spicy for me.'),
+                          const SizedBox(height: 10),
                         ],
                       ),
                     ),
