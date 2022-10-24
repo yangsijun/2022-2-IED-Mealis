@@ -3,6 +3,8 @@ import 'package:mealis/database.dart';
 import 'package:mealis/popular_menu_page.dart';
 import 'package:mealis/quick_meal_page.dart';
 
+import 'menu.dart';
+
 class PopularMenuPage extends StatefulWidget {
   const PopularMenuPage(this.goToPage, {Key? key}) : super(key: key);
   final void Function(int index) goToPage;
@@ -19,30 +21,31 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
     return Column(
       children: <Widget>[
         ListTile(
-          title: Text(menuName, style: Theme.of(context).textTheme.titleLarge),
+          title: Text(menuName, style: Theme.of(context).textTheme.titleLarge, overflow: TextOverflow.ellipsis,),
           subtitle: Text(menuMap[menuName]!.restaurantName),
         ),
         ButtonBar(
+          alignment: MainAxisAlignment.center,
           children: <Widget>[
             ActionChip(
               avatar: const Icon(Icons.comment),
               label: Text(menuMap[menuName]!.stat.comment.toString(), style: Theme.of(context).textTheme.labelLarge),
               onPressed: () {
-                goToPage(3);
+
               },
             ),
             ActionChip(
               avatar: const Icon(Icons.thumb_up),
               label: Text(menuMap[menuName]!.stat.like.toString(), style: Theme.of(context).textTheme.labelLarge),
               onPressed: () {
-                goToPage(3);
+
               },
             ),
             ActionChip(
               avatar: const Icon(Icons.thumb_down),
               label: Text(menuMap[menuName]!.stat.dislike.toString(), style: Theme.of(context).textTheme.labelLarge),
               onPressed: () {
-                goToPage(3);
+
               },
             ),
           ],
@@ -66,12 +69,17 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.start,
                     children: [
-                      Container(
-                        padding: const EdgeInsets.only(left: 15, right: 10),
-                        child: Text('$rank', style: Theme.of(context).textTheme.displayLarge, textAlign: TextAlign.center, overflow: TextOverflow.fade,),
+                      Flexible(
+                        flex: 1,
+                        child: Container(
+                          width: double.infinity,
+                          padding: const EdgeInsets.only(left: 15, right: 10),
+                          child: Text('$rank', style: (rank < 10) ? Theme.of(context).textTheme.displayMedium : Theme.of(context).textTheme.displaySmall, textAlign: TextAlign.center),
+                        ),
                       ),
                       const VerticalDivider(),
                       Flexible(
+                        flex: 4,
                         child: Container(
                           child: _buildMenuCardContent(menuName),
                         ),
@@ -127,8 +135,18 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
     );
   }
 
+  List<MapEntry<String, Menu>> menuRankingList = [];
+
+  void getMenuRanking() {
+    menuRankingList = menuMap.entries.toList();
+    menuRankingList.sort((a, b) => (a.value.stat.like - a.value.stat.dislike).compareTo((b.value.stat.like - b.value.stat.dislike)));
+  }
+
+  int showPopularMenuNum = 3;
+
   @override
   Widget build(BuildContext context) {
+    getMenuRanking();
     return Center(
       child: Scaffold(
         body: CustomScrollView(
@@ -147,12 +165,16 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    _buildPopularMenuCard('Pork Cutlet Kimchi Udon', 1),
-                    _buildPopularMenuCard('Samgyetang', 2),
-                    _buildPopularMenuCard('Rose Pasta', 3),
+                    for (int i = 0; i < showPopularMenuNum; i++)
+                      _buildPopularMenuCard(menuRankingList[i].key, i + 1),
                     TextButton(
                       onPressed: () {
-
+                        setState(() {
+                          showPopularMenuNum += 3;
+                          if (showPopularMenuNum > menuRankingList.length) {
+                            showPopularMenuNum = menuRankingList.length;
+                          }
+                        });
                       },
                       child: Text('See More', style: Theme.of(context).textTheme.labelLarge,),
                     ),

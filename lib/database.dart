@@ -39,3 +39,27 @@ Map<String, Menu> menuMap = {
   'Braised Chicken' : Menu('Braised Chicken', 'Han\'s Deli', Stat(10, 10, 10)),
   'Braised Chicken with Cheese' : Menu('Braised Chicken with Cheese', 'Han\'s Deli', Stat(10, 10, 10)),
 };
+
+List<Menu?> menuRankingList = [
+  menuMap['Pork Cutlet Kimchi Udon'],
+  menuMap['Samgyetang'],
+  menuMap['Rose Pasta'],
+  menuMap['Tendon'],
+  menuMap['Backbone Spicy Soup'],
+  menuMap['Sirlon Donkatsu'],
+  menuMap['Spicy Donkatsu'],
+  menuMap['Bean Sprout Radish Beef Soup'],
+  menuMap['Handmade Donkatsu'],
+  menuMap['Korean Black Noodle'],
+  menuMap['Nagasaki Jjampong'],
+  menuMap['Pork Soup'],
+  menuMap['Thai Lemon Chicken and Garlic Rice'],
+  menuMap['Beef Curry'],
+  menuMap['Quesadilla'],
+  menuMap['Cockle Bibimbap'],
+  menuMap['Double Cheeseburger'],
+  menuMap['Burrito Bowl'],
+  menuMap['Thai Beef Salad'],
+  menuMap['Braised Chicken'],
+  menuMap['Braised Chicken with Cheese'],
+];
