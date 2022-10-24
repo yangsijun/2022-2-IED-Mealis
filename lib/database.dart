@@ -41,66 +41,42 @@ Map<String, Menu> menuMap = {
   'Braised Chicken with Cheese' : Menu('Braised Chicken with Cheese', 'Han\'s Deli', Stat(26, 5, 2), 'assets/images/braised_chicken_with_cheese.jpg'),
 };
 
-List<Menu?> menuRankingList = [
-  menuMap['Pork Cutlet Kimchi Udon'],
-  menuMap['Samgyetang'],
-  menuMap['Rose Pasta'],
-  menuMap['Tendon'],
-  menuMap['Backbone Spicy Soup'],
-  menuMap['Sirlon Donkatsu'],
-  menuMap['Spicy Donkatsu'],
-  menuMap['Bean Sprout Radish Beef Soup'],
-  menuMap['Handmade Donkatsu'],
-  menuMap['Korean Black Noodle'],
-  menuMap['Nagasaki Jjampong'],
-  menuMap['Pork Soup'],
-  menuMap['Thai Lemon Chicken and Garlic Rice'],
-  menuMap['Beef Curry'],
-  menuMap['Quesadilla'],
-  menuMap['Cockle Bibimbap'],
-  menuMap['Double Cheeseburger'],
-  menuMap['Burrito Bowl'],
-  menuMap['Thai Beef Salad'],
-  menuMap['Braised Chicken'],
-  menuMap['Braised Chicken with Cheese'],
-];
-
-List<Comment> commentList = [
-  Comment('Pork Cutlet Kimchi Udon', 'JMT'),
-  Comment('Samgyetang', 'This is really like my mom\'s cooking!'),
-  Comment('Nagasaki Jjampong', 'It was fine for me.'),
-  Comment('Pork Cutlet Kimchi Udon', 'Best food in Handong.'),
-  Comment('Backbone Spicy Soup', 'It was so spicy for me.'),
-  Comment('Tendon', 'Nice'),
-  Comment('Korean Black Noodle', 'Not bad'),
-  Comment('Pork Soup', 'I like it'),
-  Comment('Sirlon Donkatsu', 'Not good at all'),
-  Comment('Samqyetang', 'Absolutely delicious'),
-  Comment('Pork Cutlet Kimchi Udon', 'Nice'),
-  Comment('Double Cheeseburger', 'I like it'),
-  Comment('Rose Pasta', 'Good'),
-  Comment('Tendon', 'Wow'),
-  Comment('Backbone Spicy Soup', 'Nice'),
-  Comment('Pork Cutlet Kimchi Udon', 'Hmm...'),
-  Comment('Rose Pasta', 'I love it'),
-  Comment('Spicy Donkatsu', 'I like it'),
-  Comment('Braised Chicken with Cheese', 'Good, Always'),
-  Comment('Backbone Spicy Soup', 'Good'),
-  Comment('Rose Pasta', 'Not good at all'),
-  Comment('Rose Pasta', 'Nice'),
-  Comment('Samqyetang', 'Good'),
-  Comment('Handmade Donkatsu', 'Best'),
-  Comment('Spicy Donkatsu', 'Not bad'),
-  Comment('Pork Cutlet Kimchi Udon', 'Not best'),
-  Comment('Handmade Donkatsu', 'Nice'),
-  Comment('Tendon', 'I Love it'),
-  Comment('Nagasaki Jjampong', 'Nice'),
-  Comment('Samqyetang', 'Nice'),
-  Comment('Korean Black Noodle', 'I like it'),
-  Comment('Nagasaki Jjampong', 'I love it'),
-  Comment('Pork Soup', 'Good'),
-  Comment('Rose Pasta', 'I like it'),
-  Comment('Braised Chicken with Cheese', 'Nice'),
+List<MenuComment> commentList = [
+  MenuComment('Pork Cutlet Kimchi Udon', 'JMT'),
+  MenuComment('Samgyetang', 'This is really like my mom\'s cooking!'),
+  MenuComment('Nagasaki Jjampong', 'It was fine for me.'),
+  MenuComment('Pork Cutlet Kimchi Udon', 'Best food in Handong.'),
+  MenuComment('Backbone Spicy Soup', 'It was so spicy for me.'),
+  MenuComment('Tendon', 'Nice'),
+  MenuComment('Korean Black Noodle', 'Not bad'),
+  MenuComment('Pork Soup', 'I like it'),
+  MenuComment('Sirlon Donkatsu', 'Not good at all'),
+  MenuComment('Samqyetang', 'Absolutely delicious'),
+  MenuComment('Pork Cutlet Kimchi Udon', 'Nice'),
+  MenuComment('Double Cheeseburger', 'I like it'),
+  MenuComment('Rose Pasta', 'Good'),
+  MenuComment('Tendon', 'Wow'),
+  MenuComment('Backbone Spicy Soup', 'Nice'),
+  MenuComment('Pork Cutlet Kimchi Udon', 'Hmm...'),
+  MenuComment('Rose Pasta', 'I love it'),
+  MenuComment('Spicy Donkatsu', 'I like it'),
+  MenuComment('Braised Chicken with Cheese', 'Good, Always'),
+  MenuComment('Backbone Spicy Soup', 'Good'),
+  MenuComment('Rose Pasta', 'Not good at all'),
+  MenuComment('Rose Pasta', 'Nice'),
+  MenuComment('Samqyetang', 'Good'),
+  MenuComment('Handmade Donkatsu', 'Best'),
+  MenuComment('Spicy Donkatsu', 'Not bad'),
+  MenuComment('Pork Cutlet Kimchi Udon', 'Not best'),
+  MenuComment('Handmade Donkatsu', 'Nice'),
+  MenuComment('Tendon', 'I Love it'),
+  MenuComment('Nagasaki Jjampong', 'Nice'),
+  MenuComment('Samqyetang', 'Nice'),
+  MenuComment('Korean Black Noodle', 'I like it'),
+  MenuComment('Nagasaki Jjampong', 'I love it'),
+  MenuComment('Pork Soup', 'Good'),
+  MenuComment('Rose Pasta', 'I like it'),
+  MenuComment('Braised Chicken with Cheese', 'Nice'),
 ];
 
 class MyEvalForMenu {
@@ -136,15 +112,17 @@ Map<String, MyEvalForMenu> myEvalMap = {
 };
 
 class RestaurantInfo {
+  String restaurantName;
   List<String> operatingTimeTextList;
   int waitingTime;
   int waitingPeople;
 
-  RestaurantInfo(this.operatingTimeTextList, this.waitingTime, this.waitingPeople);
+  RestaurantInfo(this.restaurantName, this.operatingTimeTextList, this.waitingTime, this.waitingPeople);
 }
 
 Map<String, RestaurantInfo> restaurantInfoMap = {
   'Mix Rice' : RestaurantInfo(
+    'Mix Rice',
     [
       'Mon - Fri 11:00 - 14:00',
       'Mon - Fri 17:00 - 20:00',
@@ -155,6 +133,7 @@ Map<String, RestaurantInfo> restaurantInfoMap = {
     12,
   ),
   'Korean Table' : RestaurantInfo(
+    'Korean Table',
     [
       'Mon - Fri 11:00 - 14:00',
       'Mon - Fri 17:00 - 20:00',
@@ -165,6 +144,7 @@ Map<String, RestaurantInfo> restaurantInfoMap = {
     10,
   ),
   'H.Plate' : RestaurantInfo(
+    'H.Plate',
     [
       'Mon - Fri 11:00 - 14:00',
       'Mon - Fri 17:00 - 20:00',
@@ -175,6 +155,7 @@ Map<String, RestaurantInfo> restaurantInfoMap = {
     5,
   ),
   'Mom\'s Kitchen' : RestaurantInfo(
+    'Mom\'s Kitchen',
     [
       'Mon - Fri 11:00 - 14:00',
       'Mon - Fri 17:00 - 20:00',
@@ -185,6 +166,7 @@ Map<String, RestaurantInfo> restaurantInfoMap = {
     8,
   ),
   'Handong Lounge' : RestaurantInfo(
+    'Handong Lounge',
     [
       'Mon - Fri 11:00 - 14:00',
       'Mon - Fri 17:00 - 20:00',
@@ -195,6 +177,7 @@ Map<String, RestaurantInfo> restaurantInfoMap = {
     40,
   ),
   'Burger King' : RestaurantInfo(
+    'Burger King',
     [
       'Mon - Fri 11:00 - 14:00',
       'Mon - Fri 17:00 - 20:00',
@@ -205,6 +188,7 @@ Map<String, RestaurantInfo> restaurantInfoMap = {
     25,
   ),
   'The Grace Table' : RestaurantInfo(
+    'The Grace Table',
     [
       'Mon - Fri 11:00 - 14:00',
       'Mon - Fri 17:00 - 20:00',
@@ -215,6 +199,7 @@ Map<String, RestaurantInfo> restaurantInfoMap = {
     10,
   ),
   'In Breeze (Bokjidong)' : RestaurantInfo(
+    'In Breeze (Bokjidong)',
     [
       'Mon - Fri 11:00 - 14:00',
       'Mon - Fri 17:00 - 20:00',
@@ -225,6 +210,7 @@ Map<String, RestaurantInfo> restaurantInfoMap = {
     8,
   ),
   'Red Neoguri' : RestaurantInfo(
+    'Red Neoguri',
     [
       'Mon - Fri 11:00 - 14:00',
       'Mon - Fri 17:00 - 20:00',
@@ -235,6 +221,7 @@ Map<String, RestaurantInfo> restaurantInfoMap = {
     17,
   ),
   'Farm\'s Valley' : RestaurantInfo(
+    'Farm\'s Valley',
     [
       'Mon - Fri 11:00 - 14:00',
       'Mon - Fri 17:00 - 20:00',
@@ -245,6 +232,7 @@ Map<String, RestaurantInfo> restaurantInfoMap = {
     4,
   ),
   'Han\'s Deli' : RestaurantInfo(
+    'Han\'s Deli',
     [
       'Mon - Fri 11:00 - 14:00',
       'Mon - Fri 17:00 - 20:00',
@@ -255,6 +243,7 @@ Map<String, RestaurantInfo> restaurantInfoMap = {
     4,
   ),
   'In Breeze (Papyrus)' : RestaurantInfo(
+    'In Breeze (Papyrus)',
     [
       'Mon - Fri 11:00 - 14:00',
       'Mon - Fri 17:00 - 20:00',

@@ -1,6 +1,6 @@
-class Comment {
+class MenuComment {
   String menuName;
   String commentText;
 
-  Comment(this.menuName, this.commentText);
+  MenuComment(this.menuName, this.commentText);
 }

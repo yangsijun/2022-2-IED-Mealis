@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:mealis/main.dart';
-import 'package:mealis/popular_menu_page.dart';
-
-import 'database.dart';
-import 'menu.dart';
+import 'package:mealis/one_restaurant.dart';
+import 'package:mealis/database.dart';
 
 class Item {
   Item({
@@ -58,7 +55,12 @@ class _HomePageState extends State<HomePage> {
       children: [
         InkWell(
           onTap: () {
-
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => OneRestaurantPage((restaurantIndex)),
+              ),
+            );
           },
           customBorder: RoundedRectangleBorder(
             borderRadius: (restaurantIndex == 0)

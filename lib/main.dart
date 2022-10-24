@@ -82,7 +82,7 @@ class _RootPageState extends State<RootPage> {
         0: RestaurantPage(goToPage),
         1: PopularMenuPage(goToPage),
         2: HomePage(goToPage),
-        3: const QuickMealPage(),
+        3: QuickMealPage(goToPage),
         4: const ForumPage(),
       }[currentPageIndex],
     );

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'database.dart';
 import 'menu.dart';
+import 'one_menu_page.dart';
 
 class OneRestaurantPage extends StatefulWidget {
   const OneRestaurantPage(this.restaurantIndex, {Key? key}) : super(key: key);
@@ -24,12 +25,12 @@ class _OneRestaurantPageState extends State<OneRestaurantPage>{
           Card(
             child: InkWell(
               onTap: () {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(
-                //     builder:
-                //   ),
-                // );
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => OneMenuPage(menu.menuName),
+                  ),
+                );
               },
               customBorder: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(10),
@@ -163,10 +164,10 @@ class _OneRestaurantPageState extends State<OneRestaurantPage>{
                   ),
                   Column(
                     children: [
-                      Text('Menu', style: Theme.of(context).textTheme.headlineMedium),
                       const SizedBox(height: 10),
+                      Text('Menu', style: Theme.of(context).textTheme.headlineMedium),
                       Container(
-                        margin: const EdgeInsets.all(20),
+                        margin: const EdgeInsets.only(left: 20, right: 20, top: 0, bottom: 20),
                         child: GridView.count(
                           shrinkWrap: true,
                           physics: const NeverScrollableScrollPhysics(),

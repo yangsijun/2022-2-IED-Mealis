@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mealis/database.dart';
 import 'package:mealis/menu.dart';
-import 'package:mealis/popular_menu_page.dart';
-import 'package:mealis/quick_meal_page.dart';
+import 'package:mealis/one_menu_page.dart';
 
 class PopularMenuPage extends StatefulWidget {
   const PopularMenuPage(this.goToPage, {Key? key}) : super(key: key);
@@ -30,7 +29,7 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
               avatar: Icon(Icons.comment, color: (myEvalMap[menuName]!.isCommented) ? Colors.orangeAccent : Theme.of(context).chipTheme.surfaceTintColor),
               label: Text(menuMap[menuName]!.stat.comment.toString(), style: TextStyle(color: (myEvalMap[menuName]!.isCommented) ? Colors.orangeAccent : Theme.of(context).chipTheme.surfaceTintColor, fontSize: 14)),
               onPressed: () {
-
+                commentDialog(context, menuName);
               },
             ),
             ActionChip(
@@ -89,25 +88,36 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
               child: Container(
                 padding: const EdgeInsets.only(left: 20, right: 20, top: 5, bottom: 5),
                 child: Card(
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    children: [
-                      Flexible(
-                        flex: 1,
-                        child: Container(
-                          width: double.infinity,
-                          padding: const EdgeInsets.only(left: 15, right: 10),
-                          child: Text('$rank', style: (rank < 10) ? Theme.of(context).textTheme.displayMedium : Theme.of(context).textTheme.displaySmall, textAlign: TextAlign.center),
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => OneMenuPage(menuName)),
+                      );
+                    },
+                    customBorder: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
+                    ),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Flexible(
+                          flex: 1,
+                          child: Container(
+                            width: double.infinity,
+                            padding: const EdgeInsets.only(left: 15, right: 10),
+                            child: Text('$rank', style: (rank < 10) ? Theme.of(context).textTheme.displayMedium : Theme.of(context).textTheme.displaySmall, textAlign: TextAlign.center),
+                          ),
                         ),
-                      ),
-                      const VerticalDivider(),
-                      Flexible(
-                        flex: 4,
-                        child: Container(
-                          child: _buildMenuCardContent(menuName),
+                        const VerticalDivider(),
+                        Flexible(
+                          flex: 4,
+                          child: Container(
+                            child: _buildMenuCardContent(menuName),
+                          ),
                         ),
-                      ),
-                    ],
+                      ],
+                    ),
                   ),
                 ),
               ),
@@ -123,7 +133,10 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
       children: [
         InkWell(
           onTap: () {
-
+            Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => OneMenuPage(commentList[index].menuName)),
+            );
           },
           child: Container(
             margin: const EdgeInsets.only(left: 20),
