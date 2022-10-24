@@ -3,6 +3,7 @@ import 'package:mealis/database.dart';
 import 'package:mealis/popular_menu_page.dart';
 import 'package:mealis/quick_meal_page.dart';
 
+import 'comment.dart';
 import 'menu.dart';
 
 class PopularMenuPage extends StatefulWidget {
@@ -95,43 +96,48 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
     );
   }
 
-  Widget _buildRealTimeComments(String menuName, String comment) {
-    return InkWell(
-      onTap: () {
+  Widget _buildRealTimeComments(int index) {
+    return Column(
+            children: [
+              InkWell(
+                onTap: () {
 
-      },
-      customBorder: const RoundedRectangleBorder(
-        borderRadius: BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10)),
-      ),
-      child: Container(
-        margin: const EdgeInsets.only(left: 20),
-        width: double.infinity,
-        decoration: const BoxDecoration(
-          borderRadius: BorderRadius.all(Radius.circular(10)),
-        ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            Flexible(
-              flex: 2,
-              child: Container(
-                padding: const EdgeInsets.all(5),
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  borderRadius: const BorderRadius.all(Radius.circular(10)),
-                  color: Theme.of(context).colorScheme.secondaryContainer,
+                },
+                customBorder: const RoundedRectangleBorder(
+                  borderRadius: BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10)),
                 ),
-                child: Text(menuName, style: Theme.of(context).textTheme.labelLarge, overflow: TextOverflow.ellipsis, textAlign: TextAlign.center,),
+                child: Container(
+                  margin: const EdgeInsets.only(left: 20),
+                  width: double.infinity,
+                  decoration: const BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                  ),
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Flexible(
+                        flex: 2,
+                        child: Container(
+                          padding: const EdgeInsets.all(5),
+                          width: double.infinity,
+                          decoration: BoxDecoration(
+                            borderRadius: const BorderRadius.all(Radius.circular(10)),
+                            color: Theme.of(context).colorScheme.secondaryContainer,
+                          ),
+                          child: Text(realTimeCommentList[index].menuName, style: Theme.of(context).textTheme.labelLarge, overflow: TextOverflow.ellipsis, textAlign: TextAlign.center,),
+                        ),
+                      ),
+                      const SizedBox(width: 20),
+                      Flexible(
+                        flex: 3,
+                        child: Text(realTimeCommentList[index].commentText, style: Theme.of(context).textTheme.bodyMedium, overflow: TextOverflow.ellipsis),
+                      ),
+                    ],
+                  ),
+                ),
               ),
-            ),
-            const SizedBox(width: 20),
-            Flexible(
-              flex: 3,
-              child: Text(comment, style: Theme.of(context).textTheme.bodyMedium, overflow: TextOverflow.ellipsis),
-            ),
-          ],
-        ),
-      ),
+              (index != showRealTimeCommentNum - 1) ? const Divider() : Container(),
+            ],
     );
   }
 
@@ -143,6 +149,7 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
   }
 
   int showPopularMenuNum = 3;
+  int showRealTimeCommentNum = 5;
 
   @override
   Widget build(BuildContext context) {
@@ -169,14 +176,20 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
                       _buildPopularMenuCard(menuRankingList[i].key, i + 1),
                     TextButton(
                       onPressed: () {
-                        setState(() {
-                          showPopularMenuNum += 3;
-                          if (showPopularMenuNum > menuRankingList.length) {
-                            showPopularMenuNum = menuRankingList.length;
-                          }
-                        });
+                        if (showPopularMenuNum < menuRankingList.length) {
+                          setState(() {
+                            showPopularMenuNum += 3;
+                            if (showPopularMenuNum > menuRankingList.length) {
+                              showPopularMenuNum = menuRankingList.length;
+                            }
+                          });
+                        } else {
+                          setState(() {
+                            showPopularMenuNum = 3;
+                          });
+                        }
                       },
-                      child: Text('See More', style: Theme.of(context).textTheme.labelLarge,),
+                      child: Text((showPopularMenuNum < menuRankingList.length) ? 'See More' : 'Show less', style: Theme.of(context).textTheme.labelLarge),
                     ),
                     Container(
                       margin: const EdgeInsets.only(top: 30, bottom: 15),
@@ -187,23 +200,33 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
                       ),
                     ),
                     Card(
-                      margin: const EdgeInsets.only(left: 20, right: 20, bottom: 30),
+                      margin: const EdgeInsets.only(left: 20, right: 20, bottom: 5),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           const SizedBox(height: 10),
-                          _buildRealTimeComments('Pork Cutlet Kimchi Udon', 'JMT'),
-                          const Divider(),
-                          _buildRealTimeComments('Samgyetang', 'This is really like my mom\'s cooking!'),
-                          const Divider(),
-                          _buildRealTimeComments('Nagasaki Jjampong', 'It was fine for me.'),
-                          const Divider(),
-                          _buildRealTimeComments('Pork Cutlet Kimchi Udon', 'Best food in Handong.'),
-                          const Divider(),
-                          _buildRealTimeComments('Backbone Spicy Soup', 'It was so spicy for me.'),
+                          for (int i = 0; i < showRealTimeCommentNum; i++)
+                            _buildRealTimeComments(i),
                           const SizedBox(height: 10),
                         ],
                       ),
+                    ),
+                    TextButton(
+                      onPressed: () {
+                        if (showRealTimeCommentNum < realTimeCommentList.length) {
+                          setState(() {
+                            showRealTimeCommentNum += 3;
+                            if (showRealTimeCommentNum > realTimeCommentList.length) {
+                              showRealTimeCommentNum = realTimeCommentList.length;
+                            }
+                          });
+                        } else {
+                          setState(() {
+                            showRealTimeCommentNum = 5;
+                          });
+                        }
+                      },
+                      child: Text((showRealTimeCommentNum < realTimeCommentList.length) ? 'See More' : 'Show less', style: Theme.of(context).textTheme.labelLarge),
                     ),
                   ],
                 ),

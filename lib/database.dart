@@ -1,5 +1,6 @@
 import 'package:mealis/menu.dart';
 import 'package:mealis/stat.dart';
+import 'package:mealis/comment.dart';
 
 List<String> restaurantList = [
   'Mix Rice',
@@ -62,4 +63,17 @@ List<Menu?> menuRankingList = [
   menuMap['Thai Beef Salad'],
   menuMap['Braised Chicken'],
   menuMap['Braised Chicken with Cheese'],
+];
+
+List<Comment> realTimeCommentList = [
+  Comment('Pork Cutlet Kimchi Udon', 'JMT'),
+  Comment('Samgyetang', 'This is really like my mom\'s cooking!'),
+  Comment('Nagasaki Jjampong', 'It was fine for me.'),
+  Comment('Pork Cutlet Kimchi Udon', 'Best food in Handong.'),
+  Comment('Backbone Spicy Soup', 'It was so spicy for me.'),
+  Comment('Tendon', 'Nice'),
+  Comment('Korean Black Noodle', 'Not bad'),
+  Comment('Pork Soup', 'I like it'),
+  Comment('Sirlon Donkatsu', 'Not good at all'),
+  Comment('Samqyetang', 'Absolutely delicious'),
 ];
