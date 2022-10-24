@@ -18,15 +18,15 @@ List<String> restaurantList = [
 ];
 
 Map<String, Menu> menuMap = {
-  'Pork Cutlet Kimchi Udon' : Menu('Pork Cutlet Kimchi Udon', 'Mix Rice', Stat(26, 107, 2)),
+  'Pork Cutlet Kimchi Udon' : Menu('Pork Cutlet Kimchi Udon', 'Mix Rice', Stat(107, 2, 26)),
   'Tendon' : Menu('Tendon', 'Mix Rice', Stat(10, 10, 10)),
   'Backbone Spicy Soup' : Menu('Backbone Spicy Soup', 'Mix Rice', Stat(10, 10, 10)),
   'Sirlon Donkatsu' : Menu('Sirlon Donkatsu', 'H.Plate', Stat(10, 10, 10)),
   'Spicy Donkatsu' : Menu('Spicy Donkatsu', 'H.Plate', Stat(10, 10, 10)),
-  'Rose Pasta' : Menu('Rose Pasta', 'H.Plate', Stat(15, 76, 16)),
+  'Rose Pasta' : Menu('Rose Pasta', 'H.Plate', Stat(76, 16, 15)),
   'Bean Sprout Radish Beef Soup': Menu('Bean Sprout Radish Beef Soup', 'Mom\'s Kitchen', Stat(10, 10, 10)),
   'Handmade Donkatsu' : Menu('Handmade Donkatsu', 'Mom\'s Kitchen', Stat(10, 10, 10)),
-  'Samgyetang' : Menu('Samgyetang', 'Mom\'s Kitchen', Stat(20, 85, 10)),
+  'Samgyetang' : Menu('Samgyetang', 'Mom\'s Kitchen', Stat(85, 10, 20)),
   'Korean Black Noodle' : Menu('Korean Black Noodle', 'Handong Lounge', Stat(10, 10, 10)),
   'Nagasaki Jjampong' : Menu('Nagasaki Jjampong', 'Handong Lounge', Stat(10, 10, 10)),
   'Pork Soup' : Menu('Pork Soup', 'Handong Lounge', Stat(10, 10, 10)),
@@ -77,3 +77,35 @@ List<Comment> realTimeCommentList = [
   Comment('Sirlon Donkatsu', 'Not good at all'),
   Comment('Samqyetang', 'Absolutely delicious'),
 ];
+
+class MyEvalForMenu {
+  bool isLiked = false;
+  bool isDisliked = false;
+  bool isCommented = false;
+
+  MyEvalForMenu();
+}
+
+Map<String, MyEvalForMenu> myEvalMap = {
+  'Pork Cutlet Kimchi Udon' : MyEvalForMenu(),
+  'Tendon' : MyEvalForMenu(),
+  'Backbone Spicy Soup' : MyEvalForMenu(),
+  'Sirlon Donkatsu' : MyEvalForMenu(),
+  'Spicy Donkatsu' : MyEvalForMenu(),
+  'Rose Pasta' : MyEvalForMenu(),
+  'Bean Sprout Radish Beef Soup': MyEvalForMenu(),
+  'Handmade Donkatsu' : MyEvalForMenu(),
+  'Samgyetang' : MyEvalForMenu(),
+  'Korean Black Noodle' : MyEvalForMenu(),
+  'Nagasaki Jjampong' : MyEvalForMenu(),
+  'Pork Soup' : MyEvalForMenu(),
+  'Thai Lemon Chicken and Garlic Rice' : MyEvalForMenu(),
+  'Beef Curry' : MyEvalForMenu(),
+  'Quesadilla' : MyEvalForMenu(),
+  'Cockle Bibimbap' : MyEvalForMenu(),
+  'Double Cheeseburger' : MyEvalForMenu(),
+  'Burrito Bowl' : MyEvalForMenu(),
+  'Thai Beef Salad' : MyEvalForMenu(),
+  'Braised Chicken' : MyEvalForMenu(),
+  'Braised Chicken with Cheese' : MyEvalForMenu(),
+};

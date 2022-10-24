@@ -22,31 +22,55 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
     return Column(
       children: <Widget>[
         ListTile(
-          title: Text(menuName, style: Theme.of(context).textTheme.titleLarge, overflow: TextOverflow.ellipsis,),
+          title: Text(menuName, style: Theme.of(context).textTheme.titleLarge, overflow: TextOverflow.ellipsis),
           subtitle: Text(menuMap[menuName]!.restaurantName),
         ),
         ButtonBar(
           alignment: MainAxisAlignment.center,
           children: <Widget>[
             ActionChip(
-              avatar: const Icon(Icons.comment),
-              label: Text(menuMap[menuName]!.stat.comment.toString(), style: Theme.of(context).textTheme.labelLarge),
+              avatar: Icon(Icons.comment, color: (myEvalMap[menuName]!.isCommented) ? Colors.orangeAccent : Theme.of(context).chipTheme.surfaceTintColor),
+              label: Text(menuMap[menuName]!.stat.comment.toString(), style: TextStyle(color: (myEvalMap[menuName]!.isCommented) ? Colors.orangeAccent : Theme.of(context).chipTheme.surfaceTintColor, fontSize: 14)),
               onPressed: () {
 
               },
             ),
             ActionChip(
-              avatar: const Icon(Icons.thumb_up),
-              label: Text(menuMap[menuName]!.stat.like.toString(), style: Theme.of(context).textTheme.labelLarge),
+              avatar: Icon(Icons.thumb_up, color: (myEvalMap[menuName]!.isLiked) ? Colors.blueAccent : Theme.of(context).chipTheme.surfaceTintColor),
+              label: Text(menuMap[menuName]!.stat.like.toString(), style: TextStyle(color: (myEvalMap[menuName]!.isLiked) ? Colors.blueAccent : Theme.of(context).chipTheme.surfaceTintColor, fontSize: 14)),
               onPressed: () {
-
+                setState(() {
+                  if (myEvalMap[menuName]!.isLiked) {
+                    menuMap[menuName]!.stat.like--;
+                    myEvalMap[menuName]!.isLiked = false;
+                  } else {
+                    if (myEvalMap[menuName]!.isDisliked) {
+                      menuMap[menuName]!.stat.dislike--;
+                      myEvalMap[menuName]!.isDisliked = false;
+                    }
+                    menuMap[menuName]!.stat.like++;
+                    myEvalMap[menuName]!.isLiked = true;
+                  }
+                });
               },
             ),
             ActionChip(
-              avatar: const Icon(Icons.thumb_down),
-              label: Text(menuMap[menuName]!.stat.dislike.toString(), style: Theme.of(context).textTheme.labelLarge),
+              avatar: Icon(Icons.thumb_down, color: (myEvalMap[menuName]!.isDisliked) ? Colors.redAccent : Theme.of(context).chipTheme.surfaceTintColor),
+              label: Text(menuMap[menuName]!.stat.dislike.toString(), style: TextStyle(color: (myEvalMap[menuName]!.isDisliked) ? Colors.redAccent : Theme.of(context).chipTheme.surfaceTintColor, fontSize: 14)),
               onPressed: () {
-
+                setState(() {
+                  if (myEvalMap[menuName]!.isDisliked) {
+                    menuMap[menuName]!.stat.dislike--;
+                    myEvalMap[menuName]!.isDisliked = false;
+                  } else {
+                    if (myEvalMap[menuName]!.isLiked) {
+                      menuMap[menuName]!.stat.like--;
+                      myEvalMap[menuName]!.isLiked = false;
+                    }
+                    menuMap[menuName]!.stat.dislike++;
+                    myEvalMap[menuName]!.isDisliked = true;
+                  }
+                });
               },
             ),
           ],
@@ -98,46 +122,46 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
 
   Widget _buildRealTimeComments(int index) {
     return Column(
-            children: [
-              InkWell(
-                onTap: () {
+      children: [
+        InkWell(
+          onTap: () {
 
-                },
-                customBorder: const RoundedRectangleBorder(
-                  borderRadius: BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10)),
-                ),
-                child: Container(
-                  margin: const EdgeInsets.only(left: 20),
-                  width: double.infinity,
-                  decoration: const BoxDecoration(
-                    borderRadius: BorderRadius.all(Radius.circular(10)),
-                  ),
-                  child: Row(
-                    crossAxisAlignment: CrossAxisAlignment.center,
-                    children: [
-                      Flexible(
-                        flex: 2,
-                        child: Container(
-                          padding: const EdgeInsets.all(5),
-                          width: double.infinity,
-                          decoration: BoxDecoration(
-                            borderRadius: const BorderRadius.all(Radius.circular(10)),
-                            color: Theme.of(context).colorScheme.secondaryContainer,
-                          ),
-                          child: Text(realTimeCommentList[index].menuName, style: Theme.of(context).textTheme.labelLarge, overflow: TextOverflow.ellipsis, textAlign: TextAlign.center,),
-                        ),
-                      ),
-                      const SizedBox(width: 20),
-                      Flexible(
-                        flex: 3,
-                        child: Text(realTimeCommentList[index].commentText, style: Theme.of(context).textTheme.bodyMedium, overflow: TextOverflow.ellipsis),
-                      ),
-                    ],
+          },
+          customBorder: const RoundedRectangleBorder(
+            borderRadius: BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10)),
+          ),
+          child: Container(
+            margin: const EdgeInsets.only(left: 20),
+            width: double.infinity,
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+            ),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Flexible(
+                  flex: 2,
+                  child: Container(
+                    padding: const EdgeInsets.all(5),
+                    width: double.infinity,
+                    decoration: BoxDecoration(
+                      borderRadius: const BorderRadius.all(Radius.circular(10)),
+                      color: Theme.of(context).colorScheme.secondaryContainer,
+                    ),
+                    child: Text(realTimeCommentList[index].menuName, style: Theme.of(context).textTheme.labelLarge, overflow: TextOverflow.ellipsis, textAlign: TextAlign.center,),
                   ),
                 ),
-              ),
-              (index != showRealTimeCommentNum - 1) ? const Divider() : Container(),
-            ],
+                const SizedBox(width: 20),
+                Flexible(
+                  flex: 3,
+                  child: Text(realTimeCommentList[index].commentText, style: Theme.of(context).textTheme.bodyMedium, overflow: TextOverflow.ellipsis),
+                ),
+              ],
+            ),
+          ),
+        ),
+        (index != showRealTimeCommentNum - 1) ? const Divider() : Container(),
+      ],
     );
   }
 
@@ -145,7 +169,7 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
 
   void getMenuRanking() {
     menuRankingList = menuMap.entries.toList();
-    menuRankingList.sort((a, b) => (a.value.stat.like - a.value.stat.dislike).compareTo((b.value.stat.like - b.value.stat.dislike)));
+    menuRankingList.sort((a, b) => (b.value.stat.like - b.value.stat.dislike).compareTo((a.value.stat.like - a.value.stat.dislike)));
   }
 
   int showPopularMenuNum = 3;
@@ -189,10 +213,11 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
                           });
                         }
                       },
-                      child: Text((showPopularMenuNum < menuRankingList.length) ? 'See More' : 'Show less', style: Theme.of(context).textTheme.labelLarge),
+                      child: Text((showPopularMenuNum < menuRankingList.length) ? 'See More' : 'Show less', style: TextStyle(color: Theme.of(context).colorScheme.primary, decoration: TextDecoration.underline)),
                     ),
+                    const Divider(),
                     Container(
-                      margin: const EdgeInsets.only(top: 30, bottom: 15),
+                      margin: const EdgeInsets.only(top: 20, bottom: 15),
                       child: Text(
                         'Real-time Comments',
                         style: Theme.of(context).textTheme.headlineSmall,
@@ -226,8 +251,9 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
                           });
                         }
                       },
-                      child: Text((showRealTimeCommentNum < realTimeCommentList.length) ? 'See More' : 'Show less', style: Theme.of(context).textTheme.labelLarge),
+                      child: Text((showRealTimeCommentNum < realTimeCommentList.length) ? 'See More' : 'Show less', style: TextStyle(color: Theme.of(context).colorScheme.primary, decoration: TextDecoration.underline)),
                     ),
+                    const SizedBox(height: 10),
                   ],
                 ),
               ),
