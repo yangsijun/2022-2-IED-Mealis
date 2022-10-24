@@ -127,9 +127,6 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
           onTap: () {
 
           },
-          customBorder: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10)),
-          ),
           child: Container(
             margin: const EdgeInsets.only(left: 20),
             width: double.infinity,
@@ -148,13 +145,13 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
                       borderRadius: const BorderRadius.all(Radius.circular(10)),
                       color: Theme.of(context).colorScheme.secondaryContainer,
                     ),
-                    child: Text(realTimeCommentList[index].menuName, style: Theme.of(context).textTheme.labelLarge, overflow: TextOverflow.ellipsis, textAlign: TextAlign.center,),
+                    child: Text(commentList[index].menuName, style: Theme.of(context).textTheme.labelLarge, overflow: TextOverflow.ellipsis, textAlign: TextAlign.center,),
                   ),
                 ),
                 const SizedBox(width: 20),
                 Flexible(
                   flex: 3,
-                  child: Text(realTimeCommentList[index].commentText, style: Theme.of(context).textTheme.bodyMedium, overflow: TextOverflow.ellipsis),
+                  child: Text(commentList[index].commentText, style: Theme.of(context).textTheme.bodyMedium, overflow: TextOverflow.ellipsis),
                 ),
               ],
             ),
@@ -173,7 +170,7 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
   }
 
   int showPopularMenuNum = 3;
-  int showRealTimeCommentNum = 5;
+  int showRealTimeCommentNum = 10;
 
   @override
   Widget build(BuildContext context) {
@@ -226,32 +223,20 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
                     ),
                     Card(
                       margin: const EdgeInsets.only(left: 20, right: 20, bottom: 5),
-                      child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          const SizedBox(height: 10),
-                          for (int i = 0; i < showRealTimeCommentNum; i++)
-                            _buildRealTimeComments(i),
-                          const SizedBox(height: 10),
-                        ],
+                      child: SizedBox(
+                        height: 200,
+                        child: SingleChildScrollView(
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              const SizedBox(height: 10),
+                              for (int i = 0; i < showRealTimeCommentNum; i++)
+                                _buildRealTimeComments(i),
+                              const SizedBox(height: 10),
+                            ],
+                          ),
+                        ),
                       ),
-                    ),
-                    TextButton(
-                      onPressed: () {
-                        if (showRealTimeCommentNum < realTimeCommentList.length) {
-                          setState(() {
-                            showRealTimeCommentNum += 3;
-                            if (showRealTimeCommentNum > realTimeCommentList.length) {
-                              showRealTimeCommentNum = realTimeCommentList.length;
-                            }
-                          });
-                        } else {
-                          setState(() {
-                            showRealTimeCommentNum = 5;
-                          });
-                        }
-                      },
-                      child: Text((showRealTimeCommentNum < realTimeCommentList.length) ? 'See More' : 'Show less', style: TextStyle(color: Theme.of(context).colorScheme.primary, decoration: TextDecoration.underline)),
                     ),
                     const SizedBox(height: 10),
                   ],
