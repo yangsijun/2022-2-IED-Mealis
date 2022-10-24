@@ -51,6 +51,42 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
     );
   }
 
+  Widget _buildPopularMenuCard(String menuName, int rank) {
+    return SizedBox(
+      width: double.infinity,
+      child: IntrinsicHeight(
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Flexible(
+              flex: 1,
+              child: Container(
+                padding: const EdgeInsets.only(left: 20, right: 20, top: 5, bottom: 5),
+                child: Card(
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Container(
+                        padding: const EdgeInsets.only(left: 15, right: 10),
+                        child: Text('$rank', style: Theme.of(context).textTheme.displayLarge, textAlign: TextAlign.center, overflow: TextOverflow.fade,),
+                      ),
+                      const VerticalDivider(),
+                      Flexible(
+                        child: Container(
+                          child: _buildMenuCardContent(menuName),
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+
   Widget _buildRealTimeComments(String menuName, String comment) {
     return InkWell(
       onTap: () {
@@ -111,104 +147,14 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    SizedBox(
-                      width: double.infinity,
-                      child: IntrinsicHeight(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Flexible(
-                              flex: 1,
-                              child: Container(
-                                padding: const EdgeInsets.only(left: 20, right: 20, top: 5, bottom: 5),
-                                child: Card(
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Container(
-                                        padding: const EdgeInsets.only(left: 15, right: 10),
-                                        child: Text('1', style: Theme.of(context).textTheme.displayLarge, textAlign: TextAlign.center, overflow: TextOverflow.fade,),
-                                      ),
-                                      const VerticalDivider(),
-                                      Flexible(
-                                        child: Container(
-                                          child: _buildMenuCardContent('Pork Cutlet Kimchi Udon'),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: double.infinity,
-                      child: IntrinsicHeight(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Flexible(
-                              flex: 1,
-                              child: Container(
-                                padding: const EdgeInsets.only(left: 20, right: 20, top: 5, bottom: 5),
-                                child: Card(
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Container(
-                                        padding: const EdgeInsets.only(left: 15, right: 10),
-                                        child: Text('2', style: Theme.of(context).textTheme.displayLarge, textAlign: TextAlign.center, overflow: TextOverflow.fade,),
-                                      ),
-                                      const VerticalDivider(),
-                                      Flexible(
-                                        child: Container(
-                                          child: _buildMenuCardContent('Samgyetang'),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
-                    SizedBox(
-                      width: double.infinity,
-                      child: IntrinsicHeight(
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Flexible(
-                              flex: 1,
-                              child: Container(
-                                padding: const EdgeInsets.only(left: 20, right: 20, top: 5, bottom: 5),
-                                child: Card(
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.start,
-                                    children: [
-                                      Container(
-                                        padding: const EdgeInsets.only(left: 15, right: 10),
-                                        child: Text('3', style: Theme.of(context).textTheme.displayLarge, textAlign: TextAlign.center, overflow: TextOverflow.fade,),
-                                      ),
-                                      const VerticalDivider(),
-                                      Flexible(
-                                        child: Container(
-                                          child: _buildMenuCardContent('Rose Pasta'),
-                                        ),
-                                      ),
-                                    ],
-                                  ),
-                                ),
-                              ),
-                            ),
-                          ],
-                        ),
-                      ),
+                    _buildPopularMenuCard('Pork Cutlet Kimchi Udon', 1),
+                    _buildPopularMenuCard('Samgyetang', 2),
+                    _buildPopularMenuCard('Rose Pasta', 3),
+                    TextButton(
+                      onPressed: () {
+
+                      },
+                      child: Text('See More', style: Theme.of(context).textTheme.labelLarge,),
                     ),
                     Container(
                       margin: const EdgeInsets.only(top: 30, bottom: 15),

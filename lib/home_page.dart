@@ -53,6 +53,47 @@ class _HomePageState extends State<HomePage> {
     return menuList;
   }
 
+  Widget _buildAllMenuOneRestaurant(int restaurantIndex) {
+    return Column(
+      children: [
+        InkWell(
+          onTap: () {
+
+          },
+          customBorder: RoundedRectangleBorder(
+            borderRadius: (restaurantIndex == 0)
+              ? (restaurantIndex == restaurantList.length - 1)
+                ? const BorderRadius.all(Radius.circular(10))
+                : const BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10))
+              : (restaurantIndex == restaurantList.length - 1)
+                ? const BorderRadius.only(bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10))
+                : const BorderRadius.all(Radius.circular(0)),
+          ),
+          child: Container(
+            margin: (restaurantIndex == 0)
+              ? (restaurantIndex == restaurantList.length - 1)
+                ? const EdgeInsets.only(left: 20, top: 20, bottom: 20)
+                : const EdgeInsets.only(left: 20, top: 20, bottom: 10)
+              : (restaurantIndex == restaurantList.length - 1)
+                ? const EdgeInsets.only(left: 20, top: 10, bottom: 20)
+                : const EdgeInsets.only(left: 20, top: 10, bottom: 10),
+            width: double.infinity,
+            decoration: const BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(10)),
+            ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: getMenuList(restaurantList[restaurantIndex]),
+            ),
+          ),
+        ),
+        (restaurantIndex != restaurantList.length - 1)
+          ? const Divider()
+          : Container(),
+      ],
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
 
@@ -218,182 +259,8 @@ class _HomePageState extends State<HomePage> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          InkWell(
-                            onTap: () {
-
-                            },
-                            customBorder: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10)),
-                            ),
-                            child: Container(
-                              margin: const EdgeInsets.only(left: 20, top: 20, bottom: 10),
-                              width: double.infinity,
-                              decoration: const BoxDecoration(
-                                borderRadius: BorderRadius.all(Radius.circular(10)),
-                              ),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: getMenuList(restaurantList[0]),
-                              ),
-                            ),
-                          ),
-                          const Divider(),
-                          InkWell(
-                            onTap: () {
-
-                            },
-                            child: Container(
-                              margin: const EdgeInsets.only(left: 20, top: 10, bottom: 10),
-                              width: double.infinity,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: getMenuList(restaurantList[1]),
-                              ),
-                            ),
-                          ),
-                          const Divider(),
-                          InkWell(
-                            onTap: () {
-
-                            },
-                            child: Container(
-                              margin: const EdgeInsets.only(left: 20, top: 10, bottom: 10),
-                              width: double.infinity,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: getMenuList(restaurantList[2]),
-                              ),
-                            ),
-                          ),
-                          const Divider(),
-                          InkWell(
-                            onTap: () {
-
-                            },
-                            child: Container(
-                              margin: const EdgeInsets.only(left: 20, top: 10, bottom: 10),
-                              width: double.infinity,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: getMenuList(restaurantList[3]),
-                              ),
-                            ),
-                          ),
-                          const Divider(),
-                          InkWell(
-                            onTap: () {
-
-                            },
-                            child: Container(
-                              margin: const EdgeInsets.only(left: 20, top: 10, bottom: 10),
-                              width: double.infinity,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: getMenuList(restaurantList[4]),
-                              ),
-                            ),
-                          ),
-                          const Divider(),
-                          InkWell(
-                            onTap: () {
-
-                            },
-                            child: Container(
-                              margin: const EdgeInsets.only(left: 20, top: 10, bottom: 20),
-                              width: double.infinity,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: getMenuList(restaurantList[5]),
-                              ),
-                            ),
-                          ),
-                          const Divider(),
-                          InkWell(
-                            onTap: () {
-
-                            },
-                            child: Container(
-                              margin: const EdgeInsets.only(left: 20, top: 10, bottom: 20),
-                              width: double.infinity,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: getMenuList(restaurantList[6]),
-                              ),
-                            ),
-                          ),
-                          const Divider(),
-                          InkWell(
-                            onTap: () {
-
-                            },
-                            child: Container(
-                              margin: const EdgeInsets.only(left: 20, top: 10, bottom: 20),
-                              width: double.infinity,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: getMenuList(restaurantList[7]),
-                              ),
-                            ),
-                          ),
-                          const Divider(),
-                          InkWell(
-                            onTap: () {
-
-                            },
-                            child: Container(
-                              margin: const EdgeInsets.only(left: 20, top: 10, bottom: 20),
-                              width: double.infinity,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: getMenuList(restaurantList[8]),
-                              ),
-                            ),
-                          ),
-                          const Divider(),
-                          InkWell(
-                            onTap: () {
-
-                            },
-                            child: Container(
-                              margin: const EdgeInsets.only(left: 20, top: 10, bottom: 20),
-                              width: double.infinity,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: getMenuList(restaurantList[9]),
-                              ),
-                            ),
-                          ),
-                          const Divider(),
-                          InkWell(
-                            onTap: () {
-
-                            },
-                            child: Container(
-                              margin: const EdgeInsets.only(left: 20, top: 10, bottom: 20),
-                              width: double.infinity,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: getMenuList(restaurantList[10]),
-                              ),
-                            ),
-                          ),
-                          const Divider(),
-                          InkWell(
-                            onTap: () {
-
-                            },
-                            customBorder: const RoundedRectangleBorder(
-                              borderRadius: BorderRadius.only(bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10)),
-                            ),
-                            child: Container(
-                              margin: const EdgeInsets.only(left: 20, top: 10, bottom: 20),
-                              width: double.infinity,
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: getMenuList(restaurantList[11]),
-                              ),
-                            ),
-                          ),
+                          for (int i = 0; i < restaurantList.length; i++)
+                            _buildAllMenuOneRestaurant(i),
                         ],
                       ),
                     ),
