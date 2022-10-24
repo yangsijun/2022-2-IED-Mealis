@@ -143,7 +143,10 @@ class _HomePageState extends State<HomePage> {
                                     Container(
                                       margin: const EdgeInsets.all(0),
                                       decoration: const BoxDecoration(
-                                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                                        borderRadius: BorderRadius.only(
+                                          topLeft: Radius.circular(10),
+                                          topRight: Radius.circular(10)
+                                        ),
                                         gradient: LinearGradient(
                                           begin: Alignment.topCenter,
                                           end: Alignment.bottomCenter,
@@ -202,7 +205,10 @@ class _HomePageState extends State<HomePage> {
                                     Container(
                                       margin: const EdgeInsets.all(0),
                                       decoration: const BoxDecoration(
-                                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                                        borderRadius: BorderRadius.only(
+                                            topLeft: Radius.circular(10),
+                                            topRight: Radius.circular(10)
+                                        ),
                                         gradient: LinearGradient(
                                           begin: Alignment.topCenter,
                                           end: Alignment.bottomCenter,

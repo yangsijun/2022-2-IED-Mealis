@@ -79,7 +79,7 @@ class _RootPageState extends State<RootPage> {
         ],
       ),
       body: {
-        0: const RestaurantPage(),
+        0: RestaurantPage(goToPage),
         1: PopularMenuPage(goToPage),
         2: HomePage(goToPage),
         3: const QuickMealPage(),

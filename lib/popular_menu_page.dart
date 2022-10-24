@@ -1,10 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:mealis/database.dart';
+import 'package:mealis/menu.dart';
 import 'package:mealis/popular_menu_page.dart';
 import 'package:mealis/quick_meal_page.dart';
-
-import 'comment.dart';
-import 'menu.dart';
 
 class PopularMenuPage extends StatefulWidget {
   const PopularMenuPage(this.goToPage, {Key? key}) : super(key: key);
