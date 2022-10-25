@@ -21,6 +21,7 @@ class _RestaurantPageState extends State<RestaurantPage> {
     return Center(
       child: Scaffold(
         body: CustomScrollView(
+          physics: const NeverScrollableScrollPhysics(),
           slivers: [
             SliverAppBar.medium(
               leading: IconButton(

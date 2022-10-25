@@ -60,7 +60,7 @@ class _QuickMealPageState extends State<QuickMealPage> {
                                   crossAxisAlignment: CrossAxisAlignment.baseline,
                                   textBaseline: TextBaseline.alphabetic,
                                   children: [
-                                    Text(restaurantInfoMap[restaurantName]!.waitingPeople.toString(), style: Theme.of(context).textTheme.displayMedium),
+                                    Text(restaurantInfoMap[restaurantName]!.waitingPeople.toString(), style: Theme.of(context).textTheme.displaySmall),
                                     Text((restaurantInfoMap[restaurantName]!.waitingPeople > 1) ? ' people' : ' person', style: Theme.of(context).textTheme.bodyLarge),
                                   ],
                                 ),
@@ -76,7 +76,7 @@ class _QuickMealPageState extends State<QuickMealPage> {
                                   crossAxisAlignment: CrossAxisAlignment.baseline,
                                   textBaseline: TextBaseline.alphabetic,
                                   children: [
-                                    Text(restaurantInfoMap[restaurantName]!.waitingTime.toString(), style: Theme.of(context).textTheme.displayMedium),
+                                    Text(restaurantInfoMap[restaurantName]!.waitingTime.toString(), style: Theme.of(context).textTheme.displaySmall),
                                     Text((restaurantInfoMap[restaurantName]!.waitingTime > 1) ? ' minutes' : ' minute', style: Theme.of(context).textTheme.bodyLarge),
                                   ],
                                 ),

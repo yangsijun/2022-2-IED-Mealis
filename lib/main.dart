@@ -64,7 +64,7 @@ class _RootPageState extends State<RootPage> {
           ),
           NavigationDestination(
             icon: Icon(Icons.thumb_up),
-            label: 'Popular Menu',
+            label: 'Pop Menu',
           ),
           NavigationDestination(
             icon: Icon(Icons.home),
