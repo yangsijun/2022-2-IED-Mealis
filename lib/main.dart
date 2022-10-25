@@ -28,6 +28,8 @@ class MyApp extends StatelessWidget {
   }
 }
 
+String nickname = 'nickname';
+
 class RootPage extends StatefulWidget {
   const RootPage({Key? key}) : super(key: key);
 
@@ -83,7 +85,7 @@ class _RootPageState extends State<RootPage> {
         1: PopularMenuPage(goToPage),
         2: HomePage(goToPage),
         3: QuickMealPage(goToPage),
-        4: const ForumPage(),
+        4: ForumPage(goToPage),
       }[currentPageIndex],
     );
   }

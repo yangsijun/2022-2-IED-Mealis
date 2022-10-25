@@ -254,3 +254,156 @@ Map<String, RestaurantInfo> restaurantInfoMap = {
     5,
   ),
 };
+
+class PostComment {
+  int postType;
+  int postIndex;
+  String commentWriter;
+  DateTime commentTime;
+  String commentText;
+
+  PostComment(this.postType, this.postIndex, this.commentWriter, this.commentTime, this.commentText);
+}
+
+List<PostComment> postCommentList = [
+  PostComment(0, 0, 'Person1', DateTime(2022, 10, 25, 9, 32), 'Oh no'),
+  PostComment(0, 0, 'Person2', DateTime(2022, 10, 25, 9, 31), 'I\'m hungry'),
+  PostComment(0, 0, 'Person3', DateTime(2022, 10, 25, 9, 30), 'I\'m so hungry'),
+  PostComment(0, 1, 'Person1', DateTime(2022, 10, 25, 9, 32), 'Oh no'),
+  PostComment(0, 1, 'Person2', DateTime(2022, 10, 25, 9, 31), 'I\'m hungry'),
+  PostComment(0, 1, 'Person3', DateTime(2022, 10, 25, 9, 30), 'I\'m so hungry'),
+  PostComment(0, 2, 'Person1', DateTime(2022, 10, 25, 9, 32), 'Oh no'),
+  PostComment(0, 2, 'Person2', DateTime(2022, 10, 25, 9, 31), 'I\'m hungry'),
+  PostComment(0, 2, 'Person3', DateTime(2022, 10, 25, 9, 30), 'I\'m so hungry'),
+  PostComment(0, 3, 'Person1', DateTime(2022, 10, 25, 9, 32), 'Oh no'),
+  PostComment(0, 3, 'Person2', DateTime(2022, 10, 25, 9, 31), 'I\'m hungry'),
+  PostComment(0, 3, 'Person3', DateTime(2022, 10, 25, 9, 30), 'I\'m so hungry'),
+  PostComment(0, 4, 'Person1', DateTime(2022, 10, 25, 9, 32), 'Oh no'),
+  PostComment(0, 4, 'Person2', DateTime(2022, 10, 25, 9, 31), 'I\'m hungry'),
+  PostComment(0, 4, 'Person3', DateTime(2022, 10, 25, 9, 30), 'I\'m so hungry'),
+  PostComment(0, 5, 'Person1', DateTime(2022, 10, 25, 9, 32), 'Oh no'),
+  PostComment(0, 5, 'Person2', DateTime(2022, 10, 25, 9, 31), 'I\'m hungry'),
+  PostComment(0, 5, 'Person3', DateTime(2022, 10, 25, 9, 30), 'I\'m so hungry'),
+  PostComment(0, 6, 'Person1', DateTime(2022, 10, 25, 9, 32), 'Oh no'),
+  PostComment(0, 6, 'Person2', DateTime(2022, 10, 25, 9, 31), 'I\'m hungry'),
+  PostComment(0, 6, 'Person3', DateTime(2022, 10, 25, 9, 30), 'I\'m so hungry'),
+  PostComment(0, 7, 'Person1', DateTime(2022, 10, 25, 9, 32), 'Oh no'),
+  PostComment(0, 7, 'Person2', DateTime(2022, 10, 25, 9, 31), 'I\'m hungry'),
+  PostComment(0, 7, 'Person3', DateTime(2022, 10, 25, 9, 30), 'I\'m so hungry'),
+  PostComment(0, 8, 'Person1', DateTime(2022, 10, 25, 9, 32), 'Oh no'),
+  PostComment(0, 8, 'Person2', DateTime(2022, 10, 25, 9, 31), 'I\'m hungry'),
+  PostComment(0, 8, 'Person3', DateTime(2022, 10, 25, 9, 30), 'I\'m so hungry'),
+  PostComment(0, 9, 'Person1', DateTime(2022, 10, 25, 9, 32), 'Oh no'),
+  PostComment(0, 9, 'Person2', DateTime(2022, 10, 25, 9, 31), 'I\'m hungry'),
+  PostComment(0, 9, 'Person3', DateTime(2022, 10, 25, 9, 30), 'I\'m so hungry'),
+  PostComment(1, 0, 'Person1', DateTime(2022, 10, 25, 9, 32), 'Oh no'),
+  PostComment(1, 0, 'Person2', DateTime(2022, 10, 25, 9, 31), 'I\'m hungry'),
+  PostComment(1, 0, 'Person3', DateTime(2022, 10, 25, 9, 30), 'I\'m so hungry'),
+  PostComment(1, 1, 'Person1', DateTime(2022, 10, 25, 9, 32), 'Oh no'),
+  PostComment(1, 1, 'Person2', DateTime(2022, 10, 25, 9, 31), 'I\'m hungry'),
+  PostComment(1, 1, 'Person3', DateTime(2022, 10, 25, 9, 30), 'I\'m so hungry'),
+  PostComment(1, 2, 'Person1', DateTime(2022, 10, 25, 9, 32), 'Oh no'),
+  PostComment(1, 2, 'Person2', DateTime(2022, 10, 25, 9, 31), 'I\'m hungry'),
+  PostComment(1, 2, 'Person3', DateTime(2022, 10, 25, 9, 30), 'I\'m so hungry'),
+  PostComment(1, 3, 'Person1', DateTime(2022, 10, 25, 9, 32), 'Oh no'),
+  PostComment(1, 3, 'Person2', DateTime(2022, 10, 25, 9, 31), 'I\'m hungry'),
+  PostComment(1, 3, 'Person3', DateTime(2022, 10, 25, 9, 30), 'I\'m so hungry'),
+  PostComment(1, 4, 'Person1', DateTime(2022, 10, 25, 9, 32), 'Oh no'),
+  PostComment(1, 4, 'Person2', DateTime(2022, 10, 25, 9, 31), 'I\'m hungry'),
+  PostComment(1, 4, 'Person3', DateTime(2022, 10, 25, 9, 30), 'I\'m so hungry'),
+  PostComment(1, 5, 'Person1', DateTime(2022, 10, 25, 9, 32), 'Oh no'),
+  PostComment(1, 5, 'Person2', DateTime(2022, 10, 25, 9, 31), 'I\'m hungry'),
+  PostComment(1, 5, 'Person3', DateTime(2022, 10, 25, 9, 30), 'I\'m so hungry'),
+  PostComment(1, 6, 'Person1', DateTime(2022, 10, 25, 9, 32), 'Oh no'),
+  PostComment(1, 6, 'Person2', DateTime(2022, 10, 25, 9, 31), 'I\'m hungry'),
+  PostComment(1, 6, 'Person3', DateTime(2022, 10, 25, 9, 30), 'I\'m so hungry'),
+  PostComment(1, 7, 'Person1', DateTime(2022, 10, 25, 9, 32), 'Oh no'),
+  PostComment(1, 7, 'Person2', DateTime(2022, 10, 25, 9, 31), 'I\'m hungry'),
+  PostComment(1, 7, 'Person3', DateTime(2022, 10, 25, 9, 30), 'I\'m so hungry'),
+  PostComment(1, 8, 'Person1', DateTime(2022, 10, 25, 9, 32), 'Oh no'),
+  PostComment(1, 8, 'Person2', DateTime(2022, 10, 25, 9, 31), 'I\'m hungry'),
+  PostComment(1, 8, 'Person3', DateTime(2022, 10, 25, 9, 30), 'I\'m so hungry'),
+  PostComment(1, 9, 'Person1', DateTime(2022, 10, 25, 9, 32), 'Oh no'),
+  PostComment(1, 9, 'Person2', DateTime(2022, 10, 25, 9, 31), 'I\'m hungry'),
+  PostComment(1, 9, 'Person3', DateTime(2022, 10, 25, 9, 30), 'I\'m so hungry'),
+];
+
+class AnnouncementPost {
+  String writer;
+  DateTime date;
+  String title;
+  String content;
+
+  AnnouncementPost(this.writer, this.date, this.title, this.content);
+}
+
+List<AnnouncementPost> announcementPostList = [
+  AnnouncementPost(
+    'Korean Table',
+    DateTime(2022, 10, 25, 8, 30),
+    'Korean Table Closed Notice',
+    '''Hello, I am the person in charge of Korean Table.
+    In the aftermath of the recent sharp rise in agricultural product prices, the supply of ingredients is not smooth, so we will be closed for the time being.
+    Thank you for your understanding.''',
+  ),
+  AnnouncementPost(
+    'Handong Lounge',
+    DateTime(2022, 10, 17, 12, 30),
+    'Holiday Notice',
+    '''Hello, Handong students and faculty.
+    Please note that our Handong Lounge will be closed during this holiday period.
+    thank you''',
+  ),
+  AnnouncementPost(
+    'Korean Table',
+    DateTime(2022, 10, 15, 8, 30),
+    'Notice of raising prices',
+    '''We would like to inform you that we are raising the price of a set meal from 3,300 won to 4,000 won as we are unable to provide high-quality food at the previous price due to the sharp rise in the price of agricultural products.
+    Thank you for your understanding.''',
+  ),
+  AnnouncementPost(
+    'Mix Rice',
+    DateTime(2022, 10, 10, 10, 30),
+    'Notice of Menu Change',
+    '''Hello, I am the person in charge of Mix Rice.
+    We are changing the menu to a new menu.
+    Jjampong -> Nagasaki Jjambbong
+    Thank you very much for your interest.''',
+  ),
+  AnnouncementPost(
+    'Writer',
+    DateTime(2022, 10, 8, 8, 30),
+    'Title',
+    '''Content''',
+  ),
+  AnnouncementPost(
+    'Writer',
+    DateTime(2022, 10, 8, 8, 30),
+    'Title',
+    '''Content''',
+  ),
+  AnnouncementPost(
+    'Writer',
+    DateTime(2022, 10, 8, 8, 30),
+    'Title',
+    '''Content''',
+  ),
+  AnnouncementPost(
+    'Writer',
+    DateTime(2022, 10, 8, 8, 30),
+    'Title',
+    '''Content''',
+  ),
+  AnnouncementPost(
+    'Writer',
+    DateTime(2022, 10, 8, 8, 30),
+    'Title',
+    '''Content''',
+  ),
+  AnnouncementPost(
+    'Writer',
+    DateTime(2022, 10, 8, 8, 30),
+    'Title',
+    '''Content''',
+  ),
+];
