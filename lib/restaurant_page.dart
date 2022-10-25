@@ -21,7 +21,6 @@ class _RestaurantPageState extends State<RestaurantPage> {
     return Center(
       child: Scaffold(
         body: CustomScrollView(
-          physics: const NeverScrollableScrollPhysics(),
           slivers: [
             SliverAppBar.medium(
               leading: IconButton(
@@ -35,7 +34,8 @@ class _RestaurantPageState extends State<RestaurantPage> {
             SliverToBoxAdapter(
               child: Center(
                 child: Container(
-                  margin: const EdgeInsets.only(left: 20, right: 20, bottom: 20),
+                  margin:
+                      const EdgeInsets.only(left: 20, right: 20, bottom: 20),
                   child: Column(
                     children: [
                       ReorderableGridView.count(
@@ -45,30 +45,36 @@ class _RestaurantPageState extends State<RestaurantPage> {
                         mainAxisSpacing: 15,
                         crossAxisSpacing: 15,
                         childAspectRatio: 1.0,
-                        children: restaurantList.map(
-                          (String restaurantName) => Card(
-                            key: ValueKey(restaurantName),
-                            child: InkWell(
-                              onTap: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                    builder: (context) => OneRestaurantPage(restaurantList.indexOf(restaurantName)),
+                        children: restaurantList
+                            .map((String restaurantName) => Card(
+                                  key: ValueKey(restaurantName),
+                                  child: InkWell(
+                                    onTap: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                          builder: (context) =>
+                                              OneRestaurantPage(restaurantList
+                                                  .indexOf(restaurantName)),
+                                        ),
+                                      );
+                                    },
+                                    customBorder: RoundedRectangleBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    child: Center(
+                                      child: Container(
+                                        padding: const EdgeInsets.all(10),
+                                        child: Text(restaurantName,
+                                            style: Theme.of(context)
+                                                .textTheme
+                                                .titleLarge,
+                                            textAlign: TextAlign.center),
+                                      ),
+                                    ),
                                   ),
-                                );
-                              },
-                              customBorder: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(10),
-                              ),
-                              child: Center(
-                                child: Container(
-                                  padding: const EdgeInsets.all(10),
-                                  child: Text(restaurantName, style: Theme.of(context).textTheme.titleLarge, textAlign: TextAlign.center),
-                                ),
-                              ),
-                            ),
-                          )
-                        ).toList(),
+                                ))
+                            .toList(),
                         onReorder: (int oldIndex, int newIndex) {
                           setState(() {
                             String temp = restaurantList.removeAt(oldIndex);
