@@ -407,3 +407,115 @@ List<AnnouncementPost> announcementPostList = [
     '''Content''',
   ),
 ];
+
+class StudentVoicePost {
+  String writer;
+  DateTime date;
+  String title;
+  String content;
+  int like;
+  int dislike;
+
+  StudentVoicePost(this.writer, this.date, this.title, this.content, this.like, this.dislike);
+}
+
+List<StudentVoicePost> studentVoicePostList = [
+  StudentVoicePost(
+    'Person1',
+    DateTime(2022, 10, 25, 9, 30),
+    'I\'m hungry',
+    'I\'m so hungry',
+    5,
+    3,
+  ),
+  StudentVoicePost(
+    'Person2',
+    DateTime(2022, 10, 25, 9, 31),
+    'I\'m hungry',
+    'I\'m so hungry',
+    2,
+    5,
+  ),
+  StudentVoicePost(
+    'Person3',
+    DateTime(2022, 10, 25, 9, 32),
+    'I\'m hungry',
+    'I\'m so hungry',
+    3,
+    2,
+  ),
+  StudentVoicePost(
+    'Person1',
+    DateTime(2022, 10, 25, 9, 30),
+    'I\'m hungry',
+    'I\'m so hungry',
+    1,
+    5,
+  ),
+  StudentVoicePost(
+    'Person2',
+    DateTime(2022, 10, 25, 9, 31),
+    'I\'m hungry',
+    'I\'m so hungry',
+    3,
+    3,
+  ),
+  StudentVoicePost(
+    'Person3',
+    DateTime(2022, 10, 25, 9, 32),
+    'I\'m hungry',
+    'I\'m so hungry',
+    0,
+    3,
+  ),
+  StudentVoicePost(
+    'Person1',
+    DateTime(2022, 10, 25, 9, 30),
+    'I\'m hungry',
+    'I\'m so hungry',
+    0,
+    0,
+  ),
+  StudentVoicePost(
+    'Person2',
+    DateTime(2022, 10, 25, 9, 31),
+    'I\'m hungry',
+    'I\'m so hungry',
+    0,
+    0,
+  ),
+  StudentVoicePost(
+    'Person3',
+    DateTime(2022, 10, 25, 9, 32),
+    'I\'m hungry',
+    'I\'m so hungry',
+    0,
+    0,
+  ),
+  StudentVoicePost(
+    'Person3',
+    DateTime(2022, 10, 25, 9, 32),
+    'I\'m hungry',
+    'I\'m so hungry',
+    0,
+    0,
+  ),
+];
+
+class MyEvalForStudentVoicePost {
+  bool isLiked = false;
+  bool isDisliked = false;
+}
+
+List<MyEvalForStudentVoicePost> myEvalForStudentVoicePostList = [
+  MyEvalForStudentVoicePost(),
+  MyEvalForStudentVoicePost(),
+  MyEvalForStudentVoicePost(),
+  MyEvalForStudentVoicePost(),
+  MyEvalForStudentVoicePost(),
+  MyEvalForStudentVoicePost(),
+  MyEvalForStudentVoicePost(),
+  MyEvalForStudentVoicePost(),
+  MyEvalForStudentVoicePost(),
+  MyEvalForStudentVoicePost(),
+];

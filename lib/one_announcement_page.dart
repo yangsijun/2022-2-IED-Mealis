@@ -31,8 +31,7 @@ class _OneAnnouncementPageState extends State<OneAnnouncementPage> {
             title: Text(announcementPostList[announcementIndex].title),
           ),
           SliverToBoxAdapter(
-            child: Center(
-              child: Container(
+            child: Container(
                 margin: const EdgeInsets.all(25),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
@@ -59,8 +58,17 @@ class _OneAnnouncementPageState extends State<OneAnnouncementPage> {
                     ),
                     const SizedBox(height: 20),
                     Container(
-                      margin: const EdgeInsets.only(left: 10, right: 10),
-                      child: Text(announcementPostList[announcementIndex].content, style: Theme.of(context).textTheme.bodyLarge),
+                      padding: const EdgeInsets.all(10),
+                      constraints: const BoxConstraints(minHeight: 200),
+                      decoration: BoxDecoration(
+                        border: Border.all(color: Theme.of(context).primaryColor),
+                        borderRadius: BorderRadius.circular(10),
+                      ),
+                      child: Container(
+                        width: double.infinity,
+                        margin: const EdgeInsets.only(left: 10, right: 10),
+                        child: Text(announcementPostList[announcementIndex].content, style: Theme.of(context).textTheme.bodyLarge),
+                      ),
                     ),
                     const SizedBox(height: 20),
                     const Divider(),
@@ -117,7 +125,6 @@ class _OneAnnouncementPageState extends State<OneAnnouncementPage> {
                 ),
               ),
             ),
-          ),
         ],
       ),
     );
