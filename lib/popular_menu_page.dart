@@ -239,7 +239,7 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
                     Card(
                       margin: const EdgeInsets.only(left: 20, right: 20, bottom: 5),
                       child: SizedBox(
-                        height: 200,
+                        height: 350,
                         child: SingleChildScrollView(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
