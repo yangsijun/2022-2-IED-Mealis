@@ -76,7 +76,7 @@ class _ForumPageState extends State<ForumPage> {
                                             MaterialPageRoute(
                                               builder: (context) => OneAnnouncementPage(i),
                                             ),
-                                          );
+                                          ).then((value) => setState(() {}));
                                         },
                                       ),
                                       const Divider(height: 1),
@@ -94,7 +94,7 @@ class _ForumPageState extends State<ForumPage> {
                       child: Column(
                         children: [
                           ListTile(
-                            leading: const Icon(Icons.announcement),
+                            leading: const Icon(Icons.record_voice_over),
                             title: const Text('Student\'s Voice'),
                             subtitle: const Text('Handong Students'),
                             trailing: const Icon(Icons.arrow_forward_ios),

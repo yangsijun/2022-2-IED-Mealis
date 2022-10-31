@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mealis/database.dart';
+import 'package:mealis/main.dart';
 import 'package:mealis/one_student_voice_page.dart';
 
 class StudentVoicePage extends StatefulWidget {
@@ -23,6 +24,14 @@ class _StudentVoicePageState extends State<StudentVoicePage> {
               },
             ),
             title: const Text('Student\'s Voice'),
+            actions: [
+              IconButton(
+                icon: const Icon(Icons.add),
+                onPressed: () {
+                  studentVoiceDialog(context).then((value) => setState(() {}));
+                },
+              ),
+            ],
           ),
           SliverToBoxAdapter(
             child: Center(
@@ -110,6 +119,95 @@ class _StudentVoicePageState extends State<StudentVoicePage> {
           ),
         ],
       ),
+    );
+  }
+
+  final _titleController = TextEditingController();
+  final _contentController = TextEditingController();
+
+  Future<void> studentVoiceDialog(BuildContext context) async {
+    return showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return Dialog(
+          insetPadding: EdgeInsets.zero,
+          child: Scaffold(
+            appBar: AppBar(
+              title: const Text('Student\'s Voice'),
+              centerTitle: false,
+              automaticallyImplyLeading: false,
+              leading: IconButton(
+                onPressed: () => Navigator.pop(context),
+                icon: const Icon(Icons.close),
+              ),
+              actions: <Widget>[
+                TextButton(
+                  onPressed: () {
+                    if (_titleController.text.isEmpty) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Please enter the title.'),
+                        ),
+                      );
+                    } else if (_contentController.text.isEmpty) {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                          content: Text('Please enter the content.'),
+                        ),
+                      );
+                    } else {
+                      studentVoicePostList.insert(
+                        0,
+                        StudentVoicePost(
+                          nickname,
+                          DateTime.now(),
+                          _titleController.text,
+                          _contentController.text,
+                          0,
+                          0,
+                        ),
+                      );
+                      myEvalForStudentVoicePostList.add(
+                        MyEvalForStudentVoicePost(),
+                      );
+                      Navigator.pop(context);
+                    }
+                  },
+                  child: const Text('Save'),
+                ),
+              ],
+            ),
+            body: Center(
+              child: Column(
+                children: [
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    child: TextField(
+                      controller: _titleController,
+                      maxLines: 1,
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Title',
+                      ),
+                    ),
+                  ),
+                  Container(
+                    padding: const EdgeInsets.all(10),
+                    child: TextField(
+                      controller: _contentController,
+                      maxLines: 10,
+                      decoration: const InputDecoration(
+                        border: OutlineInputBorder(),
+                        labelText: 'Content',
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+        );
+      },
     );
   }
 }
