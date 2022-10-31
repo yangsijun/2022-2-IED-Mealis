@@ -15,82 +15,106 @@ class _QuickMealPageState extends State<QuickMealPage> {
   final void Function(int index) goToPage;
 
   Widget _buildQuickMealCard(String restaurantName, int rank) {
-    return Card(
-      margin: const EdgeInsets.only(left: 25, right: 25, top: 10, bottom: 10),
-      child: InkWell(
-        onTap: () {
-          Navigator.push(
-            context,
-            MaterialPageRoute(
-              builder: (context) => OneRestaurantPage(restaurantList.indexOf(restaurantName)),
-            ),
-          );
-        },
-        child: Container(
-          margin: const EdgeInsets.all(10),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.start,
-            children: [
-              Flexible(
-                flex: 1,
-                child: Container(
-                  width: double.infinity,
-                  padding: const EdgeInsets.all(10),
-                  child: Text('$rank', style: (rank < 10) ? Theme.of(context).textTheme.displayMedium : Theme.of(context).textTheme.displaySmall, textAlign: TextAlign.center),
-                ),
-              ),
-              const VerticalDivider(),
-              Flexible(
-                flex: 4,
-                child: Row(
-                  children: [
-                    Column(
-                      children: [
-                        Text(restaurantName, style: Theme.of(context).textTheme.headlineSmall),
-                        const SizedBox(height: 5),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text('Now Waiting', style: Theme.of(context).textTheme.bodyLarge, textAlign: TextAlign.center),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.baseline,
-                                  textBaseline: TextBaseline.alphabetic,
-                                  children: [
-                                    Text(restaurantInfoMap[restaurantName]!.waitingPeople.toString(), style: Theme.of(context).textTheme.displaySmall),
-                                    Text((restaurantInfoMap[restaurantName]!.waitingPeople > 1) ? ' people' : ' person', style: Theme.of(context).textTheme.bodyLarge),
-                                  ],
-                                ),
-                              ],
-                            ),
-                            const SizedBox(width: 30),
-                            Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Text('Waiting Time', style: Theme.of(context).textTheme.bodyLarge, textAlign: TextAlign.center),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.baseline,
-                                  textBaseline: TextBaseline.alphabetic,
-                                  children: [
-                                    Text(restaurantInfoMap[restaurantName]!.waitingTime.toString(), style: Theme.of(context).textTheme.displaySmall),
-                                    Text((restaurantInfoMap[restaurantName]!.waitingTime > 1) ? ' minutes' : ' minute', style: Theme.of(context).textTheme.bodyLarge),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ],
+    return SizedBox(
+      width: double.infinity,
+      child: IntrinsicHeight(
+        child: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Flexible(
+              flex: 1,
+              child: Container(
+                padding: const EdgeInsets.only(left: 20, right: 20, top: 5, bottom: 5),
+                child: Card(
+                  child: InkWell(
+                    onTap: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => OneRestaurantPage(restaurantList.indexOf(restaurantName)),
                         ),
-                      ],
+                      );
+                    },
+                    customBorder: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(10.0),
                     ),
-                  ],
+                    child: SizedBox(
+                      height: 135,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Flexible(
+                            flex: 1,
+                            child: SizedBox(
+                              width: double.infinity,
+                              child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text('$rank', style: (rank < 10) ? Theme.of(context).textTheme.displayMedium : Theme.of(context).textTheme.displaySmall, textAlign: TextAlign.center),
+                                ],
+                              ),
+                            ),
+                          ),
+                          const VerticalDivider(),
+                          Flexible(
+                            flex: 4,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Text(restaurantName, style: Theme.of(context).textTheme.headlineSmall),
+                                    const SizedBox(height: 5),
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+                                        Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            Text('Now Waiting', style: Theme.of(context).textTheme.bodyLarge, textAlign: TextAlign.center),
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              crossAxisAlignment: CrossAxisAlignment.baseline,
+                                              textBaseline: TextBaseline.alphabetic,
+                                              children: [
+                                                Text(restaurantInfoMap[restaurantName]!.waitingPeople.toString(), style: Theme.of(context).textTheme.displaySmall),
+                                                Text((restaurantInfoMap[restaurantName]!.waitingPeople > 1) ? ' people' : ' person', style: Theme.of(context).textTheme.bodyLarge),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                        const SizedBox(width: 30),
+                                        Column(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: [
+                                            Text('Waiting Time', style: Theme.of(context).textTheme.bodyLarge, textAlign: TextAlign.center),
+                                            Row(
+                                              mainAxisAlignment: MainAxisAlignment.center,
+                                              crossAxisAlignment: CrossAxisAlignment.baseline,
+                                              textBaseline: TextBaseline.alphabetic,
+                                              children: [
+                                                Text(restaurantInfoMap[restaurantName]!.waitingTime.toString(), style: Theme.of(context).textTheme.displaySmall),
+                                                Text((restaurantInfoMap[restaurantName]!.waitingTime > 1) ? ' minutes' : ' minute', style: Theme.of(context).textTheme.bodyLarge),
+                                              ],
+                                            ),
+                                          ],
+                                        ),
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
                 ),
               ),
-            ],
-          ),
+            ),
+          ],
         ),
       ),
     );

@@ -103,10 +103,14 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
                       children: [
                         Flexible(
                           flex: 1,
-                          child: Container(
+                          child: SizedBox(
                             width: double.infinity,
-                            padding: const EdgeInsets.only(left: 15, right: 10),
-                            child: Text('$rank', style: (rank < 10) ? Theme.of(context).textTheme.displayMedium : Theme.of(context).textTheme.displaySmall, textAlign: TextAlign.center),
+                            child: Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  Text('$rank', style: (rank < 10) ? Theme.of(context).textTheme.displayMedium : Theme.of(context).textTheme.displaySmall, textAlign: TextAlign.center),
+                                ],
+                            ),
                           ),
                         ),
                         const VerticalDivider(),
