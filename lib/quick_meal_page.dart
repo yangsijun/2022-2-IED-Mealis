@@ -152,22 +152,29 @@ class _QuickMealPageState extends State<QuickMealPage> {
                   children: [
                     for (int i = 0; i < showQuickMealNum; i++)
                       _buildQuickMealCard(quickMealRankingList[i].key, i + 1),
-                    TextButton(
-                      onPressed: () {
-                        if (showQuickMealNum < quickMealRankingList.length) {
-                          setState(() {
-                            showQuickMealNum += 3;
-                            if (showQuickMealNum > quickMealRankingList.length) {
-                              showQuickMealNum = quickMealRankingList.length;
-                            }
-                          });
-                        } else {
-                          setState(() {
-                            showQuickMealNum = 3;
-                          });
-                        }
-                      },
-                      child: Text((showQuickMealNum < quickMealRankingList.length) ? 'See More' : 'Show less', style: TextStyle(color: Theme.of(context).colorScheme.primary, decoration: TextDecoration.underline)),
+                    Container(
+                      margin: const EdgeInsets.only(bottom: 10),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
+                          foregroundColor: Theme.of(context).colorScheme.onSecondaryContainer,
+                        ),
+                        onPressed: () {
+                          if (showQuickMealNum < quickMealRankingList.length) {
+                            setState(() {
+                              showQuickMealNum += 3;
+                              if (showQuickMealNum > quickMealRankingList.length) {
+                                showQuickMealNum = quickMealRankingList.length;
+                              }
+                            });
+                          } else {
+                            setState(() {
+                              showQuickMealNum = 3;
+                            });
+                          }
+                        },
+                        child: Text((showQuickMealNum < quickMealRankingList.length) ? 'See More' : 'Show less'),
+                      ),
                     ),
                     const SizedBox(height: 10),
                   ],

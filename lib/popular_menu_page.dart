@@ -210,22 +210,29 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
                   children: [
                     for (int i = 0; i < showPopularMenuNum; i++)
                       _buildPopularMenuCard(menuRankingList[i].key, i + 1),
-                    TextButton(
-                      onPressed: () {
-                        if (showPopularMenuNum < menuRankingList.length) {
-                          setState(() {
-                            showPopularMenuNum += 3;
-                            if (showPopularMenuNum > menuRankingList.length) {
-                              showPopularMenuNum = menuRankingList.length;
-                            }
-                          });
-                        } else {
-                          setState(() {
-                            showPopularMenuNum = 3;
-                          });
-                        }
-                      },
-                      child: Text((showPopularMenuNum < menuRankingList.length) ? 'See More' : 'Show less', style: TextStyle(color: Theme.of(context).colorScheme.primary, decoration: TextDecoration.underline)),
+                    Container(
+                      margin: const EdgeInsets.only(bottom: 10),
+                      child: ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
+                          foregroundColor: Theme.of(context).colorScheme.onSecondaryContainer,
+                        ),
+                        onPressed: () {
+                          if (showPopularMenuNum < menuRankingList.length) {
+                            setState(() {
+                              showPopularMenuNum += 3;
+                              if (showPopularMenuNum > menuRankingList.length) {
+                                showPopularMenuNum = menuRankingList.length;
+                              }
+                            });
+                          } else {
+                            setState(() {
+                              showPopularMenuNum = 3;
+                            });
+                          }
+                        },
+                        child: Text((showPopularMenuNum < menuRankingList.length) ? 'See More' : 'Show less'),
+                      ),
                     ),
                     const Divider(),
                     Container(
