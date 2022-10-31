@@ -184,6 +184,8 @@ class _StudentVoicePageState extends State<StudentVoicePage> {
                     padding: const EdgeInsets.all(10),
                     child: TextField(
                       controller: _titleController,
+                      focusNode: FocusNode(),
+                      autofocus: true,
                       maxLines: 1,
                       decoration: const InputDecoration(
                         border: OutlineInputBorder(),

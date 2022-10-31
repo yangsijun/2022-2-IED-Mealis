@@ -252,6 +252,8 @@ Future<void> commentDialog(BuildContext context, String menuName) async {
                   padding: const EdgeInsets.all(10),
                   child: TextField(
                     controller: commentController,
+                    focusNode: FocusNode(),
+                    autofocus: true,
                     maxLines: 5,
                     decoration: const InputDecoration(
                       border: OutlineInputBorder(),
