@@ -29,7 +29,7 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
               avatar: Icon(Icons.comment, color: (myEvalMap[menuName]!.isCommented) ? Colors.orangeAccent : Theme.of(context).chipTheme.surfaceTintColor),
               label: Text(menuMap[menuName]!.stat.comment.toString(), style: TextStyle(color: (myEvalMap[menuName]!.isCommented) ? Colors.orangeAccent : Theme.of(context).chipTheme.surfaceTintColor, fontSize: 14)),
               onPressed: () {
-                commentDialog(context, menuName);
+                commentDialog(context, menuName).then((value) => setState(() {}));
               },
             ),
             ActionChip(
@@ -93,7 +93,7 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(builder: (context) => OneMenuPage(menuName)),
-                      );
+                      ).then((value) => setState(() {}));
                     },
                     customBorder: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
@@ -140,7 +140,7 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
             Navigator.push(
               context,
               MaterialPageRoute(builder: (context) => OneMenuPage(commentList[index].menuName)),
-            );
+            ).then((value) => setState(() {}));
           },
           child: Container(
             margin: const EdgeInsets.only(left: 20),

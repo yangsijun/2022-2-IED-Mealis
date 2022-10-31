@@ -30,7 +30,7 @@ class _OneMenuPageState extends State<OneMenuPage>{
               avatar: Icon(Icons.comment, color: (myEvalMap[menuName]!.isCommented) ? Colors.orangeAccent : Theme.of(context).chipTheme.surfaceTintColor),
               label: Text(menuMap[menuName]!.stat.comment.toString(), style: TextStyle(color: (myEvalMap[menuName]!.isCommented) ? Colors.orangeAccent : Theme.of(context).chipTheme.surfaceTintColor, fontSize: 14)),
               onPressed: () {
-                commentDialog(context, menuName);
+                commentDialog(context, menuName).then((value) => setState(() {}));
               },
             ),
             ActionChip(
@@ -83,44 +83,31 @@ class _OneMenuPageState extends State<OneMenuPage>{
       if (menu.menuName == menuName) {
         menuCards.add(
           Card(
-            child: InkWell(
-              onTap: () {
-                // Navigator.push(
-                //   context,
-                //   MaterialPageRoute(
-                //     builder:
-                //   ),
-                // );
-              },
-              customBorder: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(10),
-              ),
-              child: SizedBox(
-                width: double.infinity,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.start,
-                  children: [
-                    ClipRRect(
-                      borderRadius: const BorderRadius.only(
-                        topLeft: Radius.circular(10),
-                        topRight: Radius.circular(10),
-                      ),
-                      child: Image.asset(
-                        menu.image,
-                        fit: BoxFit.fill,
-                        errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
-                          return const Image(
-                            image: AssetImage('assets/images/no_image.jpg'),
-                            fit: BoxFit.fill,
-                          );
-                        },
-                      ),
+            child: SizedBox(
+              width: double.infinity,
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  ClipRRect(
+                    borderRadius: const BorderRadius.only(
+                      topLeft: Radius.circular(10),
+                      topRight: Radius.circular(10),
                     ),
-                    Container(
-                      child: _buildMenuCardContent(menu.menuName),
+                    child: Image.asset(
+                      menu.image,
+                      fit: BoxFit.fill,
+                      errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
+                        return const Image(
+                          image: AssetImage('assets/images/no_image.jpg'),
+                          fit: BoxFit.fill,
+                        );
+                      },
                     ),
-                  ],
-                ),
+                  ),
+                  Container(
+                    child: _buildMenuCardContent(menu.menuName),
+                  ),
+                ],
               ),
             ),
           ),
@@ -196,8 +183,7 @@ class _OneMenuPageState extends State<OneMenuPage>{
                               IconButton(
                                 icon: const Icon(Icons.edit),
                                 onPressed: () {
-                                  commentDialog(context, menuName);
-                                  setState(() {});
+                                  commentDialog(context, menuName).then((value) => setState(() {}));
                                 },
                               ),
                             ],
@@ -242,7 +228,7 @@ Future<void> commentDialog(BuildContext context, String menuName) async {
             centerTitle: false,
             automaticallyImplyLeading: false,
             leading: IconButton(
-              onPressed: () => Navigator.of(context).pop(),
+              onPressed: () => Navigator.pop(context),
               icon: const Icon(Icons.close),
             ),
             actions: <Widget>[
@@ -253,7 +239,7 @@ Future<void> commentDialog(BuildContext context, String menuName) async {
                     myEvalMap[menuName]!.isCommented = true;
                     commentController.clear();
                   }
-                  Navigator.of(context).pop();
+                  Navigator.pop(context);
                 },
                 child: const Text('Save'),
               ),
