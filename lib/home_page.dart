@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
 import 'package:mealis/one_restaurant.dart';
 import 'package:mealis/database.dart';
+import 'package:mealis/my_page.dart';
 
 class Item {
   Item({
@@ -281,6 +282,10 @@ class _HomePageState extends State<HomePage> {
         floatingActionButton: isFabVisible
           ? FloatingActionButton(
               onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => MyPage()),
+                );
               },
               backgroundColor: Theme.of(context).colorScheme.primaryContainer,
               child: Icon(Icons.account_circle, color: Theme.of(context).colorScheme.onPrimaryContainer),

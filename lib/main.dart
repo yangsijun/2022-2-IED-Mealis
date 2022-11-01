@@ -28,8 +28,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-String nickname = 'nickname';
-
 class RootPage extends StatefulWidget {
   const RootPage({Key? key}) : super(key: key);
 

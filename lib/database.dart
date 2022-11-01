@@ -519,3 +519,15 @@ List<MyEvalForStudentVoicePost> myEvalForStudentVoicePostList = [
   MyEvalForStudentVoicePost(),
   MyEvalForStudentVoicePost(),
 ];
+
+List<int> expTable = [0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000];
+
+class User {
+  String nickname;
+  int level;
+  int exp;
+
+  User(this.nickname, this.level, this.exp);
+}
+
+User myUser = User('nickname', 2, 700);

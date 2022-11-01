@@ -99,7 +99,7 @@ class _OneAnnouncementPageState extends State<OneAnnouncementPage> {
                                 child: IconButton(
                                   onPressed: () {
                                     if (postCommentController.text.isNotEmpty) {
-                                      postCommentList.insert(0, PostComment(0, announcementIndex, nickname, DateTime.now(), postCommentController.text));
+                                      postCommentList.insert(0, PostComment(0, announcementIndex, myUser.nickname, DateTime.now(), postCommentController.text));
                                       postCommentController.clear();
                                     }
                                     //keyboard hide

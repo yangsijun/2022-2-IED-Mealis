@@ -149,7 +149,7 @@ class _OneStudentVoicePageState extends State<OneStudentVoicePage> {
                                 child: IconButton(
                                   onPressed: () {
                                     if (postCommentController.text.isNotEmpty) {
-                                      postCommentList.insert(1, PostComment(1, studentVoiceIndex, nickname, DateTime.now(), postCommentController.text));
+                                      postCommentList.insert(1, PostComment(1, studentVoiceIndex, myUser.nickname, DateTime.now(), postCommentController.text));
                                       postCommentController.clear();
                                     }
                                     //keyboard hide

@@ -159,7 +159,7 @@ class _StudentVoicePageState extends State<StudentVoicePage> {
                       studentVoicePostList.insert(
                         0,
                         StudentVoicePost(
-                          nickname,
+                          myUser.nickname,
                           DateTime.now(),
                           _titleController.text,
                           _contentController.text,
