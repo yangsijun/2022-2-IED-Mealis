@@ -55,7 +55,7 @@ class _ForumPageState extends State<ForumPage> {
                                 MaterialPageRoute(
                                   builder: (context) => const AnnouncementPage(),
                                 ),
-                              );
+                              ).then((value) => setState(() {}));
                             },
                           ),
                           Column(
@@ -104,7 +104,7 @@ class _ForumPageState extends State<ForumPage> {
                                 MaterialPageRoute(
                                   builder: (context) => const StudentVoicePage(),
                                 ),
-                              );
+                              ).then((value) => setState(() {}));
                             },
                           ),
                           Column(
@@ -125,7 +125,7 @@ class _ForumPageState extends State<ForumPage> {
                                             MaterialPageRoute(
                                               builder: (context) => OneStudentVoicePage(i),
                                             ),
-                                          );
+                                          ).then((value) => setState(() {}));
                                         },
                                       ),
                                       Row(

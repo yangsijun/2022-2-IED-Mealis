@@ -137,7 +137,11 @@ class _StudentVoicePageState extends State<StudentVoicePage> {
               centerTitle: false,
               automaticallyImplyLeading: false,
               leading: IconButton(
-                onPressed: () => Navigator.pop(context),
+                onPressed: () {
+                  Navigator.pop(context);
+                  _titleController.clear();
+                  _contentController.clear();
+                },
                 icon: const Icon(Icons.close),
               ),
               actions: <Widget>[
@@ -167,10 +171,13 @@ class _StudentVoicePageState extends State<StudentVoicePage> {
                           0,
                         ),
                       );
-                      myEvalForStudentVoicePostList.add(
+                      myEvalForStudentVoicePostList.insert(
+                        0,
                         MyEvalForStudentVoicePost(),
                       );
                       Navigator.pop(context);
+                      _titleController.clear();
+                      _contentController.clear();
                     }
                   },
                   child: const Text('Save'),
