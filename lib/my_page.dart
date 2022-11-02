@@ -16,6 +16,10 @@ class _MyPageState extends State<MyPage> {
 
   @override
   Widget build(BuildContext context) {
+    while (myUser.level < expTable.length - 1 && myUser.exp > expTable[myUser.level]) {
+      myUser.exp -= expTable[myUser.level];
+      myUser.level++;
+    }
 
     return Scaffold(
       body: CustomScrollView(

@@ -520,7 +520,7 @@ List<MyEvalForStudentVoicePost> myEvalForStudentVoicePostList = [
   MyEvalForStudentVoicePost(),
 ];
 
-List<int> expTable = [0, 1000, 2000, 3000, 4000, 5000, 6000, 7000, 8000, 9000, 10000];
+List<int> expTable = [0, 25, 50, 100, 200, 300, 400, 500, 600, 700, 1000];
 
 class User {
   String nickname;
@@ -530,7 +530,7 @@ class User {
   User(this.nickname, this.level, this.exp);
 }
 
-User myUser = User('nickname', 2, 700);
+User myUser = User('nickname', 2, 30);
 
 List<String> myFavoriteMenuList = [
   'Pork Cutlet Kimchi Udon',
