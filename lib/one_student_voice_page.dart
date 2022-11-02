@@ -78,8 +78,8 @@ class _OneStudentVoicePageState extends State<OneStudentVoicePage> {
                             alignment: MainAxisAlignment.center,
                             children: <Widget>[
                               ActionChip(
-                                avatar: Icon(Icons.thumb_up, color: (myEvalForStudentVoicePostList[studentVoiceIndex].isLiked) ? Colors.blueAccent : Theme.of(context).chipTheme.surfaceTintColor),
-                                label: Text(studentVoicePostList[studentVoiceIndex].like.toString(), style: TextStyle(color: (myEvalForStudentVoicePostList[studentVoiceIndex].isLiked) ? Colors.blueAccent : Theme.of(context).chipTheme.surfaceTintColor, fontSize: 14)),
+                                avatar: Icon(Icons.thumb_up, color: (myEvalForStudentVoicePostList[studentVoiceIndex].isLiked) ? Colors.redAccent : Theme.of(context).chipTheme.surfaceTintColor),
+                                label: Text(studentVoicePostList[studentVoiceIndex].like.toString(), style: TextStyle(color: (myEvalForStudentVoicePostList[studentVoiceIndex].isLiked) ? Colors.redAccent : Theme.of(context).chipTheme.surfaceTintColor, fontSize: 14)),
                                 onPressed: () {
                                   setState(() {
                                     if (myEvalForStudentVoicePostList[studentVoiceIndex].isLiked) {
@@ -100,8 +100,8 @@ class _OneStudentVoicePageState extends State<OneStudentVoicePage> {
                                 },
                               ),
                               ActionChip(
-                                avatar: Icon(Icons.thumb_down, color: (myEvalForStudentVoicePostList[studentVoiceIndex].isDisliked) ? Colors.redAccent : Theme.of(context).chipTheme.surfaceTintColor),
-                                label: Text(studentVoicePostList[studentVoiceIndex].dislike.toString(), style: TextStyle(color: (myEvalForStudentVoicePostList[studentVoiceIndex].isDisliked) ? Colors.redAccent : Theme.of(context).chipTheme.surfaceTintColor, fontSize: 14)),
+                                avatar: Icon(Icons.thumb_down, color: (myEvalForStudentVoicePostList[studentVoiceIndex].isDisliked) ? Colors.blueAccent : Theme.of(context).chipTheme.surfaceTintColor),
+                                label: Text(studentVoicePostList[studentVoiceIndex].dislike.toString(), style: TextStyle(color: (myEvalForStudentVoicePostList[studentVoiceIndex].isDisliked) ? Colors.blueAccent : Theme.of(context).chipTheme.surfaceTintColor, fontSize: 14)),
                                 onPressed: () {
                                   setState(() {
                                     if (myEvalForStudentVoicePostList[studentVoiceIndex].isDisliked) {
