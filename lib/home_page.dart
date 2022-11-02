@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
   _HomePageState(this.goToPage);
   final void Function(int index) goToPage;
 
-  bool isFabVisible = false;
+  bool isFabVisible = true;
 
   List<Item> data = [];
 
