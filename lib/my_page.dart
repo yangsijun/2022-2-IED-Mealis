@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mealis/database.dart';
+import 'package:mealis/my_posts_page.dart';
 
 class MyPage extends StatefulWidget {
   const MyPage({Key? key}) : super(key: key);
@@ -115,6 +116,11 @@ class _MyPageState extends State<MyPage> {
                           child: IconButton(
                             onPressed: () {
                               if (!_nicknameReadOnly) {
+                                for (StudentVoicePost post in studentVoicePostList) {
+                                  if (post.writer == myUser.nickname) {
+                                    post.writer = _nicknameController.text;
+                                  }
+                                }
                                 myUser.nickname = _nicknameController.text;
                               } else {
                                 _nicknameController.text = myUser.nickname;
@@ -162,7 +168,14 @@ class _MyPageState extends State<MyPage> {
                         ListTile(
                           leading: const Icon(Icons.article),
                           title: const Text('My Posts'),
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const MyPostsPage(),
+                              ),
+                            );
+                          },
                         ),
                         ListTile(
                           leading: const Icon(Icons.add_alert),
