@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mealis/database.dart';
 import 'package:mealis/my_posts_page.dart';
+import 'package:mealis/alert_settings_page.dart';
 
 class MyPage extends StatefulWidget {
   const MyPage({Key? key}) : super(key: key);
@@ -174,13 +175,20 @@ class _MyPageState extends State<MyPage> {
                               MaterialPageRoute(
                                 builder: (context) => const MyPostsPage(),
                               ),
-                            );
+                            ).then((value) => setState(() {}));
                           },
                         ),
                         ListTile(
                           leading: const Icon(Icons.add_alert),
                           title: const Text('Alert Settings'),
-                          onTap: () {},
+                          onTap: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                builder: (context) => const AlertSettingsPage(),
+                              ),
+                            ).then((value) => setState(() {}));
+                          },
                         ),
                       ],
                     ),

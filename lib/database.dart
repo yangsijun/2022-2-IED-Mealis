@@ -531,3 +531,9 @@ class User {
 }
 
 User myUser = User('nickname', 2, 700);
+
+List<String> myFavoriteMenuList = [
+  'Pork Cutlet Kimchi Udon',
+  'Samgyetang',
+  'Korean Black Noodle'
+];
