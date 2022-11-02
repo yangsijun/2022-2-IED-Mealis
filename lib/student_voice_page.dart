@@ -28,7 +28,7 @@ class _StudentVoicePageState extends State<StudentVoicePage> {
               IconButton(
                 icon: const Icon(Icons.add),
                 onPressed: () {
-                  studentVoiceDialog(context).then((value) => setState(() {}));
+                  studentVoiceDialog(context).then((value) => setState(() {myUser.exp += 20;}));
                 },
               ),
             ],
@@ -72,13 +72,16 @@ class _StudentVoicePageState extends State<StudentVoicePage> {
                                             if (myEvalForStudentVoicePostList[i].isLiked) {
                                               studentVoicePostList[i].like--;
                                               myEvalForStudentVoicePostList[i].isLiked = false;
+                                              myUser.exp -= 1;
                                             } else {
                                               if (myEvalForStudentVoicePostList[i].isDisliked) {
                                                 studentVoicePostList[i].dislike--;
                                                 myEvalForStudentVoicePostList[i].isDisliked = false;
+                                                myUser.exp -= 1;
                                               }
                                               studentVoicePostList[i].like++;
                                               myEvalForStudentVoicePostList[i].isLiked = true;
+                                              myUser.exp += 1;
                                             }
                                           });
                                         },
@@ -91,13 +94,16 @@ class _StudentVoicePageState extends State<StudentVoicePage> {
                                             if (myEvalForStudentVoicePostList[i].isDisliked) {
                                               studentVoicePostList[i].dislike--;
                                               myEvalForStudentVoicePostList[i].isDisliked = false;
+                                              myUser.exp -= 1;
                                             } else {
                                               if (myEvalForStudentVoicePostList[i].isLiked) {
                                                 studentVoicePostList[i].like--;
                                                 myEvalForStudentVoicePostList[i].isLiked = false;
+                                                myUser.exp -= 1;
                                               }
                                               studentVoicePostList[i].dislike++;
                                               myEvalForStudentVoicePostList[i].isDisliked = true;
+                                              myUser.exp += 1;
                                             }
                                           });
                                         },

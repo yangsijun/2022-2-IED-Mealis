@@ -85,13 +85,16 @@ class _OneStudentVoicePageState extends State<OneStudentVoicePage> {
                                     if (myEvalForStudentVoicePostList[studentVoiceIndex].isLiked) {
                                       studentVoicePostList[studentVoiceIndex].like--;
                                       myEvalForStudentVoicePostList[studentVoiceIndex].isLiked = false;
+                                      myUser.exp -= 1;
                                     } else {
                                       if (myEvalForStudentVoicePostList[studentVoiceIndex].isDisliked) {
                                         studentVoicePostList[studentVoiceIndex].dislike--;
                                         myEvalForStudentVoicePostList[studentVoiceIndex].isDisliked = false;
+                                        myUser.exp -= 1;
                                       }
                                       studentVoicePostList[studentVoiceIndex].like++;
                                       myEvalForStudentVoicePostList[studentVoiceIndex].isLiked = true;
+                                      myUser.exp += 1;
                                     }
                                   });
                                 },
@@ -104,13 +107,16 @@ class _OneStudentVoicePageState extends State<OneStudentVoicePage> {
                                     if (myEvalForStudentVoicePostList[studentVoiceIndex].isDisliked) {
                                       studentVoicePostList[studentVoiceIndex].dislike--;
                                       myEvalForStudentVoicePostList[studentVoiceIndex].isDisliked = false;
+                                      myUser.exp -= 1;
                                     } else {
                                       if (myEvalForStudentVoicePostList[studentVoiceIndex].isLiked) {
                                         studentVoicePostList[studentVoiceIndex].like--;
                                         myEvalForStudentVoicePostList[studentVoiceIndex].isLiked = false;
+                                        myUser.exp -= 1;
                                       }
                                       studentVoicePostList[studentVoiceIndex].dislike++;
                                       myEvalForStudentVoicePostList[studentVoiceIndex].isDisliked = true;
+                                      myUser.exp += 1;
                                     }
                                   });
                                 },
@@ -151,6 +157,7 @@ class _OneStudentVoicePageState extends State<OneStudentVoicePage> {
                                     if (postCommentController.text.isNotEmpty) {
                                       postCommentList.insert(1, PostComment(1, studentVoiceIndex, myUser.nickname, DateTime.now(), postCommentController.text));
                                       postCommentController.clear();
+                                      myUser.exp += 3;
                                     }
                                     //keyboard hide
                                     FocusScope.of(context).unfocus();

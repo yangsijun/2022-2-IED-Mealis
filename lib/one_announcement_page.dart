@@ -101,6 +101,7 @@ class _OneAnnouncementPageState extends State<OneAnnouncementPage> {
                                     if (postCommentController.text.isNotEmpty) {
                                       postCommentList.insert(0, PostComment(0, announcementIndex, myUser.nickname, DateTime.now(), postCommentController.text));
                                       postCommentController.clear();
+                                      myUser.exp += 3;
                                     }
                                     //keyboard hide
                                     FocusScope.of(context).unfocus();

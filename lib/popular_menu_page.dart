@@ -29,7 +29,7 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
               avatar: Icon(Icons.comment, color: (myEvalMap[menuName]!.isCommented) ? Colors.orangeAccent : Theme.of(context).chipTheme.surfaceTintColor),
               label: Text(menuMap[menuName]!.stat.comment.toString(), style: TextStyle(color: (myEvalMap[menuName]!.isCommented) ? Colors.orangeAccent : Theme.of(context).chipTheme.surfaceTintColor, fontSize: 14)),
               onPressed: () {
-                commentDialog(context, menuName).then((value) => setState(() {}));
+                commentDialog(context, menuName).then((value) => setState(() {myUser.exp += 10;}));
               },
             ),
             ActionChip(
@@ -40,13 +40,16 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
                   if (myEvalMap[menuName]!.isLiked) {
                     menuMap[menuName]!.stat.like--;
                     myEvalMap[menuName]!.isLiked = false;
+                    myUser.exp -= 1;
                   } else {
                     if (myEvalMap[menuName]!.isDisliked) {
                       menuMap[menuName]!.stat.dislike--;
                       myEvalMap[menuName]!.isDisliked = false;
+                      myUser.exp -= 1;
                     }
                     menuMap[menuName]!.stat.like++;
                     myEvalMap[menuName]!.isLiked = true;
+                    myUser.exp += 1;
                   }
                 });
               },
@@ -59,13 +62,16 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
                   if (myEvalMap[menuName]!.isDisliked) {
                     menuMap[menuName]!.stat.dislike--;
                     myEvalMap[menuName]!.isDisliked = false;
+                    myUser.exp -= 1;
                   } else {
                     if (myEvalMap[menuName]!.isLiked) {
                       menuMap[menuName]!.stat.like--;
                       myEvalMap[menuName]!.isLiked = false;
+                      myUser.exp -= 1;
                     }
                     menuMap[menuName]!.stat.dislike++;
                     myEvalMap[menuName]!.isDisliked = true;
+                    myUser.exp += 1;
                   }
                 });
               },
