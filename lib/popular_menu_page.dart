@@ -82,7 +82,7 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
     );
   }
 
-  Widget _buildPopularMenuCard(String menuName, int rank) {
+  Widget _buildPopularMenuCard(BuildContext context, String menuName, int rank) {
     return SizedBox(
       width: double.infinity,
       child: IntrinsicHeight(
@@ -100,6 +100,45 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
                         context,
                         MaterialPageRoute(builder: (context) => OneMenuPage(menuName)),
                       ).then((value) => setState(() {}));
+                    },
+                    onLongPress: () {
+                      setState(() {
+                        showDialog(
+                          context: context,
+                          builder: (context) {
+                            return Dialog(
+                              child: SizedBox(
+                                  width: double.infinity,
+                                  child: Column(
+                                    mainAxisSize: MainAxisSize.min,
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      ClipRRect(
+                                        borderRadius: const BorderRadius.only(
+                                          topLeft: Radius.circular(28),
+                                          topRight: Radius.circular(28),
+                                        ),
+                                        child: Image.asset(
+                                          menuMap[menuName]!.image,
+                                          fit: BoxFit.fill,
+                                          errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
+                                            return const Image(
+                                              image: AssetImage('assets/images/no_image.jpg'),
+                                              fit: BoxFit.fill,
+                                            );
+                                          },
+                                        ),
+                                      ),
+                                      Container(
+                                        child: buildMenuCardContent(context, menuName),
+                                      ),
+                                    ],
+                                  ),
+                                ),
+                            );
+                          },
+                        );
+                      });
                     },
                     customBorder: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
@@ -215,7 +254,7 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     for (int i = 0; i < showPopularMenuNum; i++)
-                      _buildPopularMenuCard(menuRankingList[i].key, i + 1),
+                      _buildPopularMenuCard(context, menuRankingList[i].key, i + 1),
                     Container(
                       margin: const EdgeInsets.only(bottom: 10),
                       child: ElevatedButton(

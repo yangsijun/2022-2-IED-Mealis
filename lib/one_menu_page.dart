@@ -12,11 +12,8 @@ class OneMenuPage extends StatefulWidget {
   State<OneMenuPage> createState() => _OneMenuPageState(menuName);
 }
 
-class _OneMenuPageState extends State<OneMenuPage>{
-  _OneMenuPageState(this.menuName);
-  final String menuName;
-
-  Column _buildMenuCardContent(String menuName) {
+Widget buildMenuCardContent(BuildContext context, String menuName) {
+  return StatefulBuilder(builder: (BuildContext context, StateSetter setState) {
     return Column(
       children: <Widget>[
         ListTile(
@@ -81,7 +78,13 @@ class _OneMenuPageState extends State<OneMenuPage>{
         ),
       ],
     );
-  }
+  });
+}
+
+
+class _OneMenuPageState extends State<OneMenuPage>{
+  _OneMenuPageState(this.menuName);
+  final String menuName;
 
   List<Widget> _buildMenuCards(String menuName) {
     List<Widget> menuCards = [];
@@ -111,7 +114,7 @@ class _OneMenuPageState extends State<OneMenuPage>{
                     ),
                   ),
                   Container(
-                    child: _buildMenuCardContent(menu.menuName),
+                    child: buildMenuCardContent(context, menu.menuName),
                   ),
                 ],
               ),
