@@ -35,7 +35,12 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
               avatar: Icon(Icons.comment, color: (myEvalMap[menuName]!.isCommented) ? Colors.orangeAccent : Theme.of(context).chipTheme.surfaceTintColor),
               label: Text(menuMap[menuName]!.stat.comment.toString(), style: TextStyle(color: (myEvalMap[menuName]!.isCommented) ? Colors.orangeAccent : Theme.of(context).chipTheme.surfaceTintColor, fontSize: 14)),
               onPressed: () {
-                commentDialog(context, menuName).then((value) => setState(() {myUser.exp += 10;}));
+                showDialog(
+                  context: context,
+                  builder: (context) {
+                    return commentViewDialog(context, setState, menuName);
+                  },
+                );
               },
             ),
             ActionChip(
