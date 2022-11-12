@@ -3,8 +3,9 @@ import 'package:mealis/stat.dart';
 class Menu {
   String menuName;
   String restaurantName;
+  int price;
   Stat stat;
   String image;
 
-  Menu(this.menuName, this.restaurantName, this.stat, this.image);
+  Menu(this.menuName, this.restaurantName, this.price, this.stat, this.image);
 }

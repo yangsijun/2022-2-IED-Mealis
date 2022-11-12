@@ -18,7 +18,13 @@ Widget buildMenuCardContent(BuildContext context, String menuName) {
       children: <Widget>[
         ListTile(
           title: Text(menuName, style: Theme.of(context).textTheme.titleLarge, overflow: TextOverflow.ellipsis),
-          subtitle: Text(menuMap[menuName]!.restaurantName),
+          subtitle: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Text(menuMap[menuName]!.restaurantName, style: const TextStyle(fontSize: 16)),
+              Text('${menuMap[menuName]!.price} Won', style: const TextStyle(fontSize: 16),),
+            ],
+          ),
         ),
         ButtonBar(
           alignment: MainAxisAlignment.center,

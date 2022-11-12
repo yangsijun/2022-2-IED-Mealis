@@ -18,27 +18,142 @@ List<String> restaurantList = [
 ];
 
 Map<String, Menu> menuMap = {
-  'Pork Cutlet Kimchi Udon' : Menu('Pork Cutlet Kimchi Udon', 'Mix Rice', Stat(107, 2, 5), 'assets/images/pork_cutlet_kimchi_udon.jpg'),
-  'Tendon' : Menu('Tendon', 'Mix Rice', Stat(30, 10, 3), 'assets/images/tendon.jpg'),
-  'Backbone Spicy Soup' : Menu('Backbone Spicy Soup', 'Mix Rice', Stat(28, 10, 2), 'assets/images/backbone_spicy_soup.jpg'),
-  'Sirlon Donkatsu' : Menu('Sirlon Donkatsu', 'H.Plate', Stat(26, 10, 1), 'assets/images/sirlon_donkatsu.jpg'),
-  'Spicy Donkatsu' : Menu('Spicy Donkatsu', 'H.Plate', Stat(24, 10, 2), 'assets/images/spicy_donkatsu.jpg'),
-  'Rose Pasta' : Menu('Rose Pasta', 'H.Plate', Stat(76, 16, 5), 'assets/images/rose_pasta.jpg'),
-  'Bean Sprout Radish Beef Soup': Menu('Bean Sprout Radish Beef Soup', 'Mom\'s Kitchen', Stat(22, 10, 0), 'assets/images/bean_sprout_radish_beef_soup.jpg'),
-  'Handmade Donkatsu' : Menu('Handmade Donkatsu', 'Mom\'s Kitchen', Stat(20, 10, 2), 'assets/images/handmade_donkatsu.jpg'),
-  'Samgyetang' : Menu('Samgyetang', 'Mom\'s Kitchen', Stat(85, 10, 4), 'assets/images/samgyetang.jpg'),
-  'Korean Black Noodle' : Menu('Korean Black Noodle', 'Handong Lounge', Stat(19, 10, 2), 'assets/images/korean_black_noodle.jpg'),
-  'Nagasaki Jjampong' : Menu('Nagasaki Jjampong', 'Handong Lounge', Stat(18, 10, 3), 'assets/images/nagasaki_jjampong.jpg'),
-  'Pork Soup' : Menu('Pork Soup', 'Handong Lounge', Stat(17, 10, 2), 'assets/images/pork_soup.jpg'),
-  'Thai Lemon Chicken and Garlic Rice' : Menu('Thai Lemon Chicken and Garlic Rice', 'The Grace Table', Stat(16, 10, 0), 'assets/images/thai_lemon_chicken_and_garlic_rice.jpg'),
-  'Beef Curry' : Menu('Beef Curry', 'The Grace Table', Stat(15, 10, 0), 'assets/images/beef_curry.jpg'),
-  'Quesadilla' : Menu('Quesadilla', 'The Grace Table', Stat(14, 10, 0), 'assets/images/quesadilla.jpg'),
-  'Cockle Bibimbap' : Menu('Cockle Bibimbap', 'The Grace Table', Stat(13, 10, 0), 'assets/images/cockle_bibimbap.jpg'),
-  'Double Cheeseburger' : Menu('Double Cheeseburger', 'The Grace Table', Stat(13, 10, 1), 'assets/images/double_cheeseburger.jpg'),
-  'Burrito Bowl' : Menu('Burrito Bowl', 'The Grace Table', Stat(12, 10, 0), 'assets/images/burrito_bowl.jpg'),
-  'Thai Beef Salad' : Menu('Thai Beef Salad', 'The Grace Table', Stat(11, 10, 0), 'assets/images/thai_beef_salad.jpg'),
-  'Braised Chicken' : Menu('Braised Chicken', 'Han\'s Deli', Stat(10, 10, 0), 'assets/images/braised_chicken.jpg'),
-  'Braised Chicken with Cheese' : Menu('Braised Chicken with Cheese', 'Han\'s Deli', Stat(26, 5, 2), 'assets/images/braised_chicken_with_cheese.jpg'),
+  'Pork Cutlet Kimchi Udon' : Menu(
+      'Pork Cutlet Kimchi Udon',
+      'Mix Rice',
+      5000,
+      Stat(107, 2, 5),
+      'assets/images/pork_cutlet_kimchi_udon.jpg'
+  ),
+  'Tendon' : Menu(
+      'Tendon',
+      'Mix Rice',
+      5000,
+      Stat(30, 10, 3),
+      'assets/images/tendon.jpg'
+  ),
+  'Backbone Spicy Soup' : Menu(
+      'Backbone Spicy Soup',
+      'Mix Rice',
+      4600,
+      Stat(28, 10, 2),
+      'assets/images/backbone_spicy_soup.jpg'
+  ),
+  'Sirlon Donkatsu' : Menu(
+      'Sirlon Donkatsu',
+      'H.Plate',
+      4300,
+      Stat(26, 10, 1),
+      'assets/images/sirlon_donkatsu.jpg'
+  ),
+  'Spicy Donkatsu' : Menu(
+      'Spicy Donkatsu',
+      'H.Plate',
+      5000,
+      Stat(24, 10, 2),
+      'assets/images/spicy_donkatsu.jpg'
+  ),
+  'Rose Pasta' : Menu(
+      'Rose Pasta',
+      'H.Plate',
+      5000,
+      Stat(76, 16, 5),
+      'assets/images/rose_pasta.jpg'
+  ),
+  'Bean Sprout Radish Beef Soup': Menu(
+      'Bean Sprout Radish Beef Soup',
+      'Mom\'s Kitchen',
+      5000,
+      Stat(22, 10, 0),
+      'assets/images/bean_sprout_radish_beef_soup.jpg'
+  ),
+  'Handmade Donkatsu' : Menu(
+      'Handmade Donkatsu',
+      'Mom\'s Kitchen',
+      5000,
+      Stat(20, 10, 2),
+      'assets/images/handmade_donkatsu.jpg'
+  ),
+  'Samgyetang' : Menu(
+      'Samgyetang',
+      'Mom\'s Kitchen',
+      5000,
+      Stat(85, 10, 4),
+      'assets/images/samgyetang.jpg'
+  ),
+  'Korean Black Noodle' : Menu(
+      'Korean Black Noodle',
+      'Handong Lounge',
+      5000,
+      Stat(19, 10, 2),
+      'assets/images/korean_black_noodle.jpg'
+  ),
+  'Nagasaki Jjampong' : Menu(
+      'Nagasaki Jjampong',
+      'Handong Lounge',
+      5000,
+      Stat(18, 10, 3),
+      'assets/images/nagasaki_jjampong.jpg'),
+  'Pork Soup' : Menu(
+      'Pork Soup',
+      'Handong Lounge',
+      5000,
+      Stat(17, 10, 2),
+      'assets/images/pork_soup.jpg'),
+  'Thai Lemon Chicken and Garlic Rice' : Menu(
+      'Thai Lemon Chicken and Garlic Rice',
+      'The Grace Table',
+      5000,
+      Stat(16, 10, 0),
+      'assets/images/thai_lemon_chicken_and_garlic_rice.jpg'),
+  'Beef Curry' : Menu(
+      'Beef Curry',
+      'The Grace Table',
+      5000,
+      Stat(15, 10, 0),
+      'assets/images/beef_curry.jpg'),
+  'Quesadilla' : Menu(
+      'Quesadilla',
+      'The Grace Table',
+      5000,
+      Stat(14, 10, 0),
+      'assets/images/quesadilla.jpg'),
+  'Cockle Bibimbap' : Menu(
+      'Cockle Bibimbap',
+      'The Grace Table',
+      5000,
+      Stat(13, 10, 0),
+      'assets/images/cockle_bibimbap.jpg'),
+  'Double Cheeseburger' : Menu(
+      'Double Cheeseburger',
+      'The Grace Table',
+      5000,
+      Stat(13, 10, 1),
+      'assets/images/double_cheeseburger.jpg'),
+  'Burrito Bowl' : Menu(
+      'Burrito Bowl',
+      'The Grace Table',
+      5000,
+      Stat(12, 10, 0),
+      'assets/images/burrito_bowl.jpg'),
+  'Thai Beef Salad' : Menu(
+      'Thai Beef Salad',
+      'The Grace Table',
+      5000,
+      Stat(11, 10, 0),
+      'assets/images/thai_beef_salad.jpg'),
+  'Braised Chicken' : Menu(
+      'Braised Chicken',
+      'Han\'s Deli',
+      5000,
+      Stat(10, 10, 0),
+      'assets/images/braised_chicken.jpg'),
+  'Braised Chicken with Cheese' : Menu(
+      'Braised Chicken with Cheese',
+      'Han\'s Deli',
+      5000,
+      Stat(26, 5, 2),
+      'assets/images/braised_chicken_with_cheese.jpg'),
 };
 
 List<MenuComment> commentList = [
