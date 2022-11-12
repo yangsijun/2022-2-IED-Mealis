@@ -231,8 +231,9 @@ class RestaurantInfo {
   List<String> operatingTimeTextList;
   int waitingTime;
   int waitingPeople;
+  bool isAvailable;
 
-  RestaurantInfo(this.restaurantName, this.operatingTimeTextList, this.waitingTime, this.waitingPeople);
+  RestaurantInfo(this.restaurantName, this.operatingTimeTextList, this.waitingTime, this.waitingPeople, this.isAvailable);
 }
 
 Map<String, RestaurantInfo> restaurantInfoMap = {
@@ -246,6 +247,7 @@ Map<String, RestaurantInfo> restaurantInfoMap = {
     ],
     8,
     12,
+    true,
   ),
   'Korean Table' : RestaurantInfo(
     'Korean Table',
@@ -257,6 +259,7 @@ Map<String, RestaurantInfo> restaurantInfoMap = {
     ],
     5,
     10,
+    false,
   ),
   'H.Plate' : RestaurantInfo(
     'H.Plate',
@@ -268,6 +271,7 @@ Map<String, RestaurantInfo> restaurantInfoMap = {
     ],
     10,
     5,
+    false,
   ),
   'Mom\'s Kitchen' : RestaurantInfo(
     'Mom\'s Kitchen',
@@ -279,6 +283,7 @@ Map<String, RestaurantInfo> restaurantInfoMap = {
     ],
     3,
     8,
+    true,
   ),
   'Handong Lounge' : RestaurantInfo(
     'Handong Lounge',
@@ -290,6 +295,7 @@ Map<String, RestaurantInfo> restaurantInfoMap = {
     ],
     15,
     40,
+    false,
   ),
   'Burger King' : RestaurantInfo(
     'Burger King',
@@ -301,6 +307,7 @@ Map<String, RestaurantInfo> restaurantInfoMap = {
     ],
     25,
     25,
+    true,
   ),
   'The Grace Table' : RestaurantInfo(
     'The Grace Table',
@@ -312,6 +319,7 @@ Map<String, RestaurantInfo> restaurantInfoMap = {
     ],
     22,
     10,
+    false,
   ),
   'In Breeze (Bokjidong)' : RestaurantInfo(
     'In Breeze (Bokjidong)',
@@ -323,6 +331,7 @@ Map<String, RestaurantInfo> restaurantInfoMap = {
     ],
     24,
     8,
+    true,
   ),
   'Red Neoguri' : RestaurantInfo(
     'Red Neoguri',
@@ -334,6 +343,7 @@ Map<String, RestaurantInfo> restaurantInfoMap = {
     ],
     24,
     17,
+    true,
   ),
   'Farm\'s Valley' : RestaurantInfo(
     'Farm\'s Valley',
@@ -345,6 +355,7 @@ Map<String, RestaurantInfo> restaurantInfoMap = {
     ],
     21,
     4,
+    true,
   ),
   'Han\'s Deli' : RestaurantInfo(
     'Han\'s Deli',
@@ -356,6 +367,7 @@ Map<String, RestaurantInfo> restaurantInfoMap = {
     ],
     16,
     4,
+    true,
   ),
   'In Breeze (Papyrus)' : RestaurantInfo(
     'In Breeze (Papyrus)',
@@ -367,6 +379,7 @@ Map<String, RestaurantInfo> restaurantInfoMap = {
     ],
     22,
     5,
+    true,
   ),
 };
 

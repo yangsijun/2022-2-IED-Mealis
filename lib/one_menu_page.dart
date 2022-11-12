@@ -18,7 +18,7 @@ Widget buildMenuCardContent(BuildContext context, String menuName) {
       return Column(
         children: <Widget>[
           ListTile(
-            title: Text(menuName, style: Theme.of(context).textTheme.titleLarge, overflow: TextOverflow.ellipsis),
+            title: Text(menuName, style: Theme.of(context).textTheme.titleLarge, overflow: TextOverflow.fade, softWrap: false,),
             subtitle: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -191,7 +191,7 @@ List<Widget> getMenuComments(BuildContext context, String menuName) {
       menuComments.add(
         Container(
           padding: const EdgeInsets.only(left: 20, right: 20),
-          child: Text(comment.commentText, style: Theme.of(context).textTheme.bodyLarge, overflow: TextOverflow.ellipsis),
+          child: Text(comment.commentText, style: Theme.of(context).textTheme.bodyLarge, overflow: TextOverflow.fade, softWrap: false,),
         ),
       );
       menuComments.add(const Divider());

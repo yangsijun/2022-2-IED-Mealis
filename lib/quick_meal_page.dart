@@ -14,12 +14,67 @@ class _QuickMealPageState extends State<QuickMealPage> {
   _QuickMealPageState(this.goToPage);
   final void Function(int index) goToPage;
 
+  Column _buildRestaurantTileContent(String restaurantName, int rank) {
+    return Column(
+      mainAxisSize: MainAxisSize.max,
+      children: <Widget>[
+        ListTile(
+          title: (restaurantInfoMap[restaurantName]!.isAvailable)
+            ? Text('$rank. $restaurantName', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20), overflow: TextOverflow.fade, softWrap: false,)
+            : Text('$rank. $restaurantName', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20, color: Colors.grey, decoration: TextDecoration.lineThrough), overflow: TextOverflow.fade, softWrap: false,),
+        ),
+        ConstrainedBox(
+          constraints: const BoxConstraints(maxWidth: double.infinity, maxHeight: 75, minWidth: 300, minHeight: 75),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text('Now Waiting', style: Theme.of(context).textTheme.bodyLarge, textAlign: TextAlign.center),
+                  const SizedBox(height: 5),
+                  Icon(
+                    (!restaurantInfoMap[restaurantName]!.isAvailable)
+                      ? Icons.no_meals
+                      : (restaurantInfoMap[restaurantName]!.waitingPeople > 30)
+                        ? Icons.groups
+                        : (restaurantInfoMap[restaurantName]!.waitingPeople > 10)
+                          ? Icons.group
+                          : Icons.person,
+                    color: Colors.grey,
+                    size: 40,
+                  ),
+                ],
+              ),
+              Column(
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Text('Waiting Time', style: Theme.of(context).textTheme.bodyLarge, textAlign: TextAlign.center),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                    textBaseline: TextBaseline.alphabetic,
+                    children: [
+                      Text(restaurantInfoMap[restaurantName]!.waitingTime.toString(), style: Theme.of(context).textTheme.displaySmall),
+                      Text((restaurantInfoMap[restaurantName]!.waitingTime > 1) ? ' minutes' : ' minute', style: Theme.of(context).textTheme.bodyLarge),
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(height: 10,)
+      ],
+    );
+  }
+
   Widget _buildQuickMealCard(String restaurantName, int rank) {
     return SizedBox(
       width: double.infinity,
       child: IntrinsicHeight(
         child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
             Flexible(
               flex: 1,
@@ -38,77 +93,8 @@ class _QuickMealPageState extends State<QuickMealPage> {
                     customBorder: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
-                    child: SizedBox(
-                      height: 135,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Flexible(
-                            flex: 1,
-                            child: SizedBox(
-                              width: double.infinity,
-                              child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text('$rank', style: (rank < 10) ? Theme.of(context).textTheme.displayMedium : Theme.of(context).textTheme.displaySmall, textAlign: TextAlign.center),
-                                ],
-                              ),
-                            ),
-                          ),
-                          const VerticalDivider(),
-                          Flexible(
-                            flex: 4,
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              children: [
-                                Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text(restaurantName, style: Theme.of(context).textTheme.headlineSmall),
-                                    const SizedBox(height: 5),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Column(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: [
-                                            Text('Now Waiting', style: Theme.of(context).textTheme.bodyLarge, textAlign: TextAlign.center),
-                                            Row(
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              crossAxisAlignment: CrossAxisAlignment.baseline,
-                                              textBaseline: TextBaseline.alphabetic,
-                                              children: [
-                                                Text(restaurantInfoMap[restaurantName]!.waitingPeople.toString(), style: Theme.of(context).textTheme.displaySmall),
-                                                Text((restaurantInfoMap[restaurantName]!.waitingPeople > 1) ? ' people' : ' person', style: Theme.of(context).textTheme.bodyLarge),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                        const SizedBox(width: 30),
-                                        Column(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: [
-                                            Text('Waiting Time', style: Theme.of(context).textTheme.bodyLarge, textAlign: TextAlign.center),
-                                            Row(
-                                              mainAxisAlignment: MainAxisAlignment.center,
-                                              crossAxisAlignment: CrossAxisAlignment.baseline,
-                                              textBaseline: TextBaseline.alphabetic,
-                                              children: [
-                                                Text(restaurantInfoMap[restaurantName]!.waitingTime.toString(), style: Theme.of(context).textTheme.displaySmall),
-                                                Text((restaurantInfoMap[restaurantName]!.waitingTime > 1) ? ' minutes' : ' minute', style: Theme.of(context).textTheme.bodyLarge),
-                                              ],
-                                            ),
-                                          ],
-                                        ),
-                                      ],
-                                    ),
-                                  ],
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
+                    child: Container(
+                      child: _buildRestaurantTileContent(restaurantName, rank),
                     ),
                   ),
                 ),

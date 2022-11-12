@@ -65,7 +65,7 @@ class _OneRestaurantPageState extends State<OneRestaurantPage>{
                         mainAxisAlignment: MainAxisAlignment.center,
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
-                          Text(menu.menuName, style: Theme.of(context).textTheme.bodyLarge, overflow: TextOverflow.ellipsis, textAlign: TextAlign.center,),
+                          Text(menu.menuName, style: Theme.of(context).textTheme.bodyLarge, overflow: TextOverflow.fade, softWrap: false, textAlign: TextAlign.center,),
                         ],
                       ),
                     ),

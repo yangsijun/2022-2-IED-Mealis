@@ -15,18 +15,51 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
   _PopularMenuPageState(this.goToPage);
   final void Function(int index) goToPage;
 
-  Column _buildMenuCardContent(String menuName) {
+  Column _buildMenuTileContent(String menuName, int rank) {
     return Column(
       children: <Widget>[
-        ListTile(
-          title: Text(menuName, style: Theme.of(context).textTheme.titleLarge, overflow: TextOverflow.ellipsis),
-          subtitle: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+        Container(
+          child: Row(
             children: [
-              Text(menuMap[menuName]!.restaurantName, style: const TextStyle(fontSize: 16),),
-              Text('${menuMap[menuName]!.price} Won', style: const TextStyle(fontSize: 16),),
+              SizedBox(
+                width: 100,
+                child: ClipRRect(
+                  borderRadius: const BorderRadius.only(
+                    topLeft: Radius.circular(10),
+                  ),
+                  child: Image.asset(
+                    menuMap[menuName]!.image,
+                    width: 100,
+                    height: 100,
+                    fit: BoxFit.fill,
+                    errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
+                      return const Image(
+                        image: AssetImage('assets/images/no_image.jpg'),
+                        fit: BoxFit.fill,
+                      );
+                    },
+                  ),
+                ),
+              ),
+              Expanded(
+                child: ListTile(
+                  title: (restaurantInfoMap[menuMap[menuName]!.restaurantName]!.isAvailable)
+                      ? Text('$rank. $menuName', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20), overflow: TextOverflow.fade, softWrap: false,)
+                      : Text('$rank. $menuName', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20, color: Colors.grey, decoration: TextDecoration.lineThrough), overflow: TextOverflow.fade, softWrap: false,),
+                  subtitle: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text(menuMap[menuName]!.restaurantName, style: const TextStyle(fontSize: 16),),
+                      Text('${menuMap[menuName]!.price} Won', style: const TextStyle(fontSize: 16),),
+                    ],
+                  ),
+                ),
+              ),
             ],
           ),
+        ),
+        const Divider(
+          height: 1,
         ),
         ButtonBar(
           alignment: MainAxisAlignment.center,
@@ -154,29 +187,8 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
                     customBorder: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10.0),
                     ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      children: [
-                        Flexible(
-                          flex: 1,
-                          child: SizedBox(
-                            width: double.infinity,
-                            child: Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  Text('$rank', style: (rank < 10) ? Theme.of(context).textTheme.displayMedium : Theme.of(context).textTheme.displaySmall, textAlign: TextAlign.center),
-                                ],
-                            ),
-                          ),
-                        ),
-                        const VerticalDivider(),
-                        Flexible(
-                          flex: 4,
-                          child: Container(
-                            child: _buildMenuCardContent(menuName),
-                          ),
-                        ),
-                      ],
+                    child: Container(
+                      child: _buildMenuTileContent(menuName, rank),
                     ),
                   ),
                 ),
@@ -216,13 +228,13 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
                       borderRadius: const BorderRadius.all(Radius.circular(10)),
                       color: Theme.of(context).colorScheme.secondaryContainer,
                     ),
-                    child: Text(commentList[index].menuName, style: Theme.of(context).textTheme.labelLarge, overflow: TextOverflow.ellipsis, textAlign: TextAlign.center,),
+                    child: Text(commentList[index].menuName, style: Theme.of(context).textTheme.labelLarge, overflow: TextOverflow.fade, softWrap: false, textAlign: TextAlign.center,),
                   ),
                 ),
                 const SizedBox(width: 20),
                 Flexible(
                   flex: 3,
-                  child: Text(commentList[index].commentText, style: Theme.of(context).textTheme.bodyMedium, overflow: TextOverflow.ellipsis),
+                  child: Text(commentList[index].commentText, style: Theme.of(context).textTheme.bodyMedium, overflow: TextOverflow.fade, softWrap: false,),
                 ),
               ],
             ),
