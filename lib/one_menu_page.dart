@@ -22,7 +22,10 @@ Widget buildMenuCardContent(BuildContext context, String menuName) {
               ? Text(menuName, style: Theme.of(context).textTheme.titleLarge, overflow: TextOverflow.fade, softWrap: false,)
               : Row(
                   children: [
-                    Text(menuName, style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.grey, decoration: TextDecoration.lineThrough), overflow: TextOverflow.fade, softWrap: false,),
+                    Container(
+                      constraints: const BoxConstraints(maxWidth: 270),
+                      child: Text(menuName, style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.grey, decoration: TextDecoration.lineThrough), overflow: TextOverflow.fade, softWrap: false,),
+                    ),
                     Expanded(
                       child: Text(' (Unavailable)', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20, color: Colors.redAccent), overflow: TextOverflow.fade, softWrap: false),
                     ),
@@ -245,8 +248,13 @@ class _OneMenuPageState extends State<OneMenuPage>{
               ? Text(menuName, style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20), overflow: TextOverflow.fade, softWrap: false)
               : Row(
                   children: [
-                    Text(menuName, style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20, color: Colors.grey, decoration: TextDecoration.lineThrough), overflow: TextOverflow.fade, softWrap: false),
-                    Text(' (Unavailable)', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20, color: Colors.redAccent), overflow: TextOverflow.fade, softWrap: false),
+                    Container(
+                      constraints: const BoxConstraints(maxWidth: 270),
+                      child: Text(menuName, style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20, color: Colors.grey, decoration: TextDecoration.lineThrough), overflow: TextOverflow.fade, softWrap: false),
+                    ),
+                    Expanded(
+                      child: Text(' (Unavailable)', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20, color: Colors.redAccent), overflow: TextOverflow.fade, softWrap: false),
+                    ),
                   ],
                 ),
           ),

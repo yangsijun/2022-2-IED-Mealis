@@ -52,7 +52,10 @@ Column _buildMenuTileContent(BuildContext context, StateSetter setState, String 
                   ? Text('$rank. $menuName', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20), overflow: TextOverflow.fade, softWrap: false,)
                   : Row(
                       children: [
-                        Text('$rank. $menuName', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20, color: Colors.grey, decoration: TextDecoration.lineThrough), overflow: TextOverflow.fade, softWrap: false,),
+                        Container(
+                          constraints: const BoxConstraints(maxWidth: 150),
+                          child: Text('$rank. $menuName', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20, color: Colors.grey, decoration: TextDecoration.lineThrough), overflow: TextOverflow.fade, softWrap: false,),
+                        ),
                         Expanded(
                           child: Text(' (Unavailable)', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20, color: Colors.redAccent), overflow: TextOverflow.fade, softWrap: false),
                         ),

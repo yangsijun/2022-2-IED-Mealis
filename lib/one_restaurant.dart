@@ -97,7 +97,10 @@ class _OneRestaurantPageState extends State<OneRestaurantPage>{
               ? Text(restaurantList[restaurantIndex], style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20), overflow: TextOverflow.fade, softWrap: false,)
               : Row(
                   children: [
-                    Text(restaurantList[restaurantIndex], style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20, color: Colors.grey, decoration: TextDecoration.lineThrough), overflow: TextOverflow.fade, softWrap: false,),
+                    Container(
+                      constraints: const BoxConstraints(maxWidth: 270),
+                      child: Text(restaurantList[restaurantIndex], style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20, color: Colors.grey, decoration: TextDecoration.lineThrough), overflow: TextOverflow.fade, softWrap: false,),
+                    ),
                     Expanded(
                       child: Text(' (Unavailable)', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20, color: Colors.redAccent), overflow: TextOverflow.fade, softWrap: false),
                     ),
