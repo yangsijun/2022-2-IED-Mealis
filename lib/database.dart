@@ -23,137 +23,169 @@ Map<String, Menu> menuMap = {
       'Mix Rice',
       5000,
       Stat(107, 2, 5),
-      'assets/images/pork_cutlet_kimchi_udon.jpg'
+      'assets/images/pork_cutlet_kimchi_udon.jpg',
+      true
   ),
   'Tendon' : Menu(
       'Tendon',
       'Mix Rice',
       5000,
       Stat(30, 10, 3),
-      'assets/images/tendon.jpg'
+      'assets/images/tendon.jpg',
+      true
   ),
   'Backbone Spicy Soup' : Menu(
       'Backbone Spicy Soup',
       'Mix Rice',
       4600,
       Stat(28, 10, 2),
-      'assets/images/backbone_spicy_soup.jpg'
+      'assets/images/backbone_spicy_soup.jpg',
+      true
   ),
   'Sirlon Donkatsu' : Menu(
       'Sirlon Donkatsu',
       'H.Plate',
       4300,
       Stat(26, 10, 1),
-      'assets/images/sirlon_donkatsu.jpg'
+      'assets/images/sirlon_donkatsu.jpg',
+      true
   ),
   'Spicy Donkatsu' : Menu(
       'Spicy Donkatsu',
       'H.Plate',
       5000,
       Stat(24, 10, 2),
-      'assets/images/spicy_donkatsu.jpg'
+      'assets/images/spicy_donkatsu.jpg',
+      true
   ),
   'Rose Pasta' : Menu(
       'Rose Pasta',
       'H.Plate',
       5000,
       Stat(76, 16, 5),
-      'assets/images/rose_pasta.jpg'
+      'assets/images/rose_pasta.jpg',
+      true,
   ),
   'Bean Sprout Radish Beef Soup': Menu(
       'Bean Sprout Radish Beef Soup',
       'Mom\'s Kitchen',
       5000,
       Stat(22, 10, 0),
-      'assets/images/bean_sprout_radish_beef_soup.jpg'
+      'assets/images/bean_sprout_radish_beef_soup.jpg',
+      true
   ),
   'Handmade Donkatsu' : Menu(
       'Handmade Donkatsu',
       'Mom\'s Kitchen',
       5000,
       Stat(20, 10, 2),
-      'assets/images/handmade_donkatsu.jpg'
+      'assets/images/handmade_donkatsu.jpg',
+      true
   ),
   'Samgyetang' : Menu(
       'Samgyetang',
       'Mom\'s Kitchen',
       5000,
       Stat(85, 10, 4),
-      'assets/images/samgyetang.jpg'
+      'assets/images/samgyetang.jpg',
+      true
   ),
   'Korean Black Noodle' : Menu(
       'Korean Black Noodle',
       'Handong Lounge',
       5000,
       Stat(19, 10, 2),
-      'assets/images/korean_black_noodle.jpg'
+      'assets/images/korean_black_noodle.jpg',
+      true
   ),
   'Nagasaki Jjampong' : Menu(
       'Nagasaki Jjampong',
       'Handong Lounge',
       5000,
       Stat(18, 10, 3),
-      'assets/images/nagasaki_jjampong.jpg'),
+      'assets/images/nagasaki_jjampong.jpg',
+      true
+  ),
   'Pork Soup' : Menu(
       'Pork Soup',
       'Handong Lounge',
       5000,
       Stat(17, 10, 2),
-      'assets/images/pork_soup.jpg'),
+      'assets/images/pork_soup.jpg',
+      true
+  ),
   'Thai Lemon Chicken and Garlic Rice' : Menu(
       'Thai Lemon Chicken and Garlic Rice',
       'The Grace Table',
       5000,
       Stat(16, 10, 0),
-      'assets/images/thai_lemon_chicken_and_garlic_rice.jpg'),
+      'assets/images/thai_lemon_chicken_and_garlic_rice.jpg',
+      true
+  ),
   'Beef Curry' : Menu(
       'Beef Curry',
       'The Grace Table',
       5000,
       Stat(15, 10, 0),
-      'assets/images/beef_curry.jpg'),
+      'assets/images/beef_curry.jpg',
+      true
+  ),
   'Quesadilla' : Menu(
       'Quesadilla',
       'The Grace Table',
       5000,
       Stat(14, 10, 0),
-      'assets/images/quesadilla.jpg'),
+      'assets/images/quesadilla.jpg',
+      true
+  ),
   'Cockle Bibimbap' : Menu(
       'Cockle Bibimbap',
       'The Grace Table',
       5000,
       Stat(13, 10, 0),
-      'assets/images/cockle_bibimbap.jpg'),
+      'assets/images/cockle_bibimbap.jpg',
+      true
+  ),
   'Double Cheeseburger' : Menu(
       'Double Cheeseburger',
       'The Grace Table',
       5000,
       Stat(13, 10, 1),
-      'assets/images/double_cheeseburger.jpg'),
+      'assets/images/double_cheeseburger.jpg',
+      true
+  ),
   'Burrito Bowl' : Menu(
       'Burrito Bowl',
       'The Grace Table',
       5000,
       Stat(12, 10, 0),
-      'assets/images/burrito_bowl.jpg'),
+      'assets/images/burrito_bowl.jpg',
+      true
+  ),
   'Thai Beef Salad' : Menu(
       'Thai Beef Salad',
       'The Grace Table',
       5000,
       Stat(11, 10, 0),
-      'assets/images/thai_beef_salad.jpg'),
+      'assets/images/thai_beef_salad.jpg',
+      true
+  ),
   'Braised Chicken' : Menu(
       'Braised Chicken',
       'Han\'s Deli',
       5000,
       Stat(10, 10, 0),
-      'assets/images/braised_chicken.jpg'),
+      'assets/images/braised_chicken.jpg',
+      false
+  ),
   'Braised Chicken with Cheese' : Menu(
       'Braised Chicken with Cheese',
       'Han\'s Deli',
       5000,
       Stat(26, 5, 2),
-      'assets/images/braised_chicken_with_cheese.jpg'),
+      'assets/images/braised_chicken_with_cheese.jpg',
+      false
+  ),
 };
 
 List<MenuComment> commentList = [

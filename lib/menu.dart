@@ -6,6 +6,7 @@ class Menu {
   int price;
   Stat stat;
   String image;
+  bool isAvailable;
 
-  Menu(this.menuName, this.restaurantName, this.price, this.stat, this.image);
+  Menu(this.menuName, this.restaurantName, this.price, this.stat, this.image, this.isAvailable);
 }

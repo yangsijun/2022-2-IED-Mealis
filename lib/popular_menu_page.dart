@@ -48,7 +48,7 @@ Column _buildMenuTileContent(BuildContext context, StateSetter setState, String 
           ),
           Expanded(
             child: ListTile(
-              title: (restaurantInfoMap[menuMap[menuName]!.restaurantName]!.isAvailable)
+              title: (restaurantInfoMap[menuMap[menuName]!.restaurantName]!.isAvailable && menuMap[menuName]!.isAvailable)
                   ? Text('$rank. $menuName', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20), overflow: TextOverflow.fade, softWrap: false,)
                   : Text('$rank. $menuName', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20, color: Colors.grey, decoration: TextDecoration.lineThrough), overflow: TextOverflow.fade, softWrap: false,),
               subtitle: Row(
