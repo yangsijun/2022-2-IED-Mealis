@@ -92,7 +92,9 @@ class _OneRestaurantPageState extends State<OneRestaurantPage>{
                 Navigator.pop(context);
               },
             ),
-            title: Text(restaurantList[restaurantIndex]),
+            title: (restaurantInfoMap[restaurantList[restaurantIndex]]!.isAvailable)
+              ? Text(restaurantList[restaurantIndex], style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20), overflow: TextOverflow.fade, softWrap: false,)
+              : Text(restaurantList[restaurantIndex], style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20, color: Colors.grey, decoration: TextDecoration.lineThrough), overflow: TextOverflow.fade, softWrap: false,),
           ),
           SliverToBoxAdapter(
             child: Center(
@@ -119,43 +121,86 @@ class _OneRestaurantPageState extends State<OneRestaurantPage>{
                           const Divider(),
                           const SizedBox(height: 10),
                           Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
-                              Flexible(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text('Now Waiting', style: Theme.of(context).textTheme.bodyLarge, textAlign: TextAlign.center),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      crossAxisAlignment: CrossAxisAlignment.baseline,
-                                      textBaseline: TextBaseline.alphabetic,
-                                      children: [
-                                        Text(restaurantInfoMap[restaurantList[restaurantIndex]]!.waitingPeople.toString(), style: Theme.of(context).textTheme.displayLarge),
-                                        Text((restaurantInfoMap[restaurantList[restaurantIndex]]!.waitingPeople > 1) ? ' people' : ' person', style: Theme.of(context).textTheme.bodyLarge),
-                                      ],
-                                    ),
-                                  ],
-                                ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text('Now Waiting', style: Theme.of(context).textTheme.bodyLarge, textAlign: TextAlign.center),
+                                  const SizedBox(height: 5),
+                                  Icon(
+                                    (!restaurantInfoMap[restaurantList[restaurantIndex]]!.isAvailable)
+                                        ? Icons.no_meals
+                                        : (restaurantInfoMap[restaurantList[restaurantIndex]]!.waitingPeople > 30)
+                                        ? Icons.groups
+                                        : (restaurantInfoMap[restaurantList[restaurantIndex]]!.waitingPeople > 10)
+                                        ? Icons.group
+                                        : Icons.person,
+                                    color: Colors.grey,
+                                    size: 40,
+                                  ),
+                                ],
                               ),
-                              Flexible(
-                                child: Column(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  children: [
-                                    Text('Waiting Time', style: Theme.of(context).textTheme.bodyLarge, textAlign: TextAlign.center),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      crossAxisAlignment: CrossAxisAlignment.baseline,
-                                      textBaseline: TextBaseline.alphabetic,
-                                      children: [
-                                        Text(restaurantInfoMap[restaurantList[restaurantIndex]]!.waitingTime.toString(), style: Theme.of(context).textTheme.displayLarge),
-                                        Text((restaurantInfoMap[restaurantList[restaurantIndex]]!.waitingTime > 1) ? ' minutes' : ' minute', style: Theme.of(context).textTheme.bodyLarge),
-                                      ],
-                                    ),
-                                  ],
-                                ),
+                              Column(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Text('Waiting Time', style: Theme.of(context).textTheme.bodyLarge, textAlign: TextAlign.center),
+                                  (restaurantInfoMap[restaurantList[restaurantIndex]]!.isAvailable)
+                                      ? Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    crossAxisAlignment: CrossAxisAlignment.baseline,
+                                    textBaseline: TextBaseline.alphabetic,
+                                    children: [
+                                      Text(restaurantInfoMap[restaurantList[restaurantIndex]]!.waitingTime.toString(), style: Theme.of(context).textTheme.displaySmall),
+                                      Text((restaurantInfoMap[restaurantList[restaurantIndex]]!.waitingTime > 1) ? ' minutes' : ' minute', style: Theme.of(context).textTheme.bodyLarge),
+                                    ],
+                                  )
+                                      : Column(
+                                    children: [
+                                      const SizedBox(height: 15),
+                                      Text('Not Available', style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.redAccent)),
+                                    ],
+                                  ),
+                                ],
                               ),
                             ],
+                            // mainAxisAlignment: MainAxisAlignment.center,
+                            // children: [
+                            //   Flexible(
+                            //     child: Column(
+                            //       mainAxisAlignment: MainAxisAlignment.center,
+                            //       children: [
+                            //         Text('Now Waiting', style: Theme.of(context).textTheme.bodyLarge, textAlign: TextAlign.center),
+                            //         Row(
+                            //           mainAxisAlignment: MainAxisAlignment.center,
+                            //           crossAxisAlignment: CrossAxisAlignment.baseline,
+                            //           textBaseline: TextBaseline.alphabetic,
+                            //           children: [
+                            //             Text(restaurantInfoMap[restaurantList[restaurantIndex]]!.waitingPeople.toString(), style: Theme.of(context).textTheme.displayLarge),
+                            //             Text((restaurantInfoMap[restaurantList[restaurantIndex]]!.waitingPeople > 1) ? ' people' : ' person', style: Theme.of(context).textTheme.bodyLarge),
+                            //           ],
+                            //         ),
+                            //       ],
+                            //     ),
+                            //   ),
+                            //   Flexible(
+                            //     child: Column(
+                            //       mainAxisAlignment: MainAxisAlignment.center,
+                            //       children: [
+                            //         Text('Waiting Time', style: Theme.of(context).textTheme.bodyLarge, textAlign: TextAlign.center),
+                            //         Row(
+                            //           mainAxisAlignment: MainAxisAlignment.center,
+                            //           crossAxisAlignment: CrossAxisAlignment.baseline,
+                            //           textBaseline: TextBaseline.alphabetic,
+                            //           children: [
+                            //             Text(restaurantInfoMap[restaurantList[restaurantIndex]]!.waitingTime.toString(), style: Theme.of(context).textTheme.displayLarge),
+                            //             Text((restaurantInfoMap[restaurantList[restaurantIndex]]!.waitingTime > 1) ? ' minutes' : ' minute', style: Theme.of(context).textTheme.bodyLarge),
+                            //           ],
+                            //         ),
+                            //       ],
+                            //     ),
+                            //   ),
+                            // ],
                           ),
                           const SizedBox(height: 10),
                         ],
