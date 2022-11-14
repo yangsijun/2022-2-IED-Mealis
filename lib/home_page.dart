@@ -454,7 +454,7 @@ class _HomePageState extends State<HomePage> {
                                           ),
                                           child: InkWell(
                                             onTap: () {
-                                              goToPage(2);
+                                              goToPage(1);
                                             },
                                             customBorder:
                                                 RoundedRectangleBorder(
