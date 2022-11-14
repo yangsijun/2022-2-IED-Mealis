@@ -42,6 +42,7 @@ class _OneRestaurantPageState extends State<OneRestaurantPage>{
                   children: [
                     Flexible(
                       flex: 17,
+                      fit: FlexFit.tight,
                       child: ClipRRect(
                         borderRadius: const BorderRadius.only(
                           topLeft: Radius.circular(10),
@@ -49,11 +50,11 @@ class _OneRestaurantPageState extends State<OneRestaurantPage>{
                         ),
                         child: Image.asset(
                           menu.image,
-                          fit: BoxFit.fill,
+                          fit: BoxFit.cover,
                           errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
                             return const Image(
                               image: AssetImage('assets/images/no_image.jpg'),
-                              fit: BoxFit.fill,
+                              fit: BoxFit.cover,
                             );
                           },
                         ),
