@@ -36,7 +36,9 @@ class _HomePageState extends State<HomePage> {
   List<Item> data = [];
 
   Text _printRestaurantName(String restaurantName) {
-    return Text(restaurantName, style: Theme.of(context).textTheme.headlineSmall);
+    return Text(restaurantName,
+        style:
+            Theme.of(context).textTheme.headlineSmall?.copyWith(fontSize: 20));
   }
 
   Text _printMenuName(String menuName) {
@@ -68,21 +70,25 @@ class _HomePageState extends State<HomePage> {
           },
           customBorder: RoundedRectangleBorder(
             borderRadius: (restaurantIndex == 0)
-              ? (restaurantIndex == restaurantList.length - 1)
-                ? const BorderRadius.all(Radius.circular(10))
-                : const BorderRadius.only(topLeft: Radius.circular(10), topRight: Radius.circular(10))
-              : (restaurantIndex == restaurantList.length - 1)
-                ? const BorderRadius.only(bottomLeft: Radius.circular(10), bottomRight: Radius.circular(10))
-                : const BorderRadius.all(Radius.circular(0)),
+                ? (restaurantIndex == restaurantList.length - 1)
+                    ? const BorderRadius.all(Radius.circular(10))
+                    : const BorderRadius.only(
+                        topLeft: Radius.circular(10),
+                        topRight: Radius.circular(10))
+                : (restaurantIndex == restaurantList.length - 1)
+                    ? const BorderRadius.only(
+                        bottomLeft: Radius.circular(10),
+                        bottomRight: Radius.circular(10))
+                    : const BorderRadius.all(Radius.circular(0)),
           ),
           child: Container(
             margin: (restaurantIndex == 0)
-              ? (restaurantIndex == restaurantList.length - 1)
-                ? const EdgeInsets.only(left: 20, top: 20, bottom: 20)
-                : const EdgeInsets.only(left: 20, top: 20, bottom: 10)
-              : (restaurantIndex == restaurantList.length - 1)
-                ? const EdgeInsets.only(left: 20, top: 10, bottom: 20)
-                : const EdgeInsets.only(left: 20, top: 10, bottom: 10),
+                ? (restaurantIndex == restaurantList.length - 1)
+                    ? const EdgeInsets.only(left: 20, top: 20, bottom: 20)
+                    : const EdgeInsets.only(left: 20, top: 20, bottom: 10)
+                : (restaurantIndex == restaurantList.length - 1)
+                    ? const EdgeInsets.only(left: 20, top: 10, bottom: 20)
+                    : const EdgeInsets.only(left: 20, top: 10, bottom: 10),
             width: double.infinity,
             decoration: const BoxDecoration(
               borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -94,8 +100,8 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         (restaurantIndex != restaurantList.length - 1)
-          ? const Divider()
-          : Container(),
+            ? const Divider()
+            : Container(),
       ],
     );
   }
@@ -127,7 +133,8 @@ class _HomePageState extends State<HomePage> {
             slivers: [
               SliverAppBar.large(
                 backgroundColor: Theme.of(context).colorScheme.surfaceVariant,
-                title: Text('Welcome to Mealis!', style: Theme.of(context).textTheme.headlineMedium),
+                title: Text('Welcome to Mealis!',
+                    style: Theme.of(context).textTheme.headlineMedium),
               ),
               SliverToBoxAdapter(
                 child: Column(
@@ -268,7 +275,10 @@ class _HomePageState extends State<HomePage> {
                       margin: const EdgeInsets.only(top: 20, bottom: 0),
                       child: Text(
                         'Quick Meal',
-                        style: Theme.of(context).textTheme.headlineSmall,
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineSmall
+                            ?.copyWith(fontSize: 20),
                         textAlign: TextAlign.center,
                       ),
                     ),
@@ -287,82 +297,101 @@ class _HomePageState extends State<HomePage> {
                         },
                       ),
                       items: [0, 1, 2, 3, 4, -1].map((i) {
-                        return Builder(
-                          builder: (BuildContext context) {
-                            if (i >= 0) {
-                              return Container(
-                                padding: const EdgeInsets.all(5),
-                                child: buildQuickMealCard(context, quickMealRankingList[i].key, i + 1),
-                              );
-                            } else {
-                              return SizedBox(
-                                width: double.infinity,
-                                child: IntrinsicHeight(
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Flexible(
-                                        flex: 1,
+                        return Builder(builder: (BuildContext context) {
+                          if (i >= 0) {
+                            return Container(
+                              padding: const EdgeInsets.all(5),
+                              child: buildQuickMealCard(
+                                  context, quickMealRankingList[i].key, i + 1),
+                            );
+                          } else {
+                            return SizedBox(
+                              width: double.infinity,
+                              child: IntrinsicHeight(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Flexible(
+                                      flex: 1,
+                                      child: Container(
+                                        padding: const EdgeInsets.only(
+                                            left: 5,
+                                            right: 5,
+                                            top: 5,
+                                            bottom: 5),
                                         child: Container(
-                                          padding: const EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
-                                          child: Container(
-                                            decoration: BoxDecoration(
-                                              color: Theme.of(context).colorScheme.surfaceVariant,
-                                              borderRadius: const BorderRadius.all(Radius.circular(10)),
+                                          decoration: BoxDecoration(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .surfaceVariant,
+                                            borderRadius:
+                                                const BorderRadius.all(
+                                                    Radius.circular(10)),
+                                          ),
+                                          child: InkWell(
+                                            onTap: () {
+                                              goToPage(3);
+                                            },
+                                            customBorder:
+                                                RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10.0),
                                             ),
-                                            child: InkWell(
-                                              onTap: () {
-                                                goToPage(3);
-                                              },
-                                              customBorder: RoundedRectangleBorder(
-                                                borderRadius: BorderRadius.circular(10.0),
-                                              ),
-                                              child: SizedBox(
-                                                width: 300,
-                                                child: Column(
-                                                  mainAxisAlignment: MainAxisAlignment.center,
-                                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                                  children: [
-                                                    Icon(Icons.add_circle_outline, size: 50, color: Theme.of(context).primaryColor),
-                                                    Text(
-                                                      'See More',
-                                                      style: Theme.of(context).textTheme.titleSmall,
-                                                      textAlign: TextAlign.center,
-                                                    ),
-                                                  ],
-                                                ),
+                                            child: SizedBox(
+                                              width: 300,
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  Icon(Icons.add_circle_outline,
+                                                      size: 50,
+                                                      color: Theme.of(context)
+                                                          .primaryColor),
+                                                  Text(
+                                                    'See More',
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .titleSmall,
+                                                    textAlign: TextAlign.center,
+                                                  ),
+                                                ],
                                               ),
                                             ),
                                           ),
                                         ),
                                       ),
-                                    ],
-                                  ),
+                                    ),
+                                  ],
                                 ),
-                              );
-                            }
+                              ),
+                            );
                           }
-                        );
+                        });
                       }).toList(),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                        children: [0, 1, 2, 3, 4, -1].asMap().entries.map((entry) {
-                          return GestureDetector(
-                            onTap: () => _controller.animateToPage(entry.key),
-                            child: Container(
-                              width: 12.0,
-                              height: 12.0,
-                              margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
-                              child: Icon(
-                                (entry.key != 5) ? Icons.circle : Icons.add,
-                                size: 12,
-                                color: (Theme.of(context).colorScheme.primary).withOpacity(_current == entry.key ? 0.9 : 0.4),
-                              ),
+                      children:
+                          [0, 1, 2, 3, 4, -1].asMap().entries.map((entry) {
+                        return GestureDetector(
+                          onTap: () => _controller.animateToPage(entry.key),
+                          child: Container(
+                            width: 12.0,
+                            height: 12.0,
+                            margin: const EdgeInsets.symmetric(
+                                vertical: 8.0, horizontal: 4.0),
+                            child: Icon(
+                              (entry.key != 5) ? Icons.circle : Icons.add,
+                              size: 12,
+                              color: (Theme.of(context).colorScheme.primary)
+                                  .withOpacity(
+                                      _current == entry.key ? 0.9 : 0.4),
                             ),
-                          );
-                        }
-                      ).toList(),
+                          ),
+                        );
+                      }).toList(),
                     ),
 
                     // Popular Menu
@@ -370,7 +399,10 @@ class _HomePageState extends State<HomePage> {
                       margin: const EdgeInsets.only(top: 20, bottom: 0),
                       child: Text(
                         'Today\'s Popular Menu',
-                        style: Theme.of(context).textTheme.headlineSmall,
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineSmall
+                            ?.copyWith(fontSize: 20),
                         textAlign: TextAlign.center,
                       ),
                     ),
@@ -386,96 +418,119 @@ class _HomePageState extends State<HomePage> {
                             setState(() {
                               _current = index;
                             });
-                          }
-                      ),
+                          }),
                       items: [0, 1, 2, 3, 4, -1].map((i) {
-                        return Builder(
-                            builder: (BuildContext context) {
-                              if (i >= 0) {
-                                return Container(
-                                  padding: const EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
-                                  child: buildPopularMenuCard(context, setState, menuRankingList[i].key, i + 1),
-                                );
-                              } else {
-                                return SizedBox(
-                                  width: double.infinity,
-                                  child: IntrinsicHeight(
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      children: [
-                                        Flexible(
-                                          flex: 1,
-                                          child: Container(
-                                            padding: const EdgeInsets.only(left: 5, right: 5, top: 5, bottom: 5),
-                                            child: Container(
-                                              decoration: BoxDecoration(
-                                                color: Theme.of(context).colorScheme.surfaceVariant,
-                                                borderRadius: const BorderRadius.all(Radius.circular(10)),
-                                              ),
-                                              child: InkWell(
-                                                onTap: () {
-                                                  goToPage(2);
-                                                },
-                                                customBorder: RoundedRectangleBorder(
-                                                  borderRadius: BorderRadius.circular(10.0),
-                                                ),
-                                                child: SizedBox(
-                                                  width: 300,
-                                                  child: Column(
-                                                    mainAxisAlignment: MainAxisAlignment.center,
-                                                    crossAxisAlignment: CrossAxisAlignment.center,
-                                                    children: [
-                                                      Icon(Icons.add_circle_outline, size: 50, color: Theme.of(context).primaryColor),
-                                                      Text(
-                                                        'See More',
-                                                        style: Theme.of(context).textTheme.titleSmall,
-                                                        textAlign: TextAlign.center,
-                                                      ),
-                                                    ],
+                        return Builder(builder: (BuildContext context) {
+                          if (i >= 0) {
+                            return Container(
+                              padding: const EdgeInsets.only(
+                                  left: 5, right: 5, top: 5, bottom: 5),
+                              child: buildPopularMenuCard(context, setState,
+                                  menuRankingList[i].key, i + 1),
+                            );
+                          } else {
+                            return SizedBox(
+                              width: double.infinity,
+                              child: IntrinsicHeight(
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Flexible(
+                                      flex: 1,
+                                      child: Container(
+                                        padding: const EdgeInsets.only(
+                                            left: 5,
+                                            right: 5,
+                                            top: 5,
+                                            bottom: 5),
+                                        child: Container(
+                                          decoration: BoxDecoration(
+                                            color: Theme.of(context)
+                                                .colorScheme
+                                                .surfaceVariant,
+                                            borderRadius:
+                                                const BorderRadius.all(
+                                                    Radius.circular(10)),
+                                          ),
+                                          child: InkWell(
+                                            onTap: () {
+                                              goToPage(2);
+                                            },
+                                            customBorder:
+                                                RoundedRectangleBorder(
+                                              borderRadius:
+                                                  BorderRadius.circular(10.0),
+                                            ),
+                                            child: SizedBox(
+                                              width: 300,
+                                              child: Column(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.center,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.center,
+                                                children: [
+                                                  Icon(Icons.add_circle_outline,
+                                                      size: 50,
+                                                      color: Theme.of(context)
+                                                          .primaryColor),
+                                                  Text(
+                                                    'See More',
+                                                    style: Theme.of(context)
+                                                        .textTheme
+                                                        .titleSmall,
+                                                    textAlign: TextAlign.center,
                                                   ),
-                                                ),
+                                                ],
                                               ),
                                             ),
                                           ),
                                         ),
-                                      ],
+                                      ),
                                     ),
-                                  ),
-                                );
-                              }
-                            }
-                        );
+                                  ],
+                                ),
+                              ),
+                            );
+                          }
+                        });
                       }).toList(),
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [0, 1, 2, 3, 4, -1].asMap().entries.map((entry) {
+                      children:
+                          [0, 1, 2, 3, 4, -1].asMap().entries.map((entry) {
                         return GestureDetector(
                           onTap: () => _controller.animateToPage(entry.key),
                           child: Container(
                             width: 12.0,
                             height: 12.0,
-                            margin: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 4.0),
+                            margin: const EdgeInsets.symmetric(
+                                vertical: 8.0, horizontal: 4.0),
                             child: Icon(
                               (entry.key != 5) ? Icons.circle : Icons.add,
                               size: 12,
-                              color: (Theme.of(context).colorScheme.primary).withOpacity(_current == entry.key ? 0.9 : 0.4),
+                              color: (Theme.of(context).colorScheme.primary)
+                                  .withOpacity(
+                                      _current == entry.key ? 0.9 : 0.4),
                             ),
                           ),
                         );
-                      }
-                      ).toList(),
+                      }).toList(),
                     ),
                     Container(
                       margin: const EdgeInsets.only(top: 20, bottom: 15),
                       child: Text(
                         'All Menu',
-                        style: Theme.of(context).textTheme.headlineSmall,
+                        style: Theme.of(context)
+                            .textTheme
+                            .headlineSmall
+                            ?.copyWith(fontSize: 20),
                         textAlign: TextAlign.center,
                       ),
                     ),
                     Card(
-                      margin: const EdgeInsets.only(left: 20, right: 20, bottom: 30),
+                      margin: const EdgeInsets.only(
+                          left: 20, right: 20, bottom: 30),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -491,17 +546,18 @@ class _HomePageState extends State<HomePage> {
           ),
         ),
         floatingActionButton: isFabVisible
-          ? FloatingActionButton(
-              onPressed: () {
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(builder: (context) => MyPage()),
-                );
-              },
-              backgroundColor: Theme.of(context).colorScheme.primaryContainer,
-              child: Icon(Icons.account_circle, color: Theme.of(context).colorScheme.onPrimaryContainer),
-            )
-          : null,
+            ? FloatingActionButton(
+                onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(builder: (context) => MyPage()),
+                  );
+                },
+                backgroundColor: Theme.of(context).colorScheme.primaryContainer,
+                child: Icon(Icons.account_circle,
+                    color: Theme.of(context).colorScheme.onPrimaryContainer),
+              )
+            : null,
       ),
     );
   }
