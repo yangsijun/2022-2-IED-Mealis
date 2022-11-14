@@ -191,7 +191,23 @@ List<Widget> getMenuComments(BuildContext context, String menuName) {
       menuComments.add(
         Container(
           padding: const EdgeInsets.only(left: 20, right: 20),
-          child: Text(comment.commentText, style: Theme.of(context).textTheme.bodyLarge, overflow: TextOverflow.fade, softWrap: false,),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                comment.commentText,
+                style: Theme.of(context).textTheme.bodyLarge,
+                overflow: TextOverflow.fade,
+                softWrap: false,
+              ),
+              Text(
+                '${comment.commentDateTime.year}-${comment.commentDateTime.month}-${comment.commentDateTime.day}',
+                style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.grey),
+                overflow: TextOverflow.fade,
+                softWrap: false,
+              ),
+            ],
+          ),
         ),
       );
       menuComments.add(const Divider());
@@ -267,7 +283,7 @@ Future<void> commentDialog(BuildContext context, String menuName) async {
               TextButton(
                 onPressed: () {
                   if (commentController.text.isNotEmpty) {
-                    commentList.insert(0, MenuComment(menuName, commentController.text));
+                    commentList.insert(0, MenuComment(menuName, commentController.text, DateTime.now()));
                     myEvalMap[menuName]!.isCommented = true;
                     commentController.clear();
                   }

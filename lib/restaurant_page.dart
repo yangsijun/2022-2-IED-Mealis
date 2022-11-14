@@ -45,36 +45,36 @@ class _RestaurantPageState extends State<RestaurantPage> {
                         mainAxisSpacing: 15,
                         crossAxisSpacing: 15,
                         childAspectRatio: 1.0,
-                        children: restaurantList
-                            .map((String restaurantName) => Card(
-                                  key: ValueKey(restaurantName),
-                                  child: InkWell(
-                                    onTap: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                          builder: (context) =>
-                                              OneRestaurantPage(restaurantList
-                                                  .indexOf(restaurantName)),
-                                        ),
-                                      );
-                                    },
-                                    customBorder: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(10),
-                                    ),
-                                    child: Center(
-                                      child: Container(
-                                        padding: const EdgeInsets.all(10),
-                                        child: Text(restaurantName,
-                                            style: Theme.of(context)
-                                                .textTheme
-                                                .titleLarge,
-                                            textAlign: TextAlign.center),
-                                      ),
-                                    ),
+                        children: restaurantList.map(
+                          (String restaurantName) => Card(
+                            key: ValueKey(restaurantName),
+                            child: InkWell(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        OneRestaurantPage(restaurantList
+                                            .indexOf(restaurantName)),
                                   ),
-                                ))
-                            .toList(),
+                                );
+                              },
+                              customBorder: RoundedRectangleBorder(
+                                borderRadius: BorderRadius.circular(10),
+                              ),
+                              child: Center(
+                                child: Container(
+                                  padding: const EdgeInsets.all(10),
+                                  child: Text(restaurantName,
+                                      style: Theme.of(context)
+                                          .textTheme
+                                          .titleLarge,
+                                      textAlign: TextAlign.center),
+                                ),
+                              ),
+                            ),
+                          )
+                        ).toList(),
                         onReorder: (int oldIndex, int newIndex) {
                           setState(() {
                             String temp = restaurantList.removeAt(oldIndex);
