@@ -95,7 +95,14 @@ class _OneRestaurantPageState extends State<OneRestaurantPage>{
             ),
             title: (restaurantInfoMap[restaurantList[restaurantIndex]]!.isAvailable)
               ? Text(restaurantList[restaurantIndex], style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20), overflow: TextOverflow.fade, softWrap: false,)
-              : Text(restaurantList[restaurantIndex], style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20, color: Colors.grey, decoration: TextDecoration.lineThrough), overflow: TextOverflow.fade, softWrap: false,),
+              : Row(
+                  children: [
+                    Text(restaurantList[restaurantIndex], style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20, color: Colors.grey, decoration: TextDecoration.lineThrough), overflow: TextOverflow.fade, softWrap: false,),
+                    Expanded(
+                      child: Text(' (Unavailable)', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20, color: Colors.redAccent), overflow: TextOverflow.fade, softWrap: false),
+                    ),
+                  ],
+                ),
           ),
           SliverToBoxAdapter(
             child: Center(

@@ -36,7 +36,8 @@ class _RestaurantPageState extends State<RestaurantPage> {
                 child: Container(
                   margin:
                       const EdgeInsets.only(left: 20, right: 20, bottom: 20),
-                  child: Column(
+                  child:
+                  Column(
                     children: [
                       ReorderableGridView.count(
                         shrinkWrap: true,

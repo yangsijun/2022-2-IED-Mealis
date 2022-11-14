@@ -18,7 +18,16 @@ Widget buildMenuCardContent(BuildContext context, String menuName) {
       return Column(
         children: <Widget>[
           ListTile(
-            title: Text(menuName, style: Theme.of(context).textTheme.titleLarge, overflow: TextOverflow.fade, softWrap: false,),
+            title: (restaurantInfoMap[menuMap[menuName]!.restaurantName]!.isAvailable && menuMap[menuName]!.isAvailable)
+              ? Text(menuName, style: Theme.of(context).textTheme.titleLarge, overflow: TextOverflow.fade, softWrap: false,)
+              : Row(
+                  children: [
+                    Text(menuName, style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.grey, decoration: TextDecoration.lineThrough), overflow: TextOverflow.fade, softWrap: false,),
+                    Expanded(
+                      child: Text(' (Unavailable)', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20, color: Colors.redAccent), overflow: TextOverflow.fade, softWrap: false),
+                    ),
+                  ],
+                ),
             subtitle: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -232,7 +241,14 @@ class _OneMenuPageState extends State<OneMenuPage>{
                 Navigator.pop(context);
               },
             ),
-            title: Text(menuName),
+            title: (restaurantInfoMap[menuMap[menuName]!.restaurantName]!.isAvailable && menuMap[menuName]!.isAvailable)
+              ? Text(menuName, style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20), overflow: TextOverflow.fade, softWrap: false)
+              : Row(
+                  children: [
+                    Text(menuName, style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20, color: Colors.grey, decoration: TextDecoration.lineThrough), overflow: TextOverflow.fade, softWrap: false),
+                    Text(' (Unavailable)', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20, color: Colors.redAccent), overflow: TextOverflow.fade, softWrap: false),
+                  ],
+                ),
           ),
           SliverToBoxAdapter(
             child: Center(

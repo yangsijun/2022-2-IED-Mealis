@@ -36,7 +36,14 @@ Column _buildRestaurantTileContent(BuildContext context, String restaurantName, 
       ListTile(
         title: (restaurantInfoMap[restaurantName]!.isAvailable)
           ? Text('$rank. $restaurantName', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20), overflow: TextOverflow.fade, softWrap: false,)
-          : Text('$rank. $restaurantName', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20, color: Colors.grey, decoration: TextDecoration.lineThrough), overflow: TextOverflow.fade, softWrap: false,),
+          : Row(
+              children: [
+                Text('$rank. $restaurantName', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20, color: Colors.grey, decoration: TextDecoration.lineThrough), overflow: TextOverflow.fade, softWrap: false,),
+                Expanded(
+                  child: Text(' (Unavailable)', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20, color: Colors.redAccent), overflow: TextOverflow.fade, softWrap: false),
+                ),
+              ],
+            ),
       ),
       ConstrainedBox(
         constraints: const BoxConstraints(maxWidth: double.infinity, maxHeight: 75, minWidth: 300, minHeight: 75),
