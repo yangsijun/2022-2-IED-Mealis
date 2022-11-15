@@ -3,7 +3,6 @@ import 'comment.dart';
 import 'database.dart';
 import 'menu.dart';
 
-
 class OneMenuPage extends StatefulWidget {
   const OneMenuPage(this.menuName, {Key? key}) : super(key: key);
   final String menuName;
@@ -12,30 +11,59 @@ class OneMenuPage extends StatefulWidget {
   State<OneMenuPage> createState() => _OneMenuPageState(menuName);
 }
 
-Widget buildMenuCardContent(BuildContext context, String menuName) {
+Widget buildMenuCardContent(
+    BuildContext context, StateSetter setState, String menuName) {
   return StatefulBuilder(
-    builder: (BuildContext context, StateSetter setState) {
+    builder: (context, setState) {
       return Column(
         children: <Widget>[
           ListTile(
-            title: (restaurantInfoMap[menuMap[menuName]!.restaurantName]!.isAvailable && menuMap[menuName]!.isAvailable)
-              ? Text(menuName, style: Theme.of(context).textTheme.titleLarge, overflow: TextOverflow.fade, softWrap: false,)
-              : Row(
-                  children: [
-                    Container(
-                      constraints: const BoxConstraints(maxWidth: 270),
-                      child: Text(menuName, style: Theme.of(context).textTheme.titleLarge?.copyWith(color: Colors.grey, decoration: TextDecoration.lineThrough), overflow: TextOverflow.fade, softWrap: false,),
-                    ),
-                    Expanded(
-                      child: Text(' (Unavailable)', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20, color: Colors.redAccent), overflow: TextOverflow.fade, softWrap: false),
-                    ),
-                  ],
-                ),
+            title: (restaurantInfoMap[menuMap[menuName]!.restaurantName]!
+                        .isAvailable &&
+                    menuMap[menuName]!.isAvailable)
+                ? Text(
+                    menuName,
+                    style: Theme.of(context).textTheme.titleLarge,
+                    overflow: TextOverflow.fade,
+                    softWrap: false,
+                  )
+                : Row(
+                    children: [
+                      Container(
+                        constraints: const BoxConstraints(maxWidth: 270),
+                        child: Text(
+                          menuName,
+                          style: Theme.of(context)
+                              .textTheme
+                              .titleLarge
+                              ?.copyWith(
+                                  color: Colors.grey,
+                                  decoration: TextDecoration.lineThrough),
+                          overflow: TextOverflow.fade,
+                          softWrap: false,
+                        ),
+                      ),
+                      Expanded(
+                        child: Text(' (Unavailable)',
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge
+                                ?.copyWith(
+                                    fontSize: 20, color: Colors.redAccent),
+                            overflow: TextOverflow.fade,
+                            softWrap: false),
+                      ),
+                    ],
+                  ),
             subtitle: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text(menuMap[menuName]!.restaurantName, style: const TextStyle(fontSize: 16)),
-                Text('${menuMap[menuName]!.price} Won', style: const TextStyle(fontSize: 16),),
+                Text(menuMap[menuName]!.restaurantName,
+                    style: const TextStyle(fontSize: 16)),
+                Text(
+                  '${menuMap[menuName]!.price} Won',
+                  style: const TextStyle(fontSize: 16),
+                ),
               ],
             ),
           ),
@@ -43,8 +71,16 @@ Widget buildMenuCardContent(BuildContext context, String menuName) {
             alignment: MainAxisAlignment.center,
             children: <Widget>[
               ActionChip(
-                avatar: Icon(Icons.comment, color: (myEvalMap[menuName]!.isCommented) ? Colors.orangeAccent : Theme.of(context).chipTheme.surfaceTintColor),
-                label: Text(menuMap[menuName]!.stat.comment.toString(), style: TextStyle(color: (myEvalMap[menuName]!.isCommented) ? Colors.orangeAccent : Theme.of(context).chipTheme.surfaceTintColor, fontSize: 14)),
+                avatar: Icon(Icons.comment,
+                    color: (myEvalMap[menuName]!.isCommented)
+                        ? Colors.orangeAccent
+                        : Theme.of(context).chipTheme.surfaceTintColor),
+                label: Text(menuMap[menuName]!.stat.comment.toString(),
+                    style: TextStyle(
+                        color: (myEvalMap[menuName]!.isCommented)
+                            ? Colors.orangeAccent
+                            : Theme.of(context).chipTheme.surfaceTintColor,
+                        fontSize: 14)),
                 onPressed: () {
                   showDialog(
                     context: context,
@@ -52,11 +88,20 @@ Widget buildMenuCardContent(BuildContext context, String menuName) {
                       return commentViewDialog(context, setState, menuName);
                     },
                   );
+                  setState(() {});
                 },
               ),
               ActionChip(
-                avatar: Icon(Icons.thumb_up, color: (myEvalMap[menuName]!.isLiked) ? Colors.redAccent : Theme.of(context).chipTheme.surfaceTintColor),
-                label: Text(menuMap[menuName]!.stat.like.toString(), style: TextStyle(color: (myEvalMap[menuName]!.isLiked) ? Colors.redAccent : Theme.of(context).chipTheme.surfaceTintColor, fontSize: 14)),
+                avatar: Icon(Icons.thumb_up,
+                    color: (myEvalMap[menuName]!.isLiked)
+                        ? Colors.redAccent
+                        : Theme.of(context).chipTheme.surfaceTintColor),
+                label: Text(menuMap[menuName]!.stat.like.toString(),
+                    style: TextStyle(
+                        color: (myEvalMap[menuName]!.isLiked)
+                            ? Colors.redAccent
+                            : Theme.of(context).chipTheme.surfaceTintColor,
+                        fontSize: 14)),
                 onPressed: () {
                   setState(() {
                     if (myEvalMap[menuName]!.isLiked) {
@@ -77,8 +122,16 @@ Widget buildMenuCardContent(BuildContext context, String menuName) {
                 },
               ),
               ActionChip(
-                avatar: Icon(Icons.thumb_down, color: (myEvalMap[menuName]!.isDisliked) ? Colors.blueAccent : Theme.of(context).chipTheme.surfaceTintColor),
-                label: Text(menuMap[menuName]!.stat.dislike.toString(), style: TextStyle(color: (myEvalMap[menuName]!.isDisliked) ? Colors.blueAccent : Theme.of(context).chipTheme.surfaceTintColor, fontSize: 14)),
+                avatar: Icon(Icons.thumb_down,
+                    color: (myEvalMap[menuName]!.isDisliked)
+                        ? Colors.blueAccent
+                        : Theme.of(context).chipTheme.surfaceTintColor),
+                label: Text(menuMap[menuName]!.stat.dislike.toString(),
+                    style: TextStyle(
+                        color: (myEvalMap[menuName]!.isDisliked)
+                            ? Colors.blueAccent
+                            : Theme.of(context).chipTheme.surfaceTintColor,
+                        fontSize: 14)),
                 onPressed: () {
                   setState(() {
                     if (myEvalMap[menuName]!.isDisliked) {
@@ -106,7 +159,8 @@ Widget buildMenuCardContent(BuildContext context, String menuName) {
   );
 }
 
-List<Widget> _buildMenuCards(BuildContext context, String menuName) {
+List<Widget> _buildMenuCards(
+    BuildContext context, StateSetter setState, String menuName) {
   List<Widget> menuCards = [];
   for (Menu menu in menuMap.values) {
     if (menu.menuName == menuName) {
@@ -125,7 +179,8 @@ List<Widget> _buildMenuCards(BuildContext context, String menuName) {
                   child: Image.asset(
                     menu.image,
                     fit: BoxFit.fill,
-                    errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
+                    errorBuilder: (BuildContext context, Object exception,
+                        StackTrace? stackTrace) {
                       return const Image(
                         image: AssetImage('assets/images/no_image.jpg'),
                         fit: BoxFit.fill,
@@ -134,7 +189,7 @@ List<Widget> _buildMenuCards(BuildContext context, String menuName) {
                   ),
                 ),
                 Container(
-                  child: buildMenuCardContent(context, menu.menuName),
+                  child: buildMenuCardContent(context, setState, menu.menuName),
                 ),
               ],
             ),
@@ -147,7 +202,8 @@ List<Widget> _buildMenuCards(BuildContext context, String menuName) {
   return menuCards;
 }
 
-Widget buildMenuCommentsList(BuildContext context, StateSetter setState, String menuName, double height) {
+Widget buildMenuCommentsList(BuildContext context, StateSetter setState,
+    String menuName, double height) {
   return StatefulBuilder(
     builder: (BuildContext context, StateSetter setState) {
       return Container(
@@ -161,14 +217,15 @@ Widget buildMenuCommentsList(BuildContext context, StateSetter setState, String 
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text('Comments', style: Theme
-                      .of(context)
-                      .textTheme
-                      .titleLarge),
+                  Text('Comments',
+                      style: Theme.of(context).textTheme.titleLarge),
                   IconButton(
                     icon: const Icon(Icons.edit),
                     onPressed: () {
-                      commentDialog(context, menuName).then((value) => setState(() {myUser.exp += 10;}));
+                      commentDialog(context, menuName)
+                          .then((value) => setState(() {
+                                myUser.exp += 10;
+                              }));
                     },
                   ),
                 ],
@@ -214,7 +271,10 @@ List<Widget> getMenuComments(BuildContext context, String menuName) {
               ),
               Text(
                 '${comment.commentDateTime.year}-${comment.commentDateTime.month}-${comment.commentDateTime.day}',
-                style: Theme.of(context).textTheme.bodyLarge?.copyWith(color: Colors.grey),
+                style: Theme.of(context)
+                    .textTheme
+                    .bodyLarge
+                    ?.copyWith(color: Colors.grey),
                 overflow: TextOverflow.fade,
                 softWrap: false,
               ),
@@ -228,7 +288,7 @@ List<Widget> getMenuComments(BuildContext context, String menuName) {
   return menuComments;
 }
 
-class _OneMenuPageState extends State<OneMenuPage>{
+class _OneMenuPageState extends State<OneMenuPage> {
   _OneMenuPageState(this.menuName);
   final String menuName;
 
@@ -244,19 +304,43 @@ class _OneMenuPageState extends State<OneMenuPage>{
                 Navigator.pop(context);
               },
             ),
-            title: (restaurantInfoMap[menuMap[menuName]!.restaurantName]!.isAvailable && menuMap[menuName]!.isAvailable)
-              ? Text(menuName, style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20), overflow: TextOverflow.fade, softWrap: false)
-              : Row(
-                  children: [
-                    Container(
-                      constraints: const BoxConstraints(maxWidth: 270),
-                      child: Text(menuName, style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20, color: Colors.grey, decoration: TextDecoration.lineThrough), overflow: TextOverflow.fade, softWrap: false),
-                    ),
-                    Expanded(
-                      child: Text(' (Unavailable)', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20, color: Colors.redAccent), overflow: TextOverflow.fade, softWrap: false),
-                    ),
-                  ],
-                ),
+            title: (restaurantInfoMap[menuMap[menuName]!.restaurantName]!
+                        .isAvailable &&
+                    menuMap[menuName]!.isAvailable)
+                ? Text(menuName,
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleLarge
+                        ?.copyWith(fontSize: 20),
+                    overflow: TextOverflow.fade,
+                    softWrap: false)
+                : Row(
+                    children: [
+                      Container(
+                        constraints: const BoxConstraints(maxWidth: 270),
+                        child: Text(menuName,
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge
+                                ?.copyWith(
+                                    fontSize: 20,
+                                    color: Colors.grey,
+                                    decoration: TextDecoration.lineThrough),
+                            overflow: TextOverflow.fade,
+                            softWrap: false),
+                      ),
+                      Expanded(
+                        child: Text(' (Unavailable)',
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge
+                                ?.copyWith(
+                                    fontSize: 20, color: Colors.redAccent),
+                            overflow: TextOverflow.fade,
+                            softWrap: false),
+                      ),
+                    ],
+                  ),
           ),
           SliverToBoxAdapter(
             child: Center(
@@ -269,7 +353,8 @@ class _OneMenuPageState extends State<OneMenuPage>{
                         Container(
                           padding: const EdgeInsets.all(10),
                           child: Column(
-                            children: _buildMenuCards(context, menuName),
+                            children:
+                                _buildMenuCards(context, setState, menuName),
                           ),
                         ),
                       ],
@@ -307,7 +392,10 @@ Future<void> commentDialog(BuildContext context, String menuName) async {
               TextButton(
                 onPressed: () {
                   if (commentController.text.isNotEmpty) {
-                    commentList.insert(0, MenuComment(menuName, commentController.text, DateTime.now()));
+                    commentList.insert(
+                        0,
+                        MenuComment(
+                            menuName, commentController.text, DateTime.now()));
                     myEvalMap[menuName]!.isCommented = true;
                     commentController.clear();
                   }
@@ -342,13 +430,13 @@ Future<void> commentDialog(BuildContext context, String menuName) async {
   );
 }
 
-Widget commentViewDialog(BuildContext context, StateSetter setState, String menuName) {
+Widget commentViewDialog(
+    BuildContext context, StateSetter setState, String menuName) {
   return Dialog(
     insetPadding: EdgeInsets.zero,
     child: SizedBox(
       width: double.infinity,
-      child:
-      Column(
+      child: Column(
         mainAxisSize: MainAxisSize.min,
         mainAxisAlignment: MainAxisAlignment.start,
         children: [

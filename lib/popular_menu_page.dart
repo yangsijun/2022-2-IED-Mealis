@@ -15,13 +15,15 @@ List<MapEntry<String, Menu>> menuRankingList = [];
 
 void getMenuRanking() {
   menuRankingList = menuMap.entries.toList();
-  menuRankingList.sort((a, b) => (b.value.stat.like - b.value.stat.dislike).compareTo((a.value.stat.like - a.value.stat.dislike)));
+  menuRankingList.sort((a, b) => (b.value.stat.like - b.value.stat.dislike)
+      .compareTo((a.value.stat.like - a.value.stat.dislike)));
 }
 
 int showPopularMenuNum = 10;
 int showRealTimeCommentNum = 10;
 
-Column _buildMenuTileContent(BuildContext context, StateSetter setState, String menuName, int rank) {
+Column _buildMenuTileContent(
+    BuildContext context, StateSetter setState, String menuName, int rank) {
   return Column(
     children: <Widget>[
       Row(
@@ -37,7 +39,8 @@ Column _buildMenuTileContent(BuildContext context, StateSetter setState, String 
                 width: 100,
                 height: 100,
                 fit: BoxFit.fill,
-                errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
+                errorBuilder: (BuildContext context, Object exception,
+                    StackTrace? stackTrace) {
                   return const Image(
                     image: AssetImage('assets/images/no_image.jpg'),
                     fit: BoxFit.fill,
@@ -48,16 +51,44 @@ Column _buildMenuTileContent(BuildContext context, StateSetter setState, String 
           ),
           Expanded(
             child: ListTile(
-              title: (restaurantInfoMap[menuMap[menuName]!.restaurantName]!.isAvailable && menuMap[menuName]!.isAvailable)
-                  ? Text('$rank. $menuName', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20), overflow: TextOverflow.fade, softWrap: false,)
+              title: (restaurantInfoMap[menuMap[menuName]!.restaurantName]!
+                          .isAvailable &&
+                      menuMap[menuName]!.isAvailable)
+                  ? Text(
+                      '$rank. $menuName',
+                      style: Theme.of(context)
+                          .textTheme
+                          .titleLarge
+                          ?.copyWith(fontSize: 20),
+                      overflow: TextOverflow.fade,
+                      softWrap: false,
+                    )
                   : Row(
                       children: [
                         Container(
                           constraints: const BoxConstraints(maxWidth: 150),
-                          child: Text('$rank. $menuName', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20, color: Colors.grey, decoration: TextDecoration.lineThrough), overflow: TextOverflow.fade, softWrap: false,),
+                          child: Text(
+                            '$rank. $menuName',
+                            style: Theme.of(context)
+                                .textTheme
+                                .titleLarge
+                                ?.copyWith(
+                                    fontSize: 20,
+                                    color: Colors.grey,
+                                    decoration: TextDecoration.lineThrough),
+                            overflow: TextOverflow.fade,
+                            softWrap: false,
+                          ),
                         ),
                         Expanded(
-                          child: Text(' (Unavailable)', style: Theme.of(context).textTheme.titleLarge?.copyWith(fontSize: 20, color: Colors.redAccent), overflow: TextOverflow.fade, softWrap: false),
+                          child: Text(' (Unavailable)',
+                              style: Theme.of(context)
+                                  .textTheme
+                                  .titleLarge
+                                  ?.copyWith(
+                                      fontSize: 20, color: Colors.redAccent),
+                              overflow: TextOverflow.fade,
+                              softWrap: false),
                         ),
                       ],
                     ),
@@ -93,8 +124,16 @@ Column _buildMenuTileContent(BuildContext context, StateSetter setState, String 
         alignment: MainAxisAlignment.center,
         children: <Widget>[
           ActionChip(
-            avatar: Icon(Icons.comment, color: (myEvalMap[menuName]!.isCommented) ? Colors.orangeAccent : Theme.of(context).chipTheme.surfaceTintColor),
-            label: Text(menuMap[menuName]!.stat.comment.toString(), style: TextStyle(color: (myEvalMap[menuName]!.isCommented) ? Colors.orangeAccent : Theme.of(context).chipTheme.surfaceTintColor, fontSize: 14)),
+            avatar: Icon(Icons.comment,
+                color: (myEvalMap[menuName]!.isCommented)
+                    ? Colors.orangeAccent
+                    : Theme.of(context).chipTheme.surfaceTintColor),
+            label: Text(menuMap[menuName]!.stat.comment.toString(),
+                style: TextStyle(
+                    color: (myEvalMap[menuName]!.isCommented)
+                        ? Colors.orangeAccent
+                        : Theme.of(context).chipTheme.surfaceTintColor,
+                    fontSize: 14)),
             onPressed: () {
               showDialog(
                 context: context,
@@ -105,8 +144,16 @@ Column _buildMenuTileContent(BuildContext context, StateSetter setState, String 
             },
           ),
           ActionChip(
-            avatar: Icon(Icons.thumb_up, color: (myEvalMap[menuName]!.isLiked) ? Colors.redAccent : Theme.of(context).chipTheme.surfaceTintColor),
-            label: Text(menuMap[menuName]!.stat.like.toString(), style: TextStyle(color: (myEvalMap[menuName]!.isLiked) ? Colors.redAccent : Theme.of(context).chipTheme.surfaceTintColor, fontSize: 14)),
+            avatar: Icon(Icons.thumb_up,
+                color: (myEvalMap[menuName]!.isLiked)
+                    ? Colors.redAccent
+                    : Theme.of(context).chipTheme.surfaceTintColor),
+            label: Text(menuMap[menuName]!.stat.like.toString(),
+                style: TextStyle(
+                    color: (myEvalMap[menuName]!.isLiked)
+                        ? Colors.redAccent
+                        : Theme.of(context).chipTheme.surfaceTintColor,
+                    fontSize: 14)),
             onPressed: () {
               setState(() {
                 if (myEvalMap[menuName]!.isLiked) {
@@ -127,8 +174,16 @@ Column _buildMenuTileContent(BuildContext context, StateSetter setState, String 
             },
           ),
           ActionChip(
-            avatar: Icon(Icons.thumb_down, color: (myEvalMap[menuName]!.isDisliked) ? Colors.blueAccent : Theme.of(context).chipTheme.surfaceTintColor),
-            label: Text(menuMap[menuName]!.stat.dislike.toString(), style: TextStyle(color: (myEvalMap[menuName]!.isDisliked) ? Colors.blueAccent : Theme.of(context).chipTheme.surfaceTintColor, fontSize: 14)),
+            avatar: Icon(Icons.thumb_down,
+                color: (myEvalMap[menuName]!.isDisliked)
+                    ? Colors.blueAccent
+                    : Theme.of(context).chipTheme.surfaceTintColor),
+            label: Text(menuMap[menuName]!.stat.dislike.toString(),
+                style: TextStyle(
+                    color: (myEvalMap[menuName]!.isDisliked)
+                        ? Colors.blueAccent
+                        : Theme.of(context).chipTheme.surfaceTintColor,
+                    fontSize: 14)),
             onPressed: () {
               setState(() {
                 if (myEvalMap[menuName]!.isDisliked) {
@@ -154,7 +209,8 @@ Column _buildMenuTileContent(BuildContext context, StateSetter setState, String 
   );
 }
 
-Widget buildPopularMenuCard(BuildContext context, StateSetter setState, String menuName, int rank) {
+Widget buildPopularMenuCard(
+    BuildContext context, StateSetter setState, String menuName, int rank) {
   return Card(
     child: InkWell(
       onTap: () {
@@ -183,7 +239,8 @@ Widget buildPopularMenuCard(BuildContext context, StateSetter setState, String m
                         child: Image.asset(
                           menuMap[menuName]!.image,
                           fit: BoxFit.fill,
-                          errorBuilder: (BuildContext context, Object exception, StackTrace? stackTrace) {
+                          errorBuilder: (BuildContext context, Object exception,
+                              StackTrace? stackTrace) {
                             return const Image(
                               image: AssetImage('assets/images/no_image.jpg'),
                               fit: BoxFit.fill,
@@ -192,7 +249,8 @@ Widget buildPopularMenuCard(BuildContext context, StateSetter setState, String m
                         ),
                       ),
                       Container(
-                        child: buildMenuCardContent(context, menuName),
+                        child:
+                            buildMenuCardContent(context, setState, menuName),
                       ),
                     ],
                   ),
@@ -212,14 +270,16 @@ Widget buildPopularMenuCard(BuildContext context, StateSetter setState, String m
   );
 }
 
-Widget _buildRealTimeComments(BuildContext context, StateSetter setState, int index) {
+Widget _buildRealTimeComments(
+    BuildContext context, StateSetter setState, int index) {
   return Column(
     children: [
       InkWell(
         onTap: () {
           Navigator.push(
             context,
-            MaterialPageRoute(builder: (context) => OneMenuPage(commentList[index].menuName)),
+            MaterialPageRoute(
+                builder: (context) => OneMenuPage(commentList[index].menuName)),
           ).then((value) => setState(() {}));
         },
         child: Container(
@@ -268,7 +328,6 @@ Widget _buildRealTimeComments(BuildContext context, StateSetter setState, int in
   );
 }
 
-
 class _PopularMenuPageState extends State<PopularMenuPage> {
   _PopularMenuPageState(this.goToPage);
   final void Function(int index) goToPage;
@@ -296,15 +355,20 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
                   children: [
                     for (int i = 0; i < showPopularMenuNum; i++)
                       Container(
-                        padding: const EdgeInsets.only(left: 20, right: 20, top: 5, bottom: 5),
-                        child: buildPopularMenuCard(context, setState, menuRankingList[i].key, i + 1),
+                        padding: const EdgeInsets.only(
+                            left: 20, right: 20, top: 5, bottom: 5),
+                        child: buildPopularMenuCard(
+                            context, setState, menuRankingList[i].key, i + 1),
                       ),
                     Container(
                       margin: const EdgeInsets.only(bottom: 10),
                       child: ElevatedButton(
                         style: ElevatedButton.styleFrom(
-                          backgroundColor: Theme.of(context).colorScheme.secondaryContainer,
-                          foregroundColor: Theme.of(context).colorScheme.onSecondaryContainer,
+                          backgroundColor:
+                              Theme.of(context).colorScheme.secondaryContainer,
+                          foregroundColor: Theme.of(context)
+                              .colorScheme
+                              .onSecondaryContainer,
                         ),
                         onPressed: () {
                           if (showPopularMenuNum < menuRankingList.length) {
@@ -320,7 +384,10 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
                             });
                           }
                         },
-                        child: Text((showPopularMenuNum < menuRankingList.length) ? 'See More' : 'Show less'),
+                        child: Text(
+                            (showPopularMenuNum < menuRankingList.length)
+                                ? 'See More'
+                                : 'Show less'),
                       ),
                     ),
                     const Divider(),
@@ -333,7 +400,8 @@ class _PopularMenuPageState extends State<PopularMenuPage> {
                       ),
                     ),
                     Card(
-                      margin: const EdgeInsets.only(left: 20, right: 20, bottom: 5),
+                      margin:
+                          const EdgeInsets.only(left: 20, right: 20, bottom: 5),
                       child: SizedBox(
                         height: 350,
                         child: SingleChildScrollView(
